@@ -103,8 +103,21 @@
         }
 
         .nav-phone {
-            color: var(--accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.625rem 1.25rem;
+            background: var(--accent);
+            color: var(--white);
             font-weight: 600;
+            border-radius: 0.5rem;
+            transition: all 320ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-phone:hover {
+            background: #B45309;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(217, 119, 6, 0.25);
         }
 
         .mobile-menu-btn {
@@ -174,28 +187,37 @@
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: rgba(24, 24, 27, 0.5);
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-weight: 600;
         }
 
         .hero-title {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0rem;
             max-width: 640px;
+            line-height: 1.05;
         }
 
         .hero-credential {
             color: var(--accent);
             display: block;
-            margin-top: 0.5rem;
+            margin-top: 2rem;
+            font-size: clamp(2.25rem, 5.5vw, 4rem);
+            font-weight: 700;
         }
 
         .hero-text {
             font-size: 1.0625rem;
-            line-height: 1.8;
+            line-height: 1.75;
             color: rgba(24, 24, 27, 0.7);
             margin-bottom: 3rem;
             max-width: 520px;
+            margin-top: 2rem;
+        }
+
+        .hero-text-line {
+            display: block;
+            margin-bottom: 1rem;
         }
 
         .hero-ctas {
@@ -219,20 +241,20 @@
             border: 2px solid transparent;
         }
 
-        .btn-ghost {
-            border-color: var(--accent);
-            color: var(--accent);
-            background: transparent;
-        }
-
-        .btn-ghost:hover {
+        .btn-primary {
             background: var(--accent);
             color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(217, 119, 6, 0.2);
+            border-color: var(--accent);
         }
 
-        .btn-ghost:active {
+        .btn-primary:hover {
+            background: #B45309;
+            border-color: #B45309;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-primary:active {
             transform: translateY(0);
         }
 
@@ -295,7 +317,7 @@
 
         .section-description {
             font-size: 1.125rem;
-            line-height: 1.8;
+            line-height: 1.75;
             color: rgba(24, 24, 27, 0.7);
         }
 
@@ -745,15 +767,16 @@
                 <span class="hero-credential">Meisterbetrieb Hahn</span>
             </h1>
             <p class="hero-text">
-                Herzlich Willkommen auf unserer Internetseite und vielen Dank für Ihr Interesse. Informieren Sie sich und lernen Sie uns und unsere Aufgabenbereiche kennen. Ihr Team vom Bäder & Heizungsbau Hahn.
+                <span class="hero-text-line">Herzlich Willkommen auf unserer Internetseite und vielen Dank für Ihr Interesse.</span>
+                <span class="hero-text-line">Informieren Sie sich und lernen Sie uns und unsere Aufgabenbereiche kennen. Ihr Team vom Bäder & Heizungsbau Hahn.</span>
             </p>
             <div class="hero-ctas">
-                <a href="tel:+4956646790" class="btn btn-ghost">+49 5664 6790 anrufen</a>
+                <a href="tel:+4956646790" class="btn btn-primary">+49 5664 6790 anrufen</a>
                 <a href="#leistungen" class="btn btn-secondary">Unsere Leistungen</a>
             </div>
         </div>
         <div class="hero-image-container">
-            <img src="https://picsum.photos/seed/modern-underfloor-heating-installation-premium-bathroom/1200/1400" alt="Moderne Badinstallation" class="hero-image">
+            <img src="https://picsum.photos/seed/bathroom-renovation-modern-tiles-shower/1200/1400" alt="Moderne Badinstallation" class="hero-image">
             <div class="hero-image-gradient"></div>
         </div>
     </section>
@@ -805,7 +828,7 @@
     <section id="meisterbetrieb" class="credentials-section">
         <div class="credentials-content">
             <div class="reveal">
-                <img src="https://picsum.photos/seed/german-meister-certificate-craftsmanship-badge/700/600" alt="Meisterbetrieb Zertifizierung" class="credentials-image">
+                <img src="https://picsum.photos/seed/plumber-installing-heating-system-professional/700/600" alt="Meisterbetrieb Zertifizierung" class="credentials-image">
             </div>
             <div class="credentials-text reveal">
                 <div class="credentials-badge">
