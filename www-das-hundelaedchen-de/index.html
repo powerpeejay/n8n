@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Das Hundelädchen — Premium Hundebedarf in Alheim</title>
+    <title>Das Hundelädchen – Premium Tierbedarf in Alheim</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300;400;600;700&family=Geist+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,97 +18,100 @@
             --accent: #D4A574;
             --bg: #F7F6F3;
             --text: #2F3437;
-            --text-secondary: #787774;
-            --white: #FFFFFF;
             --border: #EAEAEA;
-            --black: #18181B;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --white: #FFFFFF;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text);
+            font-family: 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1, h2, h3, h4 {
             font-family: 'Newsreader', serif;
+            font-weight: 400;
             line-height: 1.2;
-            font-weight: 600;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 24px;
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
-        nav {
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .nav {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            background-color: var(--bg);
-            z-index: 1000;
+            height: 60px;
+            background: var(--white);
             border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        nav .container {
+        .nav.scrolled {
+            box-shadow: 0 2px 12px rgba(47, 52, 55, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 20px;
-            padding-bottom: 20px;
         }
 
-        .logo {
+        .nav-logo {
             font-family: 'Newsreader', serif;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 600;
             color: var(--text);
-            text-decoration: none;
         }
 
-        .nav-links {
+        .nav-menu {
             display: flex;
-            gap: 40px;
-            align-items: center;
+            gap: 48px;
             list-style: none;
         }
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 15px;
+        .nav-menu a {
+            font-size: 14px;
             font-weight: 400;
+            letter-spacing: 0.02em;
+            color: var(--text);
             position: relative;
-            transition: color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-links a::after {
+        .nav-menu a::after {
             content: '';
             position: absolute;
             bottom: -4px;
             left: 0;
             width: 0;
             height: 1px;
-            background-color: var(--accent);
+            background: var(--accent);
             transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-menu a:hover {
+            color: var(--accent);
         }
 
-        .nav-phone {
-            color: var(--text);
-            font-size: 15px;
-            font-weight: 500;
+        .nav-menu a:hover::after {
+            width: 100%;
         }
 
         .hamburger {
@@ -124,8 +127,8 @@
         .hamburger span {
             width: 24px;
             height: 2px;
-            background-color: var(--text);
-            transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms;
+            background: var(--text);
+            transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hamburger.active span:nth-child(1) {
@@ -140,183 +143,175 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 73px;
-            left: 0;
-            right: 0;
-            background-color: var(--bg);
-            border-bottom: 1px solid var(--border);
-            padding: 24px;
-            transform: translateY(-100%);
-            transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 999;
-        }
-
-        .mobile-menu.active {
-            transform: translateY(0);
-        }
-
-        .mobile-menu ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .mobile-menu a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
         main {
-            margin-top: 73px;
+            margin-top: 60px;
         }
 
-        section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
         }
 
         .hero {
             min-height: 100dvh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             align-items: center;
-            gap: 80px;
-            padding-top: 128px;
-            padding-bottom: 128px;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 32px 80px;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.04) 0%, transparent 50%),
+                var(--bg);
+            position: relative;
         }
 
-        .hero-content h1 {
-            font-size: 72px;
-            font-weight: 700;
-            margin-bottom: 24px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(212, 165, 116, 0.02) 2px, rgba(212, 165, 116, 0.02) 4px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(56px, 8vw, 96px);
+            font-weight: 300;
+            margin-bottom: 32px;
             color: var(--text);
+            letter-spacing: -0.02em;
         }
 
-        .hero-content p {
-            font-size: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            line-height: 1.7;
-            max-width: 520px;
+        .hero-subtitle {
+            font-size: clamp(18px, 2.5vw, 24px);
+            font-weight: 300;
+            color: var(--text);
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.6;
         }
 
-        .hero-image {
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .btn {
+        .hero-cta {
             display: inline-block;
-            padding: 16px 40px;
-            background-color: var(--black);
+            padding: 18px 48px;
+            background: var(--accent);
             color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
             font-size: 16px;
-            border-radius: 4px;
-            transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1), transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            border-radius: 8px;
+            transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--accent);
         }
 
-        .btn:hover {
-            background-color: #2F3437;
+        .hero-cta:hover {
             transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(212, 165, 116, 0.25);
         }
 
-        .btn:active {
+        .hero-cta:active {
             transform: translateY(0);
         }
 
-        .services {
+        .hero-contact {
+            margin-top: 80px;
+            font-size: 14px;
+            color: var(--text);
+            opacity: 0.6;
+        }
+
+        .hero-contact a {
+            color: var(--accent);
+            transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-contact a:hover {
+            opacity: 0.8;
+        }
+
+        section {
             padding: 120px 0;
         }
 
         .section-header {
+            max-width: 800px;
+            margin: 0 auto 80px;
             text-align: center;
-            margin-bottom: 80px;
         }
 
         .section-header h2 {
-            font-size: 48px;
-            margin-bottom: 16px;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 400;
+            margin-bottom: 24px;
             color: var(--text);
         }
 
         .section-header p {
             font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
+            color: var(--text);
+            opacity: 0.7;
+            line-height: 1.8;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .service-card {
-            background-color: var(--white);
+            background: var(--white);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 32px;
-            transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 48px 40px;
+            transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1), border-color 600ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card:hover {
             transform: translateY(-4px);
+            border-color: var(--accent);
         }
 
         .service-icon {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 4px;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), rgba(212, 165, 116, 0.7));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 24px;
-        }
-
-        .service-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            font-size: 24px;
         }
 
         .service-card h3 {
             font-size: 24px;
-            margin-bottom: 12px;
+            font-weight: 500;
+            margin-bottom: 16px;
             color: var(--text);
         }
 
         .service-card p {
-            font-size: 15px;
-            color: var(--text-secondary);
+            font-size: 16px;
             line-height: 1.7;
+            color: var(--text);
+            opacity: 0.75;
         }
 
-        .about {
-            padding: 120px 0;
-            background-color: var(--white);
+        .about-section {
+            background: var(--white);
         }
 
         .about-content {
@@ -327,51 +322,28 @@
         }
 
         .about-text h2 {
-            font-size: 48px;
-            margin-bottom: 24px;
+            font-size: clamp(36px, 5vw, 48px);
+            margin-bottom: 32px;
             color: var(--text);
         }
 
         .about-text p {
-            font-size: 17px;
-            color: var(--text-secondary);
+            font-size: 18px;
             line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .feature-icon {
-            width: 24px;
-            height: 24px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .feature-item p {
-            font-size: 15px;
+            margin-bottom: 24px;
             color: var(--text);
-            margin: 0;
+            opacity: 0.8;
+        }
+
+        .about-text .highlight {
+            color: var(--accent);
+            font-weight: 500;
         }
 
         .about-image {
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
             border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
         }
 
         .about-image img {
@@ -380,449 +352,456 @@
             object-fit: cover;
         }
 
-        .trust {
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 24px;
+        }
+
+        .why-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 28px;
+            color: var(--white);
+        }
+
+        .why-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .why-card p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+            opacity: 0.75;
+        }
+
+        .testimonials {
+            background: var(--white);
             padding: 120px 0;
         }
 
-        .trust-grid {
+        .testimonial-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 32px;
-            margin-top: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .testimonial-card {
-            background-color: var(--white);
+            background: var(--bg);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 32px;
+            padding: 40px;
         }
 
         .testimonial-text {
-            font-size: 16px;
-            color: var(--text);
+            font-size: 17px;
             line-height: 1.7;
             margin-bottom: 24px;
             font-style: italic;
+            color: var(--text);
+            opacity: 0.85;
         }
 
         .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #E5B887);
-        }
-
-        .author-info h4 {
+            font-weight: 500;
+            color: var(--accent);
             font-size: 15px;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 2px;
         }
 
-        .author-info p {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .contact {
-            padding: 120px 0;
-            background-color: var(--white);
+        .contact-section {
+            background: var(--white);
         }
 
         .contact-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
+            align-items: start;
         }
 
         .contact-info h2 {
-            font-size: 48px;
-            margin-bottom: 24px;
+            font-size: clamp(36px, 5vw, 48px);
+            margin-bottom: 32px;
             color: var(--text);
         }
 
-        .contact-info p {
-            font-size: 17px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
+        .contact-detail {
+            margin-bottom: 32px;
         }
 
-        .contact-details {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
+        .contact-detail h3 {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--accent);
+            font-family: 'Geist Sans', sans-serif;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            flex-shrink: 0;
-            margin-top: 4px;
-        }
-
-        .contact-item-content h3 {
+        .contact-detail p, .contact-detail a {
             font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
+            line-height: 1.6;
             color: var(--text);
+            opacity: 0.8;
         }
 
-        .contact-item-content p,
-        .contact-item-content a {
-            font-size: 15px;
-            color: var(--text-secondary);
-            text-decoration: none;
+        .contact-detail a {
             transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-item-content a:hover {
+        .contact-detail a:hover {
             color: var(--accent);
+            opacity: 1;
         }
 
-        .contact-map {
-            width: 100%;
-            height: 500px;
+        .map-container {
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid var(--border);
+            height: 450px;
         }
 
-        .contact-map iframe {
+        .map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
 
         footer {
-            background-color: var(--bg);
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
+            background: var(--text);
+            color: var(--bg);
+            padding: 80px 32px 40px;
         }
 
-        footer .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
         }
 
-        footer p {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-
-        footer .footer-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        footer .footer-links a {
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        footer .footer-links a:hover {
+        .footer-brand h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
             color: var(--accent);
         }
 
+        .footer-brand p {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.7;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            font-family: 'Geist Sans', sans-serif;
+            color: var(--accent);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 15px;
+            opacity: 0.7;
+            transition: opacity 300ms cubic-bezier(0.4, 0, 0.2, 1), color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1), transform 800ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
-            .nav-links,
-            .nav-phone {
-                display: none;
+            .nav-menu {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                gap: 0;
+                padding: 24px 32px;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 400ms cubic-bezier(0.4, 0, 0.2, 1), opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+                pointer-events: none;
+            }
+
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-menu li {
+                padding: 16px 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-menu li:last-child {
+                border-bottom: none;
             }
 
             .hamburger {
                 display: flex;
             }
 
-            .mobile-menu {
-                display: block;
-            }
-
             .hero {
-                grid-template-columns: 1fr;
-                padding-top: 80px;
-                padding-bottom: 80px;
-                gap: 40px;
+                padding: 80px 24px 60px;
             }
 
-            .hero-content h1 {
+            .hero h1 {
                 font-size: 48px;
             }
 
-            .hero-content p {
-                font-size: 18px;
-            }
-
-            .hero-image {
-                height: 400px;
-            }
-
-            .services {
+            section {
                 padding: 80px 0;
             }
 
-            .section-header h2 {
-                font-size: 36px;
+            .container {
+                padding: 0 24px;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .about {
-                padding: 80px 0;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
             }
 
-            .about-text h2 {
-                font-size: 36px;
-            }
-
-            .about-features {
-                grid-template-columns: 1fr;
-            }
-
-            .trust {
-                padding: 80px 0;
-            }
-
-            .trust-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
-            .contact {
-                padding: 80px 0;
+            .about-image {
+                order: -1;
             }
 
             .contact-wrapper {
                 grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
                 gap: 40px;
-            }
-
-            .contact-info h2 {
-                font-size: 36px;
-            }
-
-            .contact-map {
-                height: 350px;
-            }
-
-            footer .container {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
-            }
-
-            footer .footer-links {
-                flex-direction: column;
-                gap: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">Das Hundelädchen</a>
-            <ul class="nav-links">
-                <li><a href="#startseite">Startseite</a></li>
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Das Hundelädchen</a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero">Startseite</a></li>
                 <li><a href="#leistungen">Leistungen</a></li>
                 <li><a href="#ueber-uns">Über uns</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
-            <div class="nav-phone">+49 5664 9469691</div>
-            <button class="hamburger" aria-label="Menü">
+            <button class="hamburger" id="hamburger" aria-label="Menü">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
-        <div class="mobile-menu">
-            <ul>
-                <li><a href="#startseite">Startseite</a></li>
-                <li><a href="#leistungen">Leistungen</a></li>
-                <li><a href="#ueber-uns">Über uns</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-                <li><a href="tel:+4956649469691">+49 5664 9469691</a></li>
-            </ul>
-        </div>
     </nav>
 
     <main>
-        <section class="hero" id="startseite">
-            <div class="container" style="display: contents;">
-                <div class="hero-content">
-                    <h1>Das Hundelädchen</h1>
-                    <p>Ihr Fachgeschäft für hochwertiges Hundezubehör, artgerechte Ernährung und liebevolle Beratung in Alheim. Bei uns steht das Wohl Ihres Vierbeiners an erster Stelle.</p>
-                    <a href="#leistungen" class="btn">Jetzt entdecken</a>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.pexels.com/photos/36766668/pexels-photo-36766668.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Professional man in suit multitasking with phone and laptop in modern office.">
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1>Das Hundelädchen</h1>
+                <p class="hero-subtitle">Premium Tierbedarf und persönliche Beratung für Ihren treuen Begleiter in Alheim</p>
+                <a href="#leistungen" class="hero-cta">Jetzt entdecken</a>
+                <div class="hero-contact">
+                    <p>Telefon: <a href="tel:+4956649469691">+49 5664 9469691</a></p>
                 </div>
             </div>
         </section>
 
-        <section class="services" id="leistungen">
+        <section id="leistungen">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <h2>Unsere Leistungen</h2>
-                    <p>Umfassende Versorgung für Ihren Hund — vom hochwertigen Futter bis zur fachkundigen Beratung</p>
+                    <p>Hochwertige Produkte und professionelle Beratung für das Wohl Ihres Vierbeiners</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <img src="https://images.pexels.com/photos/8937613/pexels-photo-8937613.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Professional businessman in blue suit standing by a desk with a tablet and coffee cup.">
-                        </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🐕</div>
                         <h3>Premium Hundefutter</h3>
-                        <p>Ausgewähltes Trocken- und Nassfutter von führenden Marken. Wir führen getreidefreie Optionen, BARF-Produkte und spezielle Ernährungslösungen für sensible Hunde.</p>
+                        <p>Ausgewähltes Sortiment an hochwertigem Hundefutter verschiedener Marken. Von Trockenfutter über Nassfutter bis hin zu speziellen Diätnahrungen – bei uns finden Sie das Richtige für jeden Vierbeiner.</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <img src="https://images.pexels.com/photos/35730228/pexels-photo-35730228.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A focused businesswoman writing on a clipboard with a laptop nearby in an office environment.">
-                        </div>
-                        <h3>Hochwertiges Zubehör</h3>
-                        <p>Von Leinen und Halsbändern über Spielzeug bis zu Pflegeprodukten — bei uns finden Sie alles, was Ihr Hund für ein glückliches Leben braucht.</p>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🦴</div>
+                        <h3>Snacks & Leckerlis</h3>
+                        <p>Gesunde und schmackhafte Belohnungen für Ihren Hund. Natürliche Kauartikel, getreidefreie Snacks und besondere Leckerlis für Training und Zwischendurch.</p>
                     </div>
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <img src="https://images.pexels.com/photos/36733324/pexels-photo-36733324.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Professionals engaged in a business meeting in a contemporary office environment.">
-                        </div>
-                        <h3>Fachkundige Beratung</h3>
-                        <p>Unsere erfahrenen Mitarbeiter nehmen sich Zeit für Sie und Ihren Vierbeiner. Wir beraten individuell zu Ernährung, Pflege und Verhalten.</p>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🎾</div>
+                        <h3>Spielzeug & Zubehör</h3>
+                        <p>Robustes und sicheres Spielzeug für Beschäftigung und Spaß. Von Bällen und Seilen über intelligente Denkspiele bis zu praktischen Alltagshelfern wie Leinen, Halsbändern und Pflegeprodukten.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">💡</div>
+                        <h3>Persönliche Beratung</h3>
+                        <p>Individuelle Empfehlungen für die Bedürfnisse Ihres Hundes. Wir nehmen uns Zeit für Sie und helfen Ihnen, die optimalen Produkte für Rasse, Alter und Gesundheitszustand zu finden.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🏠</div>
+                        <h3>Heimtierbedarf</h3>
+                        <p>Gemütliche Körbchen, Decken und weitere Einrichtung für ein behagliches Zuhause. Praktische Transportboxen und Reisezubehör für unterwegs.</p>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">✨</div>
+                        <h3>Pflegeprodukte</h3>
+                        <p>Shampoos, Bürsten und Pflegeutensilien für ein gepflegtes Fell. Zahnpflege, Krallenpflege und weitere Produkte für die Gesundheit und das Wohlbefinden Ihres Hundes.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="about" id="ueber-uns">
+        <section class="about-section" id="ueber-uns">
             <div class="container">
                 <div class="about-content">
-                    <div class="about-text">
+                    <div class="about-text reveal">
                         <h2>Über Das Hundelädchen</h2>
-                        <p>In der Borngasse 2 in Alheim betreiben wir mit Leidenschaft unser Fachgeschäft für Hundebedarf. Was uns auszeichnet, ist unsere persönliche Beratung und die sorgfältige Auswahl unserer Produkte.</p>
-                        <p>Wir glauben daran, dass jeder Hund individuelle Bedürfnisse hat. Deshalb führen wir Produkte, die wir selbst für unsere eigenen Vierbeiner verwenden würden — von der Ernährung bis zum Spielzeug.</p>
-                        <div class="about-features">
-                            <div class="feature-item">
-                                <div class="feature-icon"></div>
-                                <p>Sorgfältig ausgewähltes Sortiment</p>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon"></div>
-                                <p>Persönliche Fachberatung</p>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon"></div>
-                                <p>Faire Preise und Qualität</p>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-icon"></div>
-                                <p>Herz für Hunde</p>
-                            </div>
-                        </div>
+                        <p>Willkommen in unserem Fachgeschäft für Tierbedarf im Herzen von Alheim. Bei uns steht die <span class="highlight">Liebe zum Tier</span> an erster Stelle.</p>
+                        <p>Wir führen sorgfältig ausgewählte Produkte namhafter Hersteller und legen großen Wert auf Qualität, Nachhaltigkeit und artgerechte Tierernährung. Unser Sortiment wird kontinuierlich auf Ihre Wünsche und die Bedürfnisse Ihrer Vierbeiner abgestimmt.</p>
+                        <p>Besuchen Sie uns in der Borngasse 2 – wir freuen uns darauf, Sie und Ihren Hund persönlich kennenzulernen und gemeinsam die besten Lösungen für ein glückliches Hundeleben zu finden.</p>
                     </div>
-                    <div class="about-image">
+                    <div class="about-image reveal">
                         <img src="https://images.pexels.com/photos/36713442/pexels-photo-36713442.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Colleagues collaborate in a glass-walled office at night, focused on tasks.">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="trust">
+        <section id="warum-wir">
             <div class="container">
-                <div class="section-header">
-                    <h2>Das sagen unsere Kunden</h2>
-                    <p>Authentische Erfahrungen von Hundebesitzern aus Alheim und Umgebung</p>
+                <div class="section-header reveal">
+                    <h2>Warum Das Hundelädchen?</h2>
+                    <p>Was uns von anderen Anbietern unterscheidet</p>
                 </div>
-                <div class="trust-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">„Die Beratung war hervorragend! Man hat sich viel Zeit genommen, um die richtige Futtersorte für unseren sensiblen Labrador zu finden. Seitdem geht es ihm deutlich besser."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"></div>
-                            <div class="author-info">
-                                <h4>Familie Schneider</h4>
-                                <p>Alheim</p>
-                            </div>
-                        </div>
+                <div class="why-us-grid">
+                    <div class="why-card reveal">
+                        <div class="why-icon">🎯</div>
+                        <h3>Fachkundige Beratung</h3>
+                        <p>Langjährige Erfahrung und echte Leidenschaft für Hunde garantieren kompetente Empfehlungen, die auf Ihr Tier zugeschnitten sind.</p>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">„Endlich ein Hundeladen, der nicht nur verkaufen will! Die Produktauswahl ist durchdacht, die Preise fair und das Team wirklich kompetent. Wir kommen gerne wieder."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"></div>
-                            <div class="author-info">
-                                <h4>Michael Weber</h4>
-                                <p>Bad Hersfeld</p>
-                            </div>
-                        </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon">🌟</div>
+                        <h3>Geprüfte Qualität</h3>
+                        <p>Jedes Produkt in unserem Sortiment wird sorgfältig ausgewählt und entspricht höchsten Qualitätsstandards für Gesundheit und Wohlbefinden.</p>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">„Mein Dackel ist beim Spielzeug sehr wählerisch. Hier wurde ich perfekt beraten und habe endlich robustes, hochwertiges Spielzeug gefunden, das auch länger hält!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar"></div>
-                            <div class="author-info">
-                                <h4>Andrea Hofmann</h4>
-                                <p>Rotenburg</p>
-                            </div>
-                        </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon">❤️</div>
+                        <h3>Persönlicher Service</h3>
+                        <p>Als inhabergeführtes Fachgeschäft nehmen wir uns Zeit für individuelle Beratung und bauen langfristige Kundenbeziehungen auf.</p>
+                    </div>
+                    <div class="why-card reveal">
+                        <div class="why-icon">🏘️</div>
+                        <h3>Lokal in Alheim</h3>
+                        <p>Wir sind Ihr Nachbar und für Sie vor Ort. Kurze Wege, persönliche Ansprechpartner und ein Beitrag zur regionalen Wirtschaft.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="contact" id="kontakt">
+        <section class="testimonials">
             <div class="container">
+                <div class="section-header reveal">
+                    <h2>Das sagen unsere Kunden</h2>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„Die Beratung war hervorragend! Mein Labrador hatte Verdauungsprobleme und hier wurde mir ein spezielles Futter empfohlen, das perfekt geholfen hat. Endlich ein Geschäft, wo man sich wirklich Zeit nimmt!"</p>
+                        <p class="testimonial-author">— Martina R., Alheim</p>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„Seit wir Das Hundelädchen entdeckt haben, kaufen wir nirgendwo anders mehr ein. Die Produktauswahl ist super und die Leckerlis sind bei unserem Schäferhund der absolute Renner. Danke für den tollen Service!"</p>
+                        <p class="testimonial-author">— Thomas K., Rotenburg</p>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„Hier merkt man die Liebe zum Detail. Vom hochwertigen Spielzeug bis zum gemütlichen Hundekörbchen – alles top! Und die persönliche Atmosphäre macht jeden Einkauf zum Erlebnis."</p>
+                        <p class="testimonial-author">— Sabine M., Bebra</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="kontakt">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Kontakt & Anfahrt</h2>
+                </div>
                 <div class="contact-wrapper">
-                    <div class="contact-info">
-                        <h2>Besuchen Sie uns</h2>
-                        <p>Wir freuen uns auf Ihren Besuch in unserem Laden in Alheim. Kommen Sie vorbei und lassen Sie sich persönlich beraten.</p>
-                        <div class="contact-details">
-                            <div class="contact-item">
-                                <div class="contact-icon"></div>
-                                <div class="contact-item-content">
-                                    <h3>Adresse</h3>
-                                    <p>Borngasse 2<br>36211 Alheim<br>Deutschland</p>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon"></div>
-                                <div class="contact-item-content">
-                                    <h3>Telefon</h3>
-                                    <a href="tel:+4956649469691">+49 5664 9469691</a>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-                                <div class="contact-icon"></div>
-                                <div class="contact-item-content">
-                                    <h3>Anfahrt</h3>
-                                    <p>Kostenlose Parkplätze direkt vor dem Geschäft</p>
-                                </div>
-                            </div>
+                    <div class="contact-info reveal">
+                        <div class="contact-detail">
+                            <h3>Adresse</h3>
+                            <p>Borngasse 2<br>36211 Alheim<br>Deutschland</p>
+                        </div>
+                        <div class="contact-detail">
+                            <h3>Telefon</h3>
+                            <p><a href="tel:+4956649469691">+49 5664 9469691</a></p>
+                        </div>
+                        <div class="contact-detail">
+                            <h3>E-Mail</h3>
+                            <p><a href="mailto:peter-jacob@web.de">peter-jacob@web.de</a></p>
+                        </div>
+                        <div class="contact-detail">
+                            <h3>Besuchen Sie uns</h3>
+                            <p>Wir freuen uns auf Ihren Besuch in unserem Geschäft. Gerne beraten wir Sie persönlich zu unserem Sortiment und den besten Produkten für Ihren Hund.</p>
                         </div>
                     </div>
-                    <div class="contact-map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2524.8717473794545!2d9.677899!3d50.9558333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb40a7a2c6e8f3%3A0x7e6c8f8c8f8c8f8c!2sBorngasse%202%2C%2036211%20Alheim%2C%20Germany!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-container reveal">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.8!2d9.6!3d51.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb38c3e1234567%3A0x1234567890abcdef!2sBorngasse%202%2C%2036211%20Alheim!5e0!3m2!1sde!2sde!4v1234567890" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -830,65 +809,92 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>Demo-Redesign — nicht verbunden mit Das Hundelädchen</p>
-            <div class="footer-links">
-                <a href="#datenschutz">Datenschutz</a>
-                <a href="#impressum">Impressum</a>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Das Hundelädchen</h3>
+                <p>Ihr Fachgeschäft für hochwertigen Tierbedarf in Alheim. Qualität, Beratung und Herzlichkeit seit Jahren.</p>
             </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#hero">Startseite</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+4956649469691">+49 5664 9469691</a></li>
+                    <li><a href="mailto:peter-jacob@web.de">peter-jacob@web.de</a></li>
+                    <li>Borngasse 2<br>36211 Alheim</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Das Hundelädchen. Alle Rechte vorbehalten.</p>
+            <p style="margin-top: 8px; font-size: 13px;">Demo-Redesign — nicht verbunden mit Das Hundelädchen</p>
         </div>
     </footer>
 
     <script>
-        const hamburger = document.querySelector('.hamburger');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-menu a');
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 60) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
 
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                mobileMenu.classList.remove('active');
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 60;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    if (navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                }
             });
         });
 
         const observerOptions = {
-            threshold: 0.1,
+            threshold: 0.15,
             rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href !== '#' && href !== '#datenschutz' && href !== '#impressum') {
-                    e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        const offsetTop = target.offsetTop - 73;
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }
-                }
-            });
-        });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 <p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen</p></body>
 </html>
