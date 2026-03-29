@@ -3,28 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meisterhafte Holzarbeiten & Renovierungen</title>
+    <title>Gynäkologie & Geburtshilfe – Medizinische Betreuung auf höchstem Niveau</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --accent: #8B7355;
-            --accent-hover: #745d44;
-            --bg: #FAFAF9;
-            --text: #18181B;
-            --text-muted: #52525B;
-            --border: #E4E4E7;
-            --white: #FFFFFF;
-            --glass-bg: rgba(250, 250, 249, 0.85);
         }
 
         html {
@@ -32,19 +19,11 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Outfit', sans-serif;
+            background-color: #FDFCFB;
+            color: #18181B;
+            line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cabinet Grotesk', sans-serif;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
         }
 
         .container {
@@ -53,87 +32,74 @@
             padding: 0 2rem;
         }
 
-        /* Navigation */
         nav {
-            position: fixed;
+            position: sticky;
             top: 1.5rem;
-            left: 0;
-            right: 0;
             z-index: 1000;
-            padding: 0 2rem;
-        }
-
-        .nav-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            margin: 1.5rem auto 0;
+            max-width: fit-content;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 9999px;
             padding: 1rem 2rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            border: 1px solid rgba(228, 228, 231, 0.5);
-            box-shadow: 0 10px 40px -10px rgba(139, 115, 85, 0.08);
+            gap: 3rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .logo {
-            font-family: 'Cabinet Grotesk', sans-serif;
-            font-weight: 900;
+        nav.scrolled {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-logo {
             font-size: 1.25rem;
-            color: var(--text);
+            font-weight: 700;
+            color: #18181B;
             text-decoration: none;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.02em;
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: var(--text);
+            color: #18181B;
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.9375rem;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links a:hover {
-            color: var(--accent);
+            color: #8B7355;
         }
 
         .nav-cta {
-            background: var(--accent);
-            color: var(--white);
-            padding: 0.75rem 1.75rem;
+            background: #8B7355;
+            color: #FDFCFB;
+            padding: 0.65rem 1.5rem;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9375rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-cta:hover {
-            background: var(--accent-hover);
+            background: #75614a;
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px -8px rgba(139, 115, 85, 0.4);
+            box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
         }
 
-        .nav-cta svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-cta:hover svg {
-            transform: translateX(3px);
+        .nav-cta:active {
+            transform: translateY(0);
         }
 
         .hamburger {
@@ -149,7 +115,7 @@
         .hamburger span {
             width: 24px;
             height: 2px;
-            background: var(--text);
+            background: #18181B;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -162,242 +128,251 @@
         }
 
         .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+            transform: rotate(-45deg) translate(6px, -6px);
         }
 
-        /* Hero Section */
         .hero {
             min-height: 100dvh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
             align-items: center;
-            gap: 4rem;
-            padding: 10rem 0 8rem;
-            position: relative;
+            padding: 8rem 0;
         }
 
         .hero-content {
-            max-width: 700px;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .hero-headline {
-            font-size: clamp(3rem, 8vw, 6.5rem);
+        .hero-text h1 {
+            font-size: clamp(3rem, 7vw, 6.5rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
             margin-bottom: 2rem;
-            color: var(--text);
+            color: #18181B;
         }
 
-        .hero-description {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
+        .hero-text p {
+            font-size: 1.125rem;
+            color: #52525b;
+            max-width: 540px;
+            margin-bottom: 2.5rem;
             font-weight: 400;
-            line-height: 1.8;
         }
 
-        .hero-cta-group {
+        .hero-cta-cluster {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            padding: 1.125rem 2.5rem;
+            background: #8B7355;
+            color: #FDFCFB;
+            padding: 1rem 2.5rem;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.0625rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
+            font-size: 1.05rem;
+            display: inline-block;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
+            border: 2px solid #8B7355;
         }
 
         .btn-primary:hover {
-            background: var(--accent-hover);
+            background: #75614a;
+            border-color: #75614a;
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px -10px rgba(139, 115, 85, 0.45);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.35);
         }
 
         .btn-primary:active {
             transform: translateY(0);
         }
 
-        .btn-primary svg {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-primary:hover svg {
-            transform: translateX(4px);
-        }
-
         .btn-secondary {
             background: transparent;
-            color: var(--text);
-            padding: 1.125rem 2.5rem;
+            color: #18181B;
+            padding: 1rem 2.5rem;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.0625rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.625rem;
+            font-size: 1.05rem;
+            display: inline-block;
+            border: 2px solid #e4e4e7;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid var(--border);
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+            border-color: #8B7355;
+            color: #8B7355;
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .hero-image-panel {
-            position: relative;
-            height: 700px;
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .hero-image-container {
             border-radius: 2rem;
             overflow: hidden;
-            box-shadow: 0 25px 60px -15px rgba(139, 115, 85, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            height: 680px;
         }
 
-        .hero-image-panel img {
+        .hero-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .hero-image-panel::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
-            pointer-events: none;
+        section {
+            padding: 7rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Sections */
-        section {
-            padding: 8rem 0;
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-header {
-            max-width: 800px;
-            margin: 0 auto 5rem;
             text-align: center;
+            margin-bottom: 5rem;
         }
 
         .section-label {
-            color: var(--accent);
-            font-weight: 700;
             font-size: 0.875rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
+            color: #8B7355;
             margin-bottom: 1rem;
-            display: block;
         }
 
         .section-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
+            color: #18181B;
         }
 
         .section-description {
             font-size: 1.125rem;
-            color: var(--text-muted);
-            line-height: 1.8;
+            color: #52525b;
+            max-width: 680px;
+            margin: 0 auto;
         }
 
-        /* Services */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
         }
 
-        .service-card {
-            background: rgba(228, 228, 231, 0.3);
-            border: 1px solid var(--border);
+        .service-card-outer {
+            background: rgba(244, 244, 245, 0.5);
+            border: 1px solid rgba(228, 228, 231, 0.4);
+            padding: 1.5px;
             border-radius: 2rem;
-            padding: 0.375rem;
-        }
-
-        .service-card-inner {
-            background: var(--white);
-            border-radius: 1.75rem;
-            padding: 2.5rem;
-            height: 100%;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .service-card:hover .service-card-inner {
+        .service-card-outer:hover {
             transform: translateY(-4px);
-            box-shadow: 0 30px 60px -20px rgba(139, 115, 85, 0.15);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card-inner {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.75rem;
+            height: 100%;
+        }
+
+        .service-card-outer:nth-child(1) {
+            grid-column: 1;
+        }
+
+        .service-card-outer:nth-child(2) {
+            grid-column: 2;
         }
 
         .service-icon {
             width: 64px;
             height: 64px;
-            background: linear-gradient(135deg, var(--accent), #745d44);
+            background: linear-gradient(135deg, #8B7355, #a6917a);
             border-radius: 1.25rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.75rem;
-        }
-
-        .service-icon svg {
-            width: 32px;
-            height: 32px;
-            color: var(--white);
-        }
-
-        .service-title {
+            margin-bottom: 1.5rem;
             font-size: 1.75rem;
+        }
+
+        .service-card-inner h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            color: #18181B;
+            letter-spacing: -0.02em;
         }
 
-        .service-description {
-            color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.75;
+        .service-card-inner p {
+            color: #52525b;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
 
-        .service-image {
-            width: 100%;
-            height: 240px;
-            border-radius: 1.25rem;
-            overflow: hidden;
-            margin-bottom: 1.75rem;
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .process-step {
+            position: relative;
         }
 
-        .service-card:hover .service-image img {
-            transform: scale(1.05);
+        .process-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(139, 115, 85, 0.15);
+            line-height: 1;
+            margin-bottom: 1.5rem;
         }
 
-        /* About Section */
-        .about-split {
+        .process-step h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #18181B;
+        }
+
+        .process-step p {
+            color: #52525b;
+            line-height: 1.7;
+        }
+
+        .about-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 6rem;
+            gap: 5rem;
             align-items: center;
         }
 
         .about-image {
-            position: relative;
             border-radius: 2rem;
             overflow: hidden;
-            box-shadow: 0 25px 60px -15px rgba(139, 115, 85, 0.18);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
         }
 
         .about-image img {
@@ -407,143 +382,145 @@
         }
 
         .about-content h2 {
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin-bottom: 2rem;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            color: #18181B;
         }
 
         .about-content p {
-            color: var(--text-muted);
+            color: #52525b;
             font-size: 1.125rem;
-            line-height: 1.85;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
         .about-features {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
         }
 
-        .feature-item {
+        .about-feature {
             display: flex;
-            align-items: flex-start;
+            align-items: start;
             gap: 1rem;
         }
 
-        .feature-icon {
-            width: 40px;
-            height: 40px;
+        .about-feature-icon {
+            width: 48px;
+            height: 48px;
             background: rgba(139, 115, 85, 0.1);
             border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            color: #8B7355;
+            font-weight: 700;
+            font-size: 1.25rem;
         }
 
-        .feature-icon svg {
-            width: 20px;
-            height: 20px;
-            color: var(--accent);
-        }
-
-        .feature-text {
+        .about-feature-text h4 {
             font-weight: 600;
-            font-size: 1rem;
-            color: var(--text);
+            margin-bottom: 0.25rem;
+            color: #18181B;
         }
 
-        /* Portfolio/Gallery */
-        .gallery-grid {
+        .about-feature-text p {
+            font-size: 0.95rem;
+            color: #71717a;
+            margin: 0;
+        }
+
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
-        .gallery-item {
-            position: relative;
-            border-radius: 1.5rem;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            cursor: pointer;
+        .portfolio-item-outer {
+            background: rgba(244, 244, 245, 0.5);
+            border: 1px solid rgba(228, 228, 231, 0.4);
+            padding: 1.5px;
+            border-radius: 2rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
 
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 60px -20px rgba(139, 115, 85, 0.25);
+        .portfolio-item-outer:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
         }
 
-        .gallery-item img {
+        .portfolio-item-inner {
+            background: white;
+            border-radius: 1.75rem;
+            overflow: hidden;
+        }
+
+        .portfolio-image {
             width: 100%;
-            height: 100%;
+            height: 320px;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 0%, rgba(24, 24, 27, 0.8) 100%);
-            opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            align-items: flex-end;
+        .portfolio-content {
             padding: 2rem;
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-
-        .gallery-title {
-            color: var(--white);
-            font-size: 1.25rem;
+        .portfolio-content h3 {
+            font-size: 1.5rem;
             font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #18181B;
         }
 
-        /* Testimonials */
+        .portfolio-content p {
+            color: #52525b;
+            line-height: 1.6;
+        }
+
+        .testimonials-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
-        .testimonial-card {
-            background: rgba(228, 228, 231, 0.3);
-            border: 1px solid var(--border);
+        .testimonial-card-outer {
+            background: rgba(244, 244, 245, 0.5);
+            border: 1px solid rgba(228, 228, 231, 0.4);
+            padding: 1.5px;
             border-radius: 2rem;
-            padding: 0.375rem;
         }
 
         .testimonial-card-inner {
-            background: var(--white);
-            border-radius: 1.75rem;
+            background: white;
             padding: 3rem;
-            height: 100%;
+            border-radius: 1.75rem;
         }
 
         .testimonial-stars {
-            display: flex;
-            gap: 0.25rem;
+            color: #8B7355;
+            font-size: 1.25rem;
             margin-bottom: 1.5rem;
-        }
-
-        .testimonial-stars svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
+            letter-spacing: 0.25rem;
         }
 
         .testimonial-text {
             font-size: 1.125rem;
             line-height: 1.8;
-            color: var(--text);
+            color: #18181B;
             margin-bottom: 2rem;
             font-style: italic;
         }
@@ -552,149 +529,147 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
         }
 
         .testimonial-avatar {
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #745d44);
+            background: linear-gradient(135deg, #8B7355, #a6917a);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
+            color: white;
             font-weight: 700;
             font-size: 1.25rem;
         }
 
         .testimonial-info h4 {
-            font-size: 1.125rem;
+            font-weight: 600;
+            color: #18181B;
             margin-bottom: 0.25rem;
         }
 
         .testimonial-info p {
-            font-size: 0.9375rem;
-            color: var(--text-muted);
+            color: #71717a;
+            font-size: 0.95rem;
         }
 
-        /* Contact Section */
-        .contact-wrapper {
+        .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            background: rgba(228, 228, 231, 0.3);
-            border: 1px solid var(--border);
-            border-radius: 2rem;
-            padding: 0.375rem;
-        }
-
-        .contact-inner {
-            background: var(--white);
-            border-radius: 1.75rem;
-            padding: 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .contact-info h2 {
             font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
+            color: #18181B;
         }
 
         .contact-info p {
-            color: var(--text-muted);
+            color: #52525b;
             font-size: 1.125rem;
-            margin-bottom: 3rem;
             line-height: 1.8;
+            margin-bottom: 2.5rem;
         }
 
         .contact-details {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
         .contact-item {
             display: flex;
-            align-items: flex-start;
-            gap: 1.25rem;
+            align-items: start;
+            gap: 1rem;
         }
 
-        .contact-item-icon {
+        .contact-icon {
             width: 48px;
             height: 48px;
             background: rgba(139, 115, 85, 0.1);
-            border-radius: 1rem;
+            border-radius: 0.75rem;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            color: #8B7355;
+            font-size: 1.25rem;
         }
 
-        .contact-item-icon svg {
-            width: 24px;
-            height: 24px;
-            color: var(--accent);
+        .contact-item-text h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #18181B;
+            font-size: 0.95rem;
         }
 
-        .contact-item-content h4 {
+        .contact-item-text p {
+            color: #52525b;
+            margin: 0;
             font-size: 1rem;
-            margin-bottom: 0.375rem;
-            color: var(--text-muted);
-            font-weight: 600;
         }
 
-        .contact-item-content a,
-        .contact-item-content p {
-            color: var(--text);
+        .contact-item-text a {
+            color: #8B7355;
             text-decoration: none;
-            font-size: 1.125rem;
-            font-weight: 600;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-item-content a:hover {
-            color: var(--accent);
+        .contact-item-text a:hover {
+            color: #75614a;
+        }
+
+        .contact-form-wrapper {
+            background: rgba(244, 244, 245, 0.5);
+            border: 1px solid rgba(228, 228, 231, 0.4);
+            padding: 1.5px;
+            border-radius: 2rem;
         }
 
         .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            background: white;
+            padding: 3rem;
+            border-radius: 1.75rem;
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
+            display: block;
             font-weight: 600;
-            font-size: 0.9375rem;
-            color: var(--text);
+            margin-bottom: 0.5rem;
+            color: #18181B;
+            font-size: 0.95rem;
         }
 
         .form-group input,
         .form-group textarea {
+            width: 100%;
             padding: 1rem 1.25rem;
-            border: 2px solid var(--border);
+            border: 2px solid #e4e4e7;
             border-radius: 1rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 1rem;
-            color: var(--text);
-            background: var(--bg);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #18181B;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #FDFCFB;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--accent);
-            background: var(--white);
+            border-color: #8B7355;
+            box-shadow: 0 0 0 3px rgba(139, 115, 85, 0.1);
         }
 
         .form-group textarea {
@@ -702,26 +677,49 @@
             min-height: 140px;
         }
 
-        .map-container {
+        .form-submit {
             width: 100%;
-            height: 450px;
-            border-radius: 1.5rem;
+            background: #8B7355;
+            color: #FDFCFB;
+            padding: 1.125rem 2rem;
+            border-radius: 1rem;
+            border: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            font-family: 'Outfit', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-submit:hover {
+            background: #75614a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(139, 115, 85, 0.35);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .map-container {
+            margin-top: 5rem;
+            border-radius: 2rem;
             overflow: hidden;
-            margin-top: 4rem;
-            box-shadow: 0 20px 50px -15px rgba(139, 115, 85, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            height: 450px;
         }
 
         .map-container iframe {
             width: 100%;
             height: 100%;
-            border: 0;
+            border: none;
         }
 
-        /* Footer */
         footer {
-            background: var(--text);
-            color: rgba(255, 255, 255, 0.8);
+            background: #18181B;
+            color: #FDFCFB;
             padding: 4rem 0 2rem;
+            margin-top: 8rem;
         }
 
         .footer-content {
@@ -732,21 +730,21 @@
         }
 
         .footer-brand h3 {
-            color: var(--white);
             font-size: 1.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
         }
 
         .footer-brand p {
-            line-height: 1.8;
+            color: #a1a1aa;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
-        .footer-column h4 {
-            color: var(--white);
-            font-size: 1.125rem;
+        .footer-section h4 {
+            font-weight: 600;
             margin-bottom: 1.25rem;
-            font-weight: 700;
+            font-size: 1.05rem;
         }
 
         .footer-links {
@@ -757,18 +755,19 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: #a1a1aa;
             text-decoration: none;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            color: #8B7355;
         }
 
         .footer-bottom {
-            padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -776,58 +775,92 @@
             gap: 1rem;
         }
 
+        .footer-bottom p {
+            color: #71717a;
+            font-size: 0.9rem;
+        }
+
         .footer-disclaimer {
+            color: #52525b;
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-image-container {
+                height: 500px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 0 1.25rem;
+                padding: 0 1.5rem;
             }
 
             nav {
-                padding: 0 1.25rem;
-            }
-
-            .nav-inner {
+                width: calc(100% - 3rem);
+                margin: 1rem 1.5rem 0;
                 padding: 1rem 1.5rem;
+                gap: 1rem;
             }
 
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%;
-                width: 80%;
+                left: 0;
+                width: 100%;
                 height: 100vh;
-                background: var(--white);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(16px);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 6rem 2rem 2rem;
+                justify-content: center;
                 gap: 2rem;
-                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .nav-links.active {
-                right: 0;
+                opacity: 1;
+                pointer-events: all;
             }
 
             .nav-links a {
-                font-size: 1.25rem;
+                font-size: 1.5rem;
             }
 
             .hamburger {
@@ -835,31 +868,22 @@
             }
 
             .hero {
-                grid-template-columns: 1fr;
-                padding: 8rem 0 4rem;
-                gap: 3rem;
+                padding: 4rem 0;
+                min-height: auto;
             }
 
-            .hero-headline {
-                font-size: 2.75rem;
+            .hero-text h1 {
+                font-size: 2.5rem;
             }
 
-            .hero-description {
-                font-size: 1.125rem;
-            }
-
-            .hero-cta-group {
+            .hero-cta-cluster {
                 flex-direction: column;
             }
 
             .btn-primary,
             .btn-secondary {
                 width: 100%;
-                justify-content: center;
-            }
-
-            .hero-image-panel {
-                height: 400px;
+                text-align: center;
             }
 
             section {
@@ -870,40 +894,8 @@
                 margin-bottom: 3rem;
             }
 
-            .section-title {
-                font-size: 2.25rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .about-split {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image img {
-                height: 400px;
-            }
-
             .about-features {
                 grid-template-columns: 1fr;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-inner {
-                grid-template-columns: 1fr;
-                padding: 2.5rem;
-                gap: 3rem;
             }
 
             .footer-content {
@@ -916,177 +908,166 @@
                 text-align: center;
             }
         }
-
-        @media (max-width: 480px) {
-            .hero-headline {
-                font-size: 2.25rem;
-            }
-
-            .section-title {
-                font-size: 1.875rem;
-            }
-
-            .nav-inner {
-                padding: 0.875rem 1.25rem;
-            }
-
-            .logo {
-                font-size: 1.125rem;
-            }
-        }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-inner">
-            <a href="#" class="logo">Handwerk</a>
-            <button class="hamburger" aria-label="Menü öffnen">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="#startseite">Startseite</a></li>
-                <li><a href="#leistungen">Leistungen</a></li>
-                <li><a href="#ueber-uns">Über uns</a></li>
-                <li><a href="#projekte">Projekte</a></li>
-                <li><a href="#kontakt" class="nav-cta">
-                    Jetzt anfragen
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
-                </a></li>
-            </ul>
-        </div>
+    <nav id="navbar">
+        <a href="#" class="nav-logo">Gynäkologie</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Startseite</a></li>
+            <li><a href="#services">Leistungen</a></li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#portfolio">Praxis</a></li>
+            <li><a href="#testimonials">Erfahrungen</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Termin vereinbaren</a>
+        <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <main>
-        <section id="startseite" class="hero">
-            <div class="container" style="display: contents;">
-                <div class="hero-content reveal">
-                    <h1 class="hero-headline">Meisterhafte Holzarbeiten für Ihr Zuhause</h1>
-                    <p class="hero-description">Präzise Handwerkskunst trifft auf jahrzehntelange Erfahrung. Wir verwandeln Ihre Vision in erstklassige Holzarbeiten – von maßgefertigten Fenstern bis zu kompletten Renovierungen.</p>
-                    <div class="hero-cta-group">
-                        <a href="#kontakt" class="btn-primary">
-                            Kostenlose Beratung
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                        <a href="#leistungen" class="btn-secondary">
-                            Unsere Leistungen
-                        </a>
+        <section id="home" class="hero visible">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Gynäkologie & Geburtshilfe mit Herz</h1>
+                        <p>Ihre Gesundheit und Ihr Wohlbefinden stehen bei uns im Mittelpunkt. Modernste medizinische Betreuung in einer vertrauensvollen Atmosphäre.</p>
+                        <div class="hero-cta-cluster">
+                            <a href="#contact" class="btn-primary">Termin vereinbaren</a>
+                            <a href="#services" class="btn-secondary">Unsere Leistungen</a>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-image-panel reveal">
-                    <img src="https://images.pexels.com/photos/5691501/pexels-photo-5691501.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein erfahrener Handwerker repariert einen Fensterrahmen in Innenräumen mit Werkzeugen und Fachkenntnissen.">
+                    <div class="hero-image-container">
+                        <img src="https://images.pexels.com/photos/7789616/pexels-photo-7789616.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A minimalist medical examination room featuring a desk, chairs, and an examination bed in a sterile, neutral setting.">
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="leistungen">
+        <section id="services">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Leistungen</span>
-                    <h2 class="section-title">Umfassende Handwerkslösungen</h2>
-                    <p class="section-description">Von der Reparatur bis zur Neuanfertigung – wir bieten professionelle Dienstleistungen für alle Holzarbeiten und Renovierungsprojekte.</p>
+                <div class="section-header">
+                    <div class="section-label">Unsere Leistungen</div>
+                    <h2 class="section-title">Umfassende medizinische Betreuung</h2>
+                    <p class="section-description">Von der Vorsorge über Schwangerschaftsbegleitung bis zur ambulanten Behandlung – wir bieten Ihnen ein breites Spektrum gynäkologischer Leistungen auf höchstem medizinischem Niveau.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card reveal">
+                    <div class="service-card-outer">
                         <div class="service-card-inner">
-                            <div class="service-image">
-                                <img src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Nahaufnahme einer Person, die tagsüber einen Bohrer auf Holz in Innenräumen verwendet.">
-                            </div>
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                    <path d="M3 9h18M9 21V9"/>
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Fensterreparatur & Montage</h3>
-                            <p class="service-description">Professionelle Reparatur und Installation von Holzfenstern. Wir stellen optimale Wärmedämmung und perfekte Passform sicher.</p>
+                            <div class="service-icon">🩺</div>
+                            <h3>Vorsorgeuntersuchungen</h3>
+                            <p>Regelmäßige Krebsfrüherkennungsuntersuchungen, Ultraschalldiagnostik und individuelle Gesundheitsberatung für Ihr Wohlbefinden in jeder Lebensphase.</p>
                         </div>
                     </div>
-                    <div class="service-card reveal">
+                    <div class="service-card-outer">
                         <div class="service-card-inner">
-                            <div class="service-image">
-                                <img src="https://images.pexels.com/photos/5691502/pexels-photo-5691502.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unerkennbarer professioneller männlicher Meister, der einen kabellosen Schraubendreher verwendet, um ein Metallscharnier an einem Holzfenster in einem hellen Raum während Reparaturarbeiten zu installieren">
-                            </div>
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Renovierung & Restaurierung</h3>
-                            <p class="service-description">Komplette Renovierungsarbeiten für Innen- und Außenbereiche. Vom Boden bis zur Decke – mit Liebe zum Detail.</p>
+                            <div class="service-icon">👶</div>
+                            <h3>Schwangerschaftsbegleitung</h3>
+                            <p>Einfühlsame Betreuung während der gesamten Schwangerschaft mit modernster Ultraschalltechnik, pränataler Diagnostik und umfassender Beratung.</p>
                         </div>
                     </div>
-                    <div class="service-card reveal">
+                    <div class="service-card-outer">
                         <div class="service-card-inner">
-                            <div class="service-image">
-                                <img src="https://images.pexels.com/photos/34006937/pexels-photo-34006937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Schreiner schneidet Holz mit einer Kreissäge auf einer Baustelle im Freien und zeigt Handwerkskunst.">
-                            </div>
-                            <div class="service-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
-                                </svg>
-                            </div>
-                            <h3 class="service-title">Maßanfertigungen</h3>
-                            <p class="service-description">Individuelle Holzkonstruktionen nach Maß. Türen, Möbel, Treppen – exakt auf Ihre Wünsche abgestimmt.</p>
+                            <div class="service-icon">💊</div>
+                            <h3>Verhütungsberatung</h3>
+                            <p>Individuelle Beratung zu allen Verhütungsmethoden – von hormoneller Verhütung über Spiralen bis zu natürlichen Methoden. Wir finden gemeinsam die beste Lösung für Sie.</p>
+                        </div>
+                    </div>
+                    <div class="service-card-outer">
+                        <div class="service-card-inner">
+                            <div class="service-icon">🔬</div>
+                            <h3>Kinderwunschberatung</h3>
+                            <p>Kompetente Unterstützung auf Ihrem Weg zum Wunschkind. Diagnostik, Hormonanalysen und individuell abgestimmte Behandlungskonzepte in vertrauensvoller Atmosphäre.</p>
+                        </div>
+                    </div>
+                    <div class="service-card-outer">
+                        <div class="service-card-inner">
+                            <div class="service-icon">⚕️</div>
+                            <h3>Wechseljahresberatung</h3>
+                            <p>Begleitung durch die hormonelle Umstellung mit gezielter Beratung zu Beschwerden, Hormontherapie und alternativen Behandlungsmethoden.</p>
+                        </div>
+                    </div>
+                    <div class="service-card-outer">
+                        <div class="service-card-inner">
+                            <div class="service-icon">🏥</div>
+                            <h3>Ambulante Operationen</h3>
+                            <p>Durchführung kleinerer gynäkologischer Eingriffe in unserer modern ausgestatteten Praxis unter höchsten Sicherheits- und Hygienestandards.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ueber-uns">
+        <section id="process">
             <div class="container">
-                <div class="about-split">
-                    <div class="about-image reveal">
-                        <img src="https://images.pexels.com/photos/5974058/pexels-photo-5974058.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein anonymer Mann bohrt während der Arbeit am Tisch in der Werkstatt Löcher in eine Holzplatte">
+                <div class="section-header">
+                    <div class="section-label">Unser Ablauf</div>
+                    <h2 class="section-title">Ihr Besuch bei uns</h2>
+                    <p class="section-description">Ein strukturierter Ablauf sorgt für Ihre optimale Betreuung – von der Terminvereinbarung bis zur Nachsorge.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step">
+                        <div class="process-number">01</div>
+                        <h3>Terminvereinbarung</h3>
+                        <p>Kontaktieren Sie uns telefonisch oder per E-Mail. Wir vereinbaren zeitnah einen Termin, der zu Ihrem Zeitplan passt und berücksichtigen Ihre individuellen Bedürfnisse.</p>
                     </div>
-                    <div class="about-content reveal">
-                        <span class="section-label">Über uns</span>
-                        <h2>Handwerkskunst aus Leidenschaft und Tradition</h2>
-                        <p>Seit über 25 Jahren steht unser Familienbetrieb für erstklassige Holzarbeiten und zuverlässigen Service. Was als kleine Werkstatt begann, ist heute ein etabliertes Unternehmen mit einem Team erfahrener Handwerker.</p>
-                        <p>Wir verbinden traditionelle Handwerkskunst mit modernen Techniken und legen größten Wert auf Qualität, Präzision und Kundenzufriedenheit. Jedes Projekt wird mit der gleichen Sorgfalt behandelt – egal ob kleine Reparatur oder komplette Renovierung.</p>
+                    <div class="process-step">
+                        <div class="process-number">02</div>
+                        <h3>Ausführliche Beratung</h3>
+                        <p>In einem persönlichen Gespräch nehmen wir uns Zeit für Ihre Anliegen. Wir erfassen Ihre Krankengeschichte und besprechen gemeinsam die nächsten Schritte.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-number">03</div>
+                        <h3>Untersuchung & Diagnose</h3>
+                        <p>Mit modernster medizinischer Technik führen wir die notwendigen Untersuchungen durch. Sie erhalten eine fundierte Diagnose und eine verständliche Erklärung der Befunde.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-layout">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/7598696/pexels-photo-7598696.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Young female doctor standing confidently with medical equipment in the background.">
+                    </div>
+                    <div class="about-content">
+                        <div class="section-label">Über uns</div>
+                        <h2>Erfahrung trifft Einfühlungsvermögen</h2>
+                        <p>Unsere gynäkologische Praxis vereint langjährige medizinische Expertise mit einer herzlichen, patientenorientierten Atmosphäre. Wir legen großen Wert auf Ihre individuelle Betreuung und nehmen uns die Zeit, die Sie brauchen.</p>
+                        <p>Mit modernster medizinischer Ausstattung und kontinuierlicher Weiterbildung gewährleisten wir höchste Qualitätsstandards. Vertrauen, Diskretion und Ihre Gesundheit stehen dabei immer im Mittelpunkt.</p>
                         <div class="about-features">
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                        <polyline points="22 4 12 14.01 9 11.01"/>
-                                    </svg>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">✓</div>
+                                <div class="about-feature-text">
+                                    <h4>Über 15 Jahre Erfahrung</h4>
+                                    <p>Umfassende medizinische Kompetenz</p>
                                 </div>
-                                <span class="feature-text">Über 25 Jahre Erfahrung</span>
                             </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                        <polyline points="22 4 12 14.01 9 11.01"/>
-                                    </svg>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">✓</div>
+                                <div class="about-feature-text">
+                                    <h4>Modernste Ausstattung</h4>
+                                    <p>Neueste diagnostische Technik</p>
                                 </div>
-                                <span class="feature-text">Meisterbetrieb</span>
                             </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                        <polyline points="22 4 12 14.01 9 11.01"/>
-                                    </svg>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">✓</div>
+                                <div class="about-feature-text">
+                                    <h4>Individuelle Betreuung</h4>
+                                    <p>Zeit und Aufmerksamkeit für Sie</p>
                                 </div>
-                                <span class="feature-text">Umweltfreundliche Materialien</span>
                             </div>
-                            <div class="feature-item">
-                                <div class="feature-icon">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                        <polyline points="22 4 12 14.01 9 11.01"/>
-                                    </svg>
+                            <div class="about-feature">
+                                <div class="about-feature-icon">✓</div>
+                                <div class="about-feature-text">
+                                    <h4>Kurze Wartezeiten</h4>
+                                    <p>Flexible Terminvergabe</p>
                                 </div>
-                                <span class="feature-text">Garantierte Qualität</span>
                             </div>
                         </div>
                     </div>
@@ -1094,30 +1075,39 @@
             </div>
         </section>
 
-        <section id="projekte">
+        <section id="portfolio">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Projekte</span>
-                    <h2 class="section-title">Unsere handwerklichen Arbeiten</h2>
-                    <p class="section-description">Ein Einblick in unsere vielfältigen Projekte – von präzisen Reparaturen bis zu umfangreichen Renovierungen.</p>
+                <div class="section-header">
+                    <div class="section-label">Unsere Praxis</div>
+                    <h2 class="section-title">Moderne Räumlichkeiten für Ihr Wohlbefinden</h2>
+                    <p class="section-description">Wir haben eine Umgebung geschaffen, in der Sie sich wohlfühlen können – hell, freundlich und mit modernster medizinischer Ausstattung.</p>
                 </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item reveal">
-                        <img src="https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Nahaufnahme der Hände eines Handwerkers, der einen Bohrer verwendet, um ein Fenster in einer Wohnung zu reparieren.">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Fenstermontage</h3>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item-outer">
+                        <div class="portfolio-item-inner">
+                            <img src="https://images.pexels.com/photos/7579823/pexels-photo-7579823.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A female doctor consulting a patient in a modern medical office setting." class="portfolio-image">
+                            <div class="portfolio-content">
+                                <h3>Beratungsräume</h3>
+                                <p>Diskrete und komfortable Räume für ausführliche Gespräche in ruhiger Atmosphäre.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="gallery-item reveal">
-                        <img src="https://images.pexels.com/photos/30592259/pexels-photo-30592259.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Schreiner schneidet Holz mit einer Handsäge und zeigt Handwerkskunst und Präzision.">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Präzise Holzarbeiten</h3>
+                    <div class="portfolio-item-outer">
+                        <div class="portfolio-item-inner">
+                            <img src="https://images.pexels.com/photos/7108389/pexels-photo-7108389.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bright and clean interior of a modern clinic with medical equipment and examination table." class="portfolio-image">
+                            <div class="portfolio-content">
+                                <h3>Untersuchungsräume</h3>
+                                <p>Modern ausgestattete Behandlungsräume mit neuester medizinischer Technologie.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="gallery-item reveal">
-                        <img src="https://images.pexels.com/photos/5974055/pexels-photo-5974055.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein selbstbewusster Handwerker konzentriert sich auf das Bohren einer Holzplanke in einer gut ausgestatteten Werkstatt.">
-                        <div class="gallery-overlay">
-                            <h3 class="gallery-title">Maßgefertigte Lösungen</h3>
+                    <div class="portfolio-item-outer">
+                        <div class="portfolio-item-inner">
+                            <img src="https://images.pexels.com/photos/8460234/pexels-photo-8460234.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A clean and equipped medical examination room with diverse healthcare tools." class="portfolio-image">
+                            <div class="portfolio-content">
+                                <h3>Diagnostikbereich</h3>
+                                <p>Hochmoderne Ultraschallgeräte und diagnostische Instrumente für präzise Befunde.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1126,64 +1116,62 @@
 
         <section id="testimonials">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Kundenstimmen</span>
-                    <h2 class="section-title">Was unsere Kunden sagen</h2>
+                <div class="section-header">
+                    <div class="section-label">Erfahrungen</div>
+                    <h2 class="section-title">Was unsere Patientinnen sagen</h2>
+                    <p class="section-description">Das Vertrauen und die Zufriedenheit unserer Patientinnen sind unser größter Antrieb.</p>
                 </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card reveal">
-                        <div class="testimonial-card-inner">
-                            <div class="testimonial-stars">
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            </div>
-                            <p class="testimonial-text">Die Fensterreparatur wurde äußerst professionell durchgeführt. Das Team war pünktlich, sauber und hat exzellente Arbeit geleistet. Die neuen Fenster dichten perfekt ab und sehen fantastisch aus. Absolut empfehlenswert!</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">MK</div>
-                                <div class="testimonial-info">
-                                    <h4>Martina Kowalski</h4>
-                                    <p>Hausbesitzerin</p>
+                <div class="testimonials-wrapper">
+                    <div class="testimonials-grid">
+                        <div class="testimonial-card-outer">
+                            <div class="testimonial-card-inner">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Endlich eine Praxis, in der man sich wirklich gut aufgehoben fühlt! Die Schwangerschaftsbegleitung war so einfühlsam und kompetent. Jede Frage wurde ausführlich beantwortet und ich fühlte mich zu jeder Zeit sicher betreut."</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">SM</div>
+                                    <div class="testimonial-info">
+                                        <h4>Sarah M.</h4>
+                                        <p>Schwangerschaftsbegleitung</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="testimonial-card reveal">
-                        <div class="testimonial-card-inner">
-                            <div class="testimonial-stars">
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                            </div>
-                            <p class="testimonial-text">Wir haben eine komplette Renovierung unserer Altbauwohnung durchführen lassen. Von der Beratung bis zur Fertigstellung war alles perfekt. Die Handwerker haben mit großer Sorgfalt gearbeitet und auf alle Details geachtet. Vielen Dank!</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">TS</div>
-                                <div class="testimonial-info">
-                                    <h4>Thomas Schmidt</h4>
-                                    <p>Wohnungseigentümer</p>
+                        <div class="testimonial-card-outer">
+                            <div class="testimonial-card-inner">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Hervorragende fachliche Kompetenz gepaart mit menschlicher Wärme. Die Vorsorgeuntersuchung war gründlich und ich habe mich nie unwohl gefühlt. Kurze Wartezeiten und ein sehr freundliches Team."</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">AK</div>
+                                    <div class="testimonial-info">
+                                        <h4>Anna K.</h4>
+                                        <p>Vorsorgeuntersuchung</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="testimonial-card reveal">
-                        <div class="testimonial-card-inner">
-                            <div class="testimonial-stars">
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <div class="testimonial-card-outer">
+                            <div class="testimonial-card-inner">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Die Kinderwunschberatung war genau das, was ich gebraucht habe. Sachlich, einfühlsam und ohne falsches Mitleid. Man merkt die langjährige Erfahrung und ich bin dankbar für die professionelle Unterstützung auf diesem Weg."</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">JH</div>
+                                    <div class="testimonial-info">
+                                        <h4>Julia H.</h4>
+                                        <p>Kinderwunschberatung</p>
+                                    </div>
+                                </div>
                             </div>
-                            <p class="testimonial-text">Die maßgefertigten Schranktüren sind wunderschön geworden. Die Qualität der Arbeit und die Liebe zum Detail sind beeindruckend. Das Preis-Leistungs-Verhältnis ist hervorragend. Ich werde diesen Betrieb definitiv weiterempfehlen.</p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">AW</div>
-                                <div class="testimonial-info">
-                                    <h4>Anna Weber</h4>
-                                    <p>Privatkundin</p>
+                        </div>
+                        <div class="testimonial-card-outer">
+                            <div class="testimonial-card-inner">
+                                <div class="testimonial-stars">★★★★★</div>
+                                <p class="testimonial-text">"Nach vielen Jahren bei verschiedenen Ärzten habe ich endlich meine gynäkologische Praxis gefunden. Die Wechseljahresberatung war umfassend und hat mir sehr geholfen. Ich fühle mich verstanden und gut betreut."</p>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">MB</div>
+                                    <div class="testimonial-info">
+                                        <h4>Martina B.</h4>
+                                        <p>Wechseljahresberatung</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1192,85 +1180,72 @@
             </div>
         </section>
 
-        <section id="kontakt">
+        <section id="contact">
             <div class="container">
-                <div class="section-header reveal">
-                    <span class="section-label">Kontakt</span>
-                    <h2 class="section-title">Lassen Sie uns sprechen</h2>
-                    <p class="section-description">Haben Sie ein Projekt im Kopf? Kontaktieren Sie uns für eine kostenlose Beratung und ein unverbindliches Angebot.</p>
+                <div class="section-header">
+                    <div class="section-label">Kontakt</div>
+                    <h2 class="section-title">Vereinbaren Sie Ihren Termin</h2>
+                    <p class="section-description">Wir freuen uns darauf, Sie in unserer Praxis begrüßen zu dürfen. Kontaktieren Sie uns für eine Terminvereinbarung.</p>
                 </div>
-                <div class="contact-wrapper reveal">
-                    <div class="contact-inner">
-                        <div class="contact-info">
-                            <h2>Wir freuen uns auf Ihre Anfrage</h2>
-                            <p>Ob kleine Reparatur oder großes Renovierungsprojekt – wir beraten Sie gerne persönlich und erstellen Ihnen ein individuelles Angebot.</p>
-                            <div class="contact-details">
-                                <div class="contact-item">
-                                    <div class="contact-item-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="contact-item-content">
-                                        <h4>Telefon</h4>
-                                        <a href="tel:+4915012345678">+49 150 12345678</a>
-                                    </div>
+                <div class="contact-layout">
+                    <div class="contact-info">
+                        <h2>Besuchen Sie uns</h2>
+                        <p>Unsere Praxis befindet sich in zentraler Lage mit guter Anbindung an öffentliche Verkehrsmittel und Parkmöglichkeiten in der Nähe.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-item-text">
+                                    <h4>Adresse</h4>
+                                    <p>Musterstraße 123<br>12345 Musterstadt</p>
                                 </div>
-                                <div class="contact-item">
-                                    <div class="contact-item-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                            <polyline points="22,6 12,13 2,6"/>
-                                        </svg>
-                                    </div>
-                                    <div class="contact-item-content">
-                                        <h4>E-Mail</h4>
-                                        <a href="mailto:info@handwerk-meister.de">info@handwerk-meister.de</a>
-                                    </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-item-text">
+                                    <h4>Telefon</h4>
+                                    <p><a href="tel:+491234567890">+49 (0) 123 456 7890</a></p>
                                 </div>
-                                <div class="contact-item">
-                                    <div class="contact-item-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                            <circle cx="12" cy="10" r="3"/>
-                                        </svg>
-                                    </div>
-                                    <div class="contact-item-content">
-                                        <h4>Adresse</h4>
-                                        <p>Musterstraße 42<br>10115 Berlin</p>
-                                    </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div class="contact-item-text">
+                                    <h4>E-Mail</h4>
+                                    <p><a href="mailto:info@praxis-beispiel.de">info@praxis-beispiel.de</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🕐</div>
+                                <div class="contact-item-text">
+                                    <h4>Sprechzeiten</h4>
+                                    <p>Mo-Fr: 08:00 - 18:00 Uhr<br>Sa: Nach Vereinbarung</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="contact-form">
+                    </div>
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form">
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Ihr Name</label>
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
-                                <label for="email">E-Mail</label>
+                                <label for="email">E-Mail-Adresse</label>
                                 <input type="email" id="email" name="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Telefon</label>
+                                <label for="phone">Telefonnummer</label>
                                 <input type="tel" id="phone" name="phone">
                             </div>
                             <div class="form-group">
                                 <label for="message">Ihre Nachricht</label>
                                 <textarea id="message" name="message" required></textarea>
                             </div>
-                            <button type="submit" class="btn-primary">
-                                Nachricht senden
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="22" y1="2" x2="11" y2="13"/>
-                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-                                </svg>
-                            </button>
-                        </div>
+                            <button type="submit" class="form-submit">Nachricht senden</button>
+                        </form>
                     </div>
                 </div>
-                <div class="map-container reveal">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.4181087888745!2d13.388860776806205!3d52.52472443722426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2sBrandenburger%20Tor!5e0!3m2!1sde!2sde!4v1698765432109!5m2!1sde!2sde" allowfullscreen loading="lazy"></iframe>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.409874209311!2d13.404954!3d52.520008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2sBrandenburger%20Tor!5e0!3m2!1sde!2sde!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -1280,85 +1255,97 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Handwerk Meisterbetrieb</h3>
-                    <p>Qualität, Präzision und Zuverlässigkeit seit über 25 Jahren. Ihr Partner für erstklassige Holzarbeiten und Renovierungen.</p>
+                    <h3>Gynäkologie & Geburtshilfe</h3>
+                    <p>Ihre Gesundheit und Ihr Wohlbefinden stehen bei uns im Mittelpunkt. Vertrauen Sie auf unsere langjährige Erfahrung und moderne medizinische Betreuung.</p>
                 </div>
-                <div class="footer-column">
+                <div class="footer-section">
                     <h4>Navigation</h4>
                     <ul class="footer-links">
-                        <li><a href="#startseite">Startseite</a></li>
-                        <li><a href="#leistungen">Leistungen</a></li>
-                        <li><a href="#ueber-uns">Über uns</a></li>
-                        <li><a href="#projekte">Projekte</a></li>
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#services">Leistungen</a></li>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#portfolio">Praxis</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-section">
                     <h4>Leistungen</h4>
                     <ul class="footer-links">
-                        <li><a href="#leistungen">Fensterreparatur</a></li>
-                        <li><a href="#leistungen">Renovierung</a></li>
-                        <li><a href="#leistungen">Maßanfertigungen</a></li>
-                        <li><a href="#leistungen">Restaurierung</a></li>
+                        <li><a href="#services">Vorsorge</a></li>
+                        <li><a href="#services">Schwangerschaft</a></li>
+                        <li><a href="#services">Verhütung</a></li>
+                        <li><a href="#services">Kinderwunsch</a></li>
                     </ul>
                 </div>
-                <div class="footer-column">
+                <div class="footer-section">
                     <h4>Kontakt</h4>
                     <ul class="footer-links">
-                        <li><a href="tel:+4915012345678">+49 150 12345678</a></li>
-                        <li><a href="mailto:info@handwerk-meister.de">info@handwerk-meister.de</a></li>
-                        <li><a href="#kontakt">Kontaktformular</a></li>
+                        <li><a href="tel:+491234567890">+49 (0) 123 456 7890</a></li>
+                        <li><a href="mailto:info@praxis-beispiel.de">info@praxis-beispiel.de</a></li>
+                        <li><a href="#contact">Terminvereinbarung</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Handwerk Meisterbetrieb. Alle Rechte vorbehalten.</p>
-                <p class="footer-disclaimer">Demo-Redesign — nicht verbunden mit Handwerk Meisterbetrieb</p>
+                <p>&copy; 2024 Gynäkologie & Geburtshilfe. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Demo-Redesign — nicht verbunden mit einer realen Praxis</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        let lastScroll = 0;
+        const scrollObserver = new IntersectionObserver((entries) => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
         });
 
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                document.body.style.overflow = '';
             });
         });
 
-        // Scroll Reveal Animation
-        const revealElements = document.querySelectorAll('.reveal');
-        
-        const revealObserver = new IntersectionObserver((entries) => {
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('visible');
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        revealElements.forEach(el => revealObserver.observe(el));
+        }, observerOptions);
 
-        // Form Submission (Demo)
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.');
-            e.target.reset();
+        document.querySelectorAll('section').forEach(section => {
+            sectionObserver.observe(section);
         });
 
-        // Smooth Scroll Enhancement
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1366,4 +1353,41 @@
                 if (target) {
                     const offset = 100;
                     const targetPosition = target.offsetTop - offset;
-                    window.scroll
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        const form = document.querySelector('.contact-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            form.reset();
+        });
+
+        const cards = document.querySelectorAll('.service-card-outer, .portfolio-item-outer, .testimonial-card-outer');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            entry.target.style.transition = 'opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+                        }, index * 100);
+                        cardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            cardObserver.observe(card);
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Zahnmedizin Alheim MVZ - Zahnärztliche Leitung Dr. Klaus Gerlach</p></body>
+</html>
