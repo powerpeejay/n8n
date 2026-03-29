@@ -3,19 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Das Hundelädchen – Martina Weitzel | Fachkundige Beratung in Alheim-Heinebach</title>
+    <title>Das Hundelädchen – Martina Weitzel | Alheim-Heinebach</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Cabinet Grotesk';
-            font-style: normal;
-            font-weight: 400 900;
-            font-display: swap;
-            src: url('https://fonts.cdnfonts.com/s/86894/CabinetGrotesk-Variable.woff') format('woff');
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -23,12 +15,13 @@
         }
 
         :root {
-            --accent: #D4835F;
+            --accent: #C87941;
             --bg: #FDFBF7;
             --text: #18181B;
-            --border: rgba(212, 131, 95, 0.12);
-            --card-tint: rgba(212, 131, 95, 0.08);
-            --white: #FFFFFF;
+            --off-white: #F7F4EF;
+            --pure-white: #FFFFFF;
+            --accent-light: rgba(200, 121, 65, 0.1);
+            --accent-border: rgba(200, 121, 65, 0.12);
         }
 
         html {
@@ -36,16 +29,16 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg);
+            font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text);
-            line-height: 1.6;
+            background: var(--bg);
+            line-height: 1.7;
+            font-size: 16px;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cabinet Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
             line-height: 1.2;
         }
 
@@ -61,190 +54,187 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            width: calc(100% - 48px);
-            max-width: 1352px;
-            background: rgba(253, 251, 247, 0.85);
-            backdrop-filter: blur(20px);
-            border-radius: 100px;
+            background: rgba(253, 251, 247, 0.92);
+            backdrop-filter: blur(12px);
             padding: 16px 32px;
+            border-radius: 50px;
+            box-shadow: 0 4px 24px rgba(200, 121, 65, 0.08);
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 8px 32px rgba(212, 131, 95, 0.08), 0 1px 2px rgba(24, 24, 27, 0.04);
+            gap: 48px;
+            width: 90%;
+            max-width: 1200px;
         }
 
-        .nav-logo {
-            font-family: 'Cabinet Grotesk', sans-serif;
-            font-size: 18px;
+        .logo {
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
+            font-size: 18px;
             color: var(--text);
-            text-decoration: none;
             white-space: nowrap;
         }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 40px;
+            gap: 32px;
             list-style: none;
+            flex: 1;
+            justify-content: center;
         }
 
         .nav-links a {
-            font-size: 14px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 500;
+            font-size: 14px;
             color: var(--text);
             text-decoration: none;
-            position: relative;
-            transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover {
+            color: var(--accent);
         }
 
         .nav-cta {
             background: var(--accent);
-            color: var(--white);
+            color: white;
             padding: 12px 28px;
-            border-radius: 100px;
-            font-size: 14px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
+            font-size: 14px;
             text-decoration: none;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            white-space: nowrap;
         }
 
         .nav-cta:hover {
+            background: #B56835;
             transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(212, 131, 95, 0.25);
+            box-shadow: 0 8px 24px rgba(200, 121, 65, 0.3);
         }
 
-        .nav-cta:active {
-            transform: translateY(0);
-        }
-
-        .mobile-menu-toggle {
+        .hamburger {
             display: none;
-            background: none;
-            border: none;
+            flex-direction: column;
+            gap: 6px;
             cursor: pointer;
             padding: 8px;
         }
 
-        .mobile-menu-toggle span {
-            display: block;
+        .hamburger span {
             width: 24px;
             height: 2px;
             background: var(--text);
-            margin: 5px 0;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
         }
 
-        .mobile-menu-toggle.active span:nth-child(2) {
+        .hamburger.active span:nth-child(2) {
             opacity: 0;
         }
 
-        .mobile-menu-toggle.active span:nth-child(3) {
+        .hamburger.active span:nth-child(3) {
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
         .hero {
             min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            padding: 180px 0 100px;
-        }
-
-        .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            grid-template-columns: 60% 40%;
             align-items: center;
+            gap: 64px;
+            padding-top: 120px;
         }
 
         .hero-content {
-            padding-right: 60px;
+            padding-right: 48px;
         }
 
-        .eyebrow {
+        .hero-badge {
             display: inline-block;
-            background: rgba(212, 131, 95, 0.12);
+            background: var(--accent-light);
             color: var(--accent);
-            padding: 8px 20px;
-            border-radius: 100px;
-            font-size: 13px;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            margin-bottom: 32px;
-            letter-spacing: 0.3px;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
         }
 
         .hero h1 {
-            font-size: 72px;
-            margin-bottom: 32px;
-            letter-spacing: -0.02em;
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 800;
+            margin-bottom: 24px;
             line-height: 1.1;
         }
 
-        .hero p {
+        .hero-tagline {
             font-size: 20px;
             color: rgba(24, 24, 27, 0.7);
-            margin-bottom: 48px;
-            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 520px;
         }
 
-        .btn-primary {
-            display: inline-block;
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
             background: var(--accent);
-            color: var(--white);
-            padding: 18px 40px;
-            border-radius: 100px;
-            font-size: 16px;
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
+            font-size: 16px;
             text-decoration: none;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
         }
 
-        .btn-primary:hover {
+        .cta-primary:hover {
+            background: #B56835;
             transform: translateY(-3px);
-            box-shadow: 0 16px 32px rgba(212, 131, 95, 0.3);
+            box-shadow: 0 12px 32px rgba(200, 121, 65, 0.3);
         }
 
-        .btn-primary:active {
-            transform: translateY(-1px);
+        .cta-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 18px 36px;
+            border-radius: 50px;
+            border: 2px solid rgba(24, 24, 27, 0.15);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
         }
 
-        .double-bezel {
-            background: var(--card-tint);
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 12px;
+        .cta-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
         }
 
-        .double-bezel-inner {
-            background: var(--white);
-            border-radius: 28px;
-            overflow: hidden;
-        }
-
-        .hero-image-wrap {
+        .hero-image {
             position: relative;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(200, 121, 65, 0.15);
         }
 
-        .hero-image-wrap img {
+        .hero-image img {
             width: 100%;
             height: 600px;
             object-fit: cover;
@@ -254,8 +244,8 @@
         section {
             padding: 120px 0;
             opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         section.visible {
@@ -265,438 +255,386 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 72px;
         }
 
-        .section-header h2 {
-            font-size: 56px;
+        .section-eyebrow {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 700;
             margin-bottom: 20px;
-            letter-spacing: -0.02em;
         }
 
-        .section-header p {
-            font-size: 18px;
+        .section-subtitle {
+            font-size: 20px;
             color: rgba(24, 24, 27, 0.6);
             max-width: 700px;
             margin: 0 auto;
-            line-height: 1.7;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
         }
 
         .service-card {
-            background: var(--card-tint);
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 12px;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--off-white);
+            border: 1px solid var(--accent-border);
+            border-radius: 24px;
+            padding: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .service-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 48px rgba(200, 121, 65, 0.15);
         }
 
         .service-card-inner {
-            background: var(--white);
-            border-radius: 28px;
-            padding: 48px;
-        }
-
-        .service-card.featured {
-            grid-row: span 2;
-        }
-
-        .service-card.featured .service-card-inner {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+            background: var(--pure-white);
+            border-radius: 16px;
+            padding: 32px;
         }
 
         .service-icon {
             width: 56px;
             height: 56px;
-            background: rgba(212, 131, 95, 0.12);
+            background: var(--accent-light);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 24px;
-            font-size: 28px;
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: var(--accent);
         }
 
         .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 16px;
-            line-height: 1.3;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
         }
 
         .service-card p {
-            color: rgba(24, 24, 27, 0.6);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        .service-image {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-top: 24px;
+            color: rgba(24, 24, 27, 0.7);
+            line-height: 1.6;
         }
 
         .brands-section {
-            background: linear-gradient(135deg, rgba(212, 131, 95, 0.05), rgba(212, 131, 95, 0.02));
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--bg) 100%);
+            border-radius: 48px;
+            padding: 80px 48px;
+            margin: 0 24px;
         }
 
         .brands-grid {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 32px;
             margin-top: 48px;
         }
 
-        .brand-pill {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 16px 24px;
+        .brand-item {
+            background: var(--pure-white);
+            border: 1px solid rgba(24, 24, 27, 0.06);
+            border-radius: 20px;
+            padding: 32px;
             text-align: center;
-            font-size: 15px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
+            font-size: 18px;
             color: var(--text);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .brand-pill:hover {
-            background: rgba(212, 131, 95, 0.08);
-            transform: translateY(-2px);
+        .brand-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(200, 121, 65, 0.1);
+            border-color: var(--accent-border);
         }
 
-        .about-grid {
+        .about-section {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            grid-template-columns: 45% 55%;
+            gap: 80px;
             align-items: center;
         }
 
-        .about-image-wrap {
-            position: relative;
+        .about-image {
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 24px 64px rgba(200, 121, 65, 0.12);
         }
 
-        .about-image-wrap img {
+        .about-image img {
             width: 100%;
             height: 600px;
             object-fit: cover;
+            display: block;
         }
 
         .about-content h2 {
-            font-size: 48px;
-            margin-bottom: 28px;
-            letter-spacing: -0.02em;
+            font-size: clamp(36px, 5vw, 48px);
+            font-weight: 700;
+            margin-bottom: 24px;
         }
 
         .about-content p {
             font-size: 18px;
-            color: rgba(24, 24, 27, 0.7);
-            margin-bottom: 24px;
             line-height: 1.8;
+            color: rgba(24, 24, 27, 0.7);
+            margin-bottom: 20px;
         }
 
         .usps {
-            margin-top: 48px;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .usp-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 16px;
-            margin-bottom: 20px;
+            padding: 16px 20px;
+            background: var(--off-white);
+            border-radius: 16px;
+            border: 1px solid var(--accent-border);
         }
 
-        .usp-icon {
-            width: 24px;
-            height: 24px;
+        .usp-check {
+            width: 28px;
+            height: 28px;
             background: var(--accent);
             border-radius: 50%;
-            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 14px;
-            font-weight: 700;
-            margin-top: 2px;
+            flex-shrink: 0;
         }
 
-        .usp-item p {
-            font-size: 16px;
-            margin: 0;
+        .usp-check svg {
+            width: 16px;
+            height: 16px;
+            stroke: white;
+            stroke-width: 3;
         }
 
-        .hours-section {
-            background: var(--text);
-            color: var(--bg);
-        }
-
-        .hours-section .section-header h2 {
-            color: var(--bg);
-        }
-
-        .hours-section .section-header p {
-            color: rgba(253, 251, 247, 0.7);
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hours-card {
-            background: rgba(253, 251, 247, 0.05);
-            border: 1px solid rgba(253, 251, 247, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-        }
-
-        .hours-card h3 {
-            font-size: 20px;
-            margin-bottom: 16px;
-            color: var(--accent);
-        }
-
-        .hours-card p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: rgba(253, 251, 247, 0.8);
+        .contact-section {
+            background: var(--off-white);
+            border-radius: 48px;
+            padding: 80px 0;
+            margin: 0 24px;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 100px;
+            gap: 64px;
+            margin-top: 64px;
         }
 
-        .contact-info h3 {
-            font-size: 32px;
-            margin-bottom: 40px;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
         }
 
         .contact-item {
-            margin-bottom: 32px;
+            display: flex;
+            gap: 20px;
         }
 
-        .contact-label {
-            font-size: 13px;
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent);
+        }
+
+        .contact-details h4 {
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--accent);
+            font-size: 18px;
             margin-bottom: 8px;
         }
 
-        .contact-value {
-            font-size: 18px;
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        .contact-value a {
-            color: var(--text);
+        .contact-details p, .contact-details a {
+            color: rgba(24, 24, 27, 0.7);
             text-decoration: none;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-value a:hover {
+        .contact-details a:hover {
             color: var(--accent);
         }
 
-        .map-wrap {
-            border-radius: 32px;
-            overflow: hidden;
-            height: 500px;
-            background: var(--card-tint);
-            border: 1px solid var(--border);
-            padding: 12px;
+        .opening-hours-box {
+            background: var(--pure-white);
+            border: 1px solid var(--accent-border);
+            border-radius: 20px;
+            padding: 32px;
+            margin-top: 24px;
         }
 
-        .map-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 28px;
-        }
-
-        .testimonials-section {
-            background: linear-gradient(180deg, rgba(212, 131, 95, 0.03), transparent);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background: var(--card-tint);
-            border: 1px solid var(--border);
-            border-radius: 32px;
-            padding: 12px;
-        }
-
-        .testimonial-inner {
-            background: var(--white);
-            border-radius: 28px;
-            padding: 40px;
-        }
-
-        .testimonial-stars {
-            color: var(--accent);
+        .opening-hours-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
             font-size: 20px;
             margin-bottom: 16px;
+            color: var(--accent);
         }
 
-        .testimonial-text {
-            font-size: 16px;
-            line-height: 1.7;
+        .opening-hours-box p {
             color: rgba(24, 24, 27, 0.7);
-            margin-bottom: 24px;
+            line-height: 1.8;
         }
 
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--text);
+        .map-container {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 16px 48px rgba(200, 121, 65, 0.12);
+            height: 100%;
+            min-height: 450px;
         }
 
-        .testimonial-meta {
-            font-size: 14px;
-            color: rgba(24, 24, 27, 0.5);
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         footer {
             background: var(--text);
-            color: var(--bg);
-            padding: 100px 0 40px;
+            color: rgba(255, 255, 255, 0.8);
+            padding: 64px 0 32px;
+            margin-top: 120px;
         }
 
-        .footer-grid {
+        .footer-content {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 64px;
+            margin-bottom: 48px;
         }
 
         .footer-brand h3 {
+            color: white;
             font-size: 24px;
+            font-weight: 700;
             margin-bottom: 16px;
-            color: var(--bg);
         }
 
         .footer-brand p {
-            color: rgba(253, 251, 247, 0.6);
             font-size: 15px;
             line-height: 1.7;
         }
 
-        .footer-section h4 {
+        .footer-column h4 {
+            color: white;
             font-size: 16px;
+            font-weight: 600;
             margin-bottom: 20px;
-            color: var(--accent);
         }
 
-        .footer-section ul {
+        .footer-links {
             list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .footer-section ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-section ul li a {
-            color: rgba(253, 251, 247, 0.7);
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-size: 15px;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .footer-section ul li a:hover {
+        .footer-links a:hover {
             color: var(--accent);
         }
 
         .footer-bottom {
-            padding-top: 40px;
-            border-top: 1px solid rgba(253, 251, 247, 0.1);
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
-            color: rgba(253, 251, 247, 0.5);
             font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         @media (max-width: 768px) {
             nav {
+                width: calc(100% - 32px);
                 padding: 12px 20px;
+                gap: 16px;
             }
 
             .nav-links {
                 position: fixed;
-                top: 80px;
-                left: 24px;
-                right: 24px;
-                background: rgba(253, 251, 247, 0.98);
-                backdrop-filter: blur(20px);
+                top: 90px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - 32px);
                 flex-direction: column;
-                gap: 0;
+                background: rgba(253, 251, 247, 0.98);
+                backdrop-filter: blur(12px);
                 padding: 24px;
                 border-radius: 24px;
-                box-shadow: 0 16px 48px rgba(212, 131, 95, 0.15);
+                box-shadow: 0 8px 32px rgba(200, 121, 65, 0.12);
+                gap: 16px;
                 opacity: 0;
                 pointer-events: none;
-                transform: translateY(-20px);
-                transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             }
 
             .nav-links.active {
                 opacity: 1;
                 pointer-events: all;
-                transform: translateY(0);
-            }
-
-            .nav-links li {
-                width: 100%;
-                border-bottom: 1px solid rgba(212, 131, 95, 0.1);
-                padding: 16px 0;
-            }
-
-            .nav-links li:last-child {
-                border-bottom: none;
             }
 
             .nav-links a {
-                font-size: 16px;
+                text-align: center;
+                padding: 12px;
             }
 
             .nav-cta {
-                width: 100%;
-                text-align: center;
-                margin-top: 16px;
+                display: none;
             }
 
-            .mobile-menu-toggle {
-                display: block;
+            .hamburger {
+                display: flex;
             }
 
             .hero {
-                padding: 140px 0 80px;
-                min-height: auto;
-            }
-
-            .hero-grid {
                 grid-template-columns: 1fr;
+                padding-top: 140px;
+                min-height: auto;
                 gap: 48px;
             }
 
@@ -704,16 +642,7 @@
                 padding-right: 0;
             }
 
-            .hero h1 {
-                font-size: 48px;
-            }
-
-            .hero p {
-                font-size: 18px;
-                margin-bottom: 40px;
-            }
-
-            .hero-image-wrap img {
+            .hero-image img {
                 height: 400px;
             }
 
@@ -721,53 +650,32 @@
                 padding: 80px 0;
             }
 
-            .section-header {
-                margin-bottom: 60px;
-            }
-
-            .section-header h2 {
-                font-size: 40px;
-            }
-
-            .section-header p {
-                font-size: 16px;
-            }
-
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .service-card.featured {
-                grid-row: span 1;
-            }
-
-            .service-card-inner {
-                padding: 32px;
+            .brands-section {
+                padding: 48px 24px;
+                margin: 0 16px;
             }
 
             .brands-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 16px;
             }
 
-            .about-grid {
+            .about-section {
                 grid-template-columns: 1fr;
                 gap: 48px;
             }
 
-            .about-image-wrap img {
+            .about-image img {
                 height: 400px;
             }
 
-            .about-content h2 {
-                font-size: 36px;
-            }
-
-            .about-content p {
-                font-size: 16px;
-            }
-
-            .hours-grid {
-                grid-template-columns: 1fr;
+            .contact-section {
+                padding: 48px 0;
+                margin: 0 16px;
             }
 
             .contact-grid {
@@ -775,11 +683,7 @@
                 gap: 48px;
             }
 
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
+            .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -788,38 +692,35 @@
 </head>
 <body>
     <nav>
-        <a href="#" class="nav-logo">Das Hundelädchen</a>
+        <div class="logo">Das Hundelädchen</div>
         <ul class="nav-links">
             <li><a href="#startseite">Startseite</a></li>
             <li><a href="#leistungen">Leistungen</a></li>
             <li><a href="#marken">Marken</a></li>
             <li><a href="#ueber-uns">Über uns</a></li>
-            <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
         </ul>
-        <button class="mobile-menu-toggle" aria-label="Menü öffnen">
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+        <div class="hamburger">
             <span></span>
             <span></span>
             <span></span>
-        </button>
+        </div>
     </nav>
 
     <main>
-        <section class="hero visible" id="startseite">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <span class="eyebrow">Seit über 20 Jahren in Alheim-Heinebach</span>
-                        <h1>Fachkundige Beratung für Ihren Vierbeiner</h1>
-                        <p>Herzlich Willkommen im Hundelädchen Martina Weitzel in Alheim-Heinebach. Mit Leidenschaft und Expertise berate ich Sie zu allen Fragen rund um Ihren Hund und biete hochwertige Produkte für Ihre Lieblinge.</p>
-                        <a href="#kontakt" class="btn-primary">Beratung anfragen</a>
+        <section id="startseite" class="hero visible">
+            <div class="container" style="display: contents;">
+                <div class="hero-content">
+                    <span class="hero-badge">Seit Jahren für Sie da</span>
+                    <h1>Herzlich Willkommen im Hundelädchen</h1>
+                    <p class="hero-tagline">Ihr vertrauensvoller Partner für tierische Bedürfnisse in Alheim-Heinebach. Fachkundige Beratung und hochwertige Produkte für Ihren vierbeinigen Freund.</p>
+                    <div class="hero-ctas">
+                        <a href="#kontakt" class="cta-primary">Jetzt beraten lassen</a>
+                        <a href="#leistungen" class="cta-secondary">Mehr erfahren</a>
                     </div>
-                    <div class="hero-image-wrap">
-                        <div class="double-bezel">
-                            <div class="double-bezel-inner">
-                                <img src="https://picsum.photos/seed/warm-dog-owner-portrait/1200/600" alt="Hundebesitzerin mit glücklichem Hund in warmem natürlichen Licht">
-                            </div>
-                        </div>
-                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.pexels.com/photos/36624164/pexels-photo-36624164.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Cute Pomsky dog enjoying a spring sunset among blooming daffodils">
                 </div>
             </div>
         </section>
@@ -827,49 +728,73 @@
         <section id="leistungen">
             <div class="container">
                 <div class="section-header">
-                    <h2>Unsere Leistungen</h2>
-                    <p>Von fachkundiger Beratung bis zu hochwertigen Produkten – bei uns finden Sie alles für das Wohl Ihres Tieres</p>
+                    <div class="section-eyebrow">Unser Angebot</div>
+                    <h2 class="section-title">Alles für Ihr Tier</h2>
+                    <p class="section-subtitle">Von fachkundiger Beratung bis zu hochwertigen Produkten – wir bieten Ihnen ein umfassendes Sortiment für Hunde, Katzen, Nager und Pferde.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card featured">
+                    <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">🐕</div>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                                </svg>
+                            </div>
                             <h3>Fachkundige Beratung rund um den Hund</h3>
-                            <p>Beratung für alle Tierliebhaber oder die, die es werden wollen. Mit regelmäßigen Weiterbildungen zum Thema Hundeverhalten biete ich Ihnen kompetente und individuelle Unterstützung.</p>
-                            <img src="https://picsum.photos/seed/dog-training-consultation/800/240" alt="Hundetraining und fachkundige Beratung" class="service-image">
+                            <p>Beratung für alle Tierliebhaber oder die, die es werden wollen. Profitieren Sie von meiner langjährigen Erfahrung und regelmäßigen Weiterbildungen zum Thema Hundeverhalten.</p>
                         </div>
                     </div>
                     <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">🦴</div>
-                            <h3>Produkte für Hunde</h3>
-                            <p>Hochwertiges Hundefutter, Zubehör und Pflegeprodukte von ausgewählten Marken wie Belcando, Marengo und Mera Dog.</p>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" />
+                                </svg>
+                            </div>
+                            <h3>Tierbedarfshandel für Hunde</h3>
+                            <p>Hochwertiges Futter, praktisches Zubehör und liebevolles Spielzeug für Ihren vierbeinigen Begleiter. Wir führen namhafte Marken für beste Qualität.</p>
                         </div>
                     </div>
                     <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">🐱</div>
-                            <h3>Produkte für Katzen</h3>
-                            <p>Spezielles Sortiment für Samtpfoten – von Futter bis Spielzeug, alles was Ihre Katze glücklich macht.</p>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z" />
+                                </svg>
+                            </div>
+                            <h3>Tierbedarfshandel für Katzen</h3>
+                            <p>Alles für Ihre Samtpfote – von hochwertigem Katzenfutter über Kratzbäume bis hin zu Pflegeprodukten für ein glückliches Katzenleben.</p>
                         </div>
                     </div>
                     <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">🐹</div>
-                            <h3>Produkte für Nager</h3>
-                            <p>Artgerechtes Futter und Zubehör für Kaninchen, Meerschweinchen und andere Kleintiere.</p>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                                </svg>
+                            </div>
+                            <h3>Tierbedarfshandel für Nager</h3>
+                            <p>Artgerechtes Futter und Zubehör für Kaninchen, Meerschweinchen, Hamster und andere Nager. Gesunde Ernährung für kleine Freunde.</p>
                         </div>
                     </div>
                     <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">🐴</div>
-                            <h3>Produkte für Pferde</h3>
-                            <p>Qualitativ hochwertige Pferdefutter von Höveler und Marstall sowie passende Pflegeprodukte.</p>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                                </svg>
+                            </div>
+                            <h3>Tierbedarfshandel für Pferde</h3>
+                            <p>Premium-Futter und Pflegeprodukte für Pferde. Wir führen hochwertige Marken wie Höveler und Marstall für optimale Ernährung.</p>
                         </div>
                     </div>
                     <div class="service-card">
                         <div class="service-card-inner">
-                            <div class="service-icon">✨</div>
+                            <div class="service-icon">
+                                <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                                </svg>
+                            </div>
                             <h3>ENERGETIX Magnetschmuck</h3>
                             <p>Ein vielfältiges Sortiment an Wellnessprodukten auf Magnet-Basis. Für alle, die die Kraft der Magnete immer in ihrer Nähe haben wollen.</p>
                         </div>
@@ -878,111 +803,70 @@
             </div>
         </section>
 
-        <section class="brands-section" id="marken">
+        <section id="marken">
             <div class="container">
-                <div class="section-header">
-                    <h2>Unsere Markenpartner</h2>
-                    <p>Wir führen ausschließlich hochwertige Produkte von vertrauenswürdigen Herstellern</p>
-                </div>
-                <div class="brands-grid">
-                    <div class="brand-pill">Belcando</div>
-                    <div class="brand-pill">Brustgeschirr.com</div>
-                    <div class="brand-pill">cdVet</div>
-                    <div class="brand-pill">curli</div>
-                    <div class="brand-pill">Höveler</div>
-                    <div class="brand-pill">Hunter</div>
-                    <div class="brand-pill">Marengo</div>
-                    <div class="brand-pill">Marstall</div>
-                    <div class="brand-pill">Mera Dog</div>
-                    <div class="brand-pill">PerNaturam</div>
-                    <div class="brand-pill">Tre Ponti</div>
-                    <div class="brand-pill">Trixie</div>
+                <div class="brands-section">
+                    <div class="section-header">
+                        <div class="section-eyebrow">Unsere Partner</div>
+                        <h2 class="section-title">Premium Marken</h2>
+                        <p class="section-subtitle">Wir führen ausschließlich hochwertige Markenprodukte, auf die Sie sich verlassen können.</p>
+                    </div>
+                    <div class="brands-grid">
+                        <div class="brand-item">Belcando</div>
+                        <div class="brand-item">Brustgeschirr.com</div>
+                        <div class="brand-item">cdVet</div>
+                        <div class="brand-item">curli</div>
+                        <div class="brand-item">Höveler</div>
+                        <div class="brand-item">Hunter</div>
+                        <div class="brand-item">Marengo</div>
+                        <div class="brand-item">Marstall</div>
+                        <div class="brand-item">Mera Dog</div>
+                        <div class="brand-item">PerNaturam</div>
+                        <div class="brand-item">Tre Ponti</div>
+                        <div class="brand-item">Trixie</div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="ueber-uns">
             <div class="container">
-                <div class="about-grid">
-                    <div class="about-image-wrap">
-                        <div class="double-bezel">
-                            <div class="double-bezel-inner">
-                                <img src="https://picsum.photos/seed/friendly-pet-advisor-portrait/1200/600" alt="Freundliche Tierberaterin mit authentischem Portrait">
-                            </div>
-                        </div>
+                <div class="about-section">
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/6235114/pexels-photo-6235114.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A veterinarian checks a German Shepherd dog in a sterile clinic environment">
                     </div>
                     <div class="about-content">
-                        <h2>Über Martina Weitzel</h2>
-                        <p>Seit meiner Kindheit beschäftige ich mich mit Tieren. Hunde waren und blieben immer das Hauptthema. Zuerst waren es Pflegehunde aus der Nachbarschaft oder Tierheimhunde, die über einen Gassigang oder eine extra Streicheleinheit sehr dankbar waren. Dann kamen die eigenen, um die Familie auf Trab zu halten.</p>
-                        <p>Um das Thema Hund im Verhalten besser kennen zu lernen, besuche ich regelmäßig Weiterbildungen. In meinem Lädchen biete ich daher eine fachkundige Beratung rund um den Hund für alle Tierliebhaber oder die, die es werden wollen, an.</p>
+                        <div class="section-eyebrow">Über uns</div>
+                        <h2>Martina Weitzel – Ihre Expertin für Tierbedarfe</h2>
+                        <p>Seit meiner Kindheit beschäftige ich mich mit Tieren. Hunde waren und blieben immer das Hauptthema. Zuerst waren es Pflegehunde aus der Nachbarschaft oder Tierheimhunde, die über einen Gassigang oder eine extra Streicheleinheit sehr dankbar waren.</p>
+                        <p>Dann kamen die eigenen, um die Familie auf Trab zu halten. Um das Thema Hund im Verhalten besser kennen zu lernen, besuche ich regelmäßig Weiterbildungen.</p>
+                        <p>In meinem Lädchen biete ich daher eine fachkundige Beratung rund um den Hund für alle Tierliebhaber oder die, die es werden wollen, an.</p>
                         <div class="usps">
                             <div class="usp-item">
-                                <div class="usp-icon">✓</div>
-                                <p>Fachkundige Beratung rund um den Hund</p>
+                                <div class="usp-check">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span>Regelmäßige Weiterbildungen zum Thema Hundeverhalten</span>
                             </div>
                             <div class="usp-item">
-                                <div class="usp-icon">✓</div>
-                                <p>Regelmäßige Weiterbildungen zum Thema Hundeverhalten</p>
+                                <div class="usp-check">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span>Fachkundige Beratung mit Herz</span>
                             </div>
                             <div class="usp-item">
-                                <div class="usp-icon">✓</div>
-                                <p>Parkplätze direkt vor dem Hundelädchen</p>
+                                <div class="usp-check">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                    </svg>
+                                </div>
+                                <span>Parkplätze direkt vor dem Hundelädchen</span>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Das sagen unsere Kunden</h2>
-                    <p>Vertrauen Sie auf die Erfahrungen zufriedener Tierbesitzer</p>
-                </div>
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-inner">
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">Frau Weitzel hat mir mit ihrer fachkundigen Beratung sehr geholfen, das Verhalten meines Hundes besser zu verstehen. Die individuelle Betreuung und die Auswahl an hochwertigen Produkten sind hervorragend.</p>
-                            <div class="testimonial-author">Sarah Müller</div>
-                            <div class="testimonial-meta">Hundebesitzerin aus Alheim</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-inner">
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">Endlich ein Geschäft, wo man nicht nur Produkte kauft, sondern wirklich kompetent beraten wird. Die Empfehlungen zu Hundefutter und Zubehör waren perfekt für unseren Vierbeiner. Sehr zu empfehlen!</p>
-                            <div class="testimonial-author">Thomas Becker</div>
-                            <div class="testimonial-meta">Stammkunde seit 2019</div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-inner">
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">Die herzliche Art und das umfangreiche Wissen von Frau Weitzel machen jeden Besuch zu einem Erlebnis. Auch die große Auswahl an Produkten für verschiedene Tiere ist beeindruckend. Wir kommen gerne wieder!</p>
-                            <div class="testimonial-author">Familie Schmidt</div>
-                            <div class="testimonial-meta">Heinebach</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="hours-section" id="oeffnungszeiten">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Öffnungszeiten</h2>
-                    <p>Besuchen Sie uns zu folgenden Zeiten – wir freuen uns auf Sie!</p>
-                </div>
-                <div class="hours-grid">
-                    <div class="hours-card">
-                        <h3>Montag – Freitag</h3>
-                        <p>09:00 – 12:00 Uhr<br>15:00 – 18:00 Uhr</p>
-                    </div>
-                    <div class="hours-card">
-                        <h3>Samstag</h3>
-                        <p>09:00 – 12:30 Uhr</p>
                     </div>
                 </div>
             </div>
@@ -990,47 +874,58 @@
 
         <section id="kontakt">
             <div class="container">
-                <div class="section-header">
-                    <h2>Kontakt & Anfahrt</h2>
-                    <p>Wir sind gerne für Sie da – besuchen Sie uns oder nehmen Sie Kontakt auf</p>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>So erreichen Sie uns</h3>
-                        <div class="contact-item">
-                            <div class="contact-label">Adresse</div>
-                            <div class="contact-value">
-                                Borngasse 2<br>
-                                36211 Alheim-Heinebach
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-label">Telefon</div>
-                            <div class="contact-value">
-                                <a href="tel:+4956649469691">+49 5664 9469691</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-label">Mobil</div>
-                            <div class="contact-value">
-                                <a href="tel:+491724025725">+49 172 4025725</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-label">E-Mail</div>
-                            <div class="contact-value">
-                                <a href="mailto:info@das-hundelaedchen.de">info@das-hundelaedchen.de</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-label">Parken</div>
-                            <div class="contact-value">
-                                Parkplätze direkt vor dem Hundelädchen
-                            </div>
-                        </div>
+                <div class="contact-section">
+                    <div class="section-header">
+                        <div class="section-eyebrow">Kontakt</div>
+                        <h2 class="section-title">Besuchen Sie uns</h2>
+                        <p class="section-subtitle">Wir freuen uns auf Ihren Besuch in Alheim-Heinebach. Gerne beraten wir Sie persönlich zu allen Fragen rund um Ihr Tier.</p>
                     </div>
-                    <div class="map-wrap">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2532.842358452789!2d9.663611776943815!3d50.94894207169547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bb3c5a8e8e8e8f%3A0x4c4c4c4c4c4c4c4c!2sBorngasse%202%2C%2036211%20Alheim!5e0!3m2!1sde!2sde!4v1234567890123" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="contact-grid">
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Adresse</h4>
+                                    <p>Borngasse 2<br>36211 Alheim-Heinebach</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>Telefon</h4>
+                                    <p><a href="tel:+4956649469691">+49 5664 9469691</a></p>
+                                    <p><a href="tel:+491724025725">+49 172 4025725</a></p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h4>E-Mail</h4>
+                                    <p><a href="mailto:info@das-hundelaedchen.de">info@das-hundelaedchen.de</a></p>
+                                </div>
+                            </div>
+                            <div class="opening-hours-box">
+                                <h4>Öffnungszeiten</h4>
+                                <p><strong>Montag - Freitag:</strong><br>09:00 - 12:00 Uhr<br>15:00 - 18:00 Uhr</p>
+                                <p style="margin-top: 12px;"><strong>Samstag:</strong><br>09:00 - 12:30 Uhr</p>
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2528.345678901234!2d9.721234567890123!3d51.012345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDAwJzQ0LjQiTiA5wrA0MycxNi40IkU!5e0!3m2!1sde!2sde!4v1234567890123!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1039,55 +934,54 @@
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
+            <div class="footer-content">
                 <div class="footer-brand">
                     <h3>Das Hundelädchen</h3>
-                    <p>Ihre vertrauensvolle Anlaufstelle in Alheim-Heinebach für fachkundige Beratung und hochwertige Produkte rund um Ihren Vierbeiner.</p>
+                    <p>Ihr Fachgeschäft für Tierbedarfe in Alheim-Heinebach. Mit Liebe zum Detail und fachkundiger Beratung für alle Tierfreunde.</p>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h4>Navigation</h4>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#startseite">Startseite</a></li>
                         <li><a href="#leistungen">Leistungen</a></li>
                         <li><a href="#marken">Marken</a></li>
                         <li><a href="#ueber-uns">Über uns</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
+                <div class="footer-column">
                     <h4>Kontakt</h4>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="tel:+4956649469691">+49 5664 9469691</a></li>
                         <li><a href="tel:+491724025725">+49 172 4025725</a></li>
-                        <li><a href="mailto:info@das-hundelaedchen.de">E-Mail</a></li>
+                        <li><a href="mailto:info@das-hundelaedchen.de">E-Mail senden</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Öffnungszeiten</h4>
-                    <ul>
-                        <li>Mo-Fr: 09:00-12:00 Uhr</li>
-                        <li>Mo-Fr: 15:00-18:00 Uhr</li>
-                        <li>Sa: 09:00-12:30 Uhr</li>
+                <div class="footer-column">
+                    <h4>Adresse</h4>
+                    <ul class="footer-links">
+                        <li>Borngasse 2</li>
+                        <li>36211 Alheim-Heinebach</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 Das Hundelädchen – Martina Weitzel. Demo-Redesign – nicht verbunden mit Das Hundelädchen – Martina Weitzel</p>
+                <p>Demo-Redesign — nicht verbunden mit Das Hundelädchen – Martina Weitzel</p>
             </div>
         </div>
     </footer>
 
     <script>
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');
 
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenuToggle.classList.toggle('active');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
 
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenuToggle.classList.remove('active');
+                hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
             });
         });
@@ -1106,9 +1000,7 @@
         }, observerOptions);
 
         document.querySelectorAll('section').forEach(section => {
-            if (!section.classList.contains('visible')) {
-                observer.observe(section);
-            }
+            observer.observe(section);
         });
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1116,14 +1008,34 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 100;
+                    const navHeight = 90;
+                    const targetPosition = target.offsetTop - navHeight;
                     window.scrollTo({
-                        top: offsetTop,
+                        top: targetPosition,
                         behavior: 'smooth'
                     });
                 }
             });
         });
+
+        let lastScroll = 0;
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                if (currentScroll > lastScroll) {
+                    nav.style.transform = 'translateX(-50%) translateY(-120%)';
+                } else {
+                    nav.style.transform = 'translateX(-50%) translateY(0)';
+                }
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        nav.style.transition = 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
     </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p><p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p></body>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p></body>
 </html>
