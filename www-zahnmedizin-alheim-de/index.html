@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handwerker & Renovierungsservice | Professionelle Lösungen</title>
+    <title>Meisterhafte Holzarbeiten & Renovierungen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&display=swap');
 
         * {
             margin: 0;
@@ -17,14 +17,14 @@
         }
 
         :root {
-            --accent: #7C6A5C;
-            --accent-hover: #6B5A4D;
+            --accent: #8B7355;
+            --accent-hover: #745d44;
             --bg: #FAFAF9;
             --text: #18181B;
-            --text-light: #52525B;
-            --stone-100: #F5F5F4;
-            --stone-200: #E7E5E4;
+            --text-muted: #52525B;
+            --border: #E4E4E7;
             --white: #FFFFFF;
+            --glass-bg: rgba(250, 250, 249, 0.85);
         }
 
         html {
@@ -32,17 +32,19 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--bg);
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
             color: var(--text);
             line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Cabinet Grotesk', sans-serif;
-            font-weight: 700;
-            line-height: 1.2;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
         }
 
         .container {
@@ -54,51 +56,53 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 1.5rem;
+            left: 0;
+            right: 0;
             z-index: 1000;
-            width: calc(100% - 4rem);
-            max-width: 1200px;
+            padding: 0 2rem;
         }
 
         .nav-inner {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 9999px;
-            padding: 1rem 1.5rem;
+            padding: 1rem 2rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 4px 24px rgba(124, 106, 92, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(228, 228, 231, 0.5);
+            box-shadow: 0 10px 40px -10px rgba(139, 115, 85, 0.08);
         }
 
         .logo {
             font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 900;
             font-size: 1.25rem;
-            font-weight: 800;
             color: var(--text);
             text-decoration: none;
-            white-space: nowrap;
+            letter-spacing: -0.03em;
         }
 
-        .nav-menu {
+        .nav-links {
             display: flex;
+            align-items: center;
             gap: 2.5rem;
             list-style: none;
-            align-items: center;
         }
 
-        .nav-menu a {
+        .nav-links a {
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
+            font-size: 0.9375rem;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-menu a:hover {
+        .nav-links a:hover {
             color: var(--accent);
         }
 
@@ -109,18 +113,30 @@
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9375rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            white-space: nowrap;
         }
 
         .nav-cta:hover {
             background: var(--accent-hover);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(124, 106, 92, 0.25);
+            box-shadow: 0 8px 20px -8px rgba(139, 115, 85, 0.4);
         }
 
-        .mobile-toggle {
+        .nav-cta svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover svg {
+            transform: translateX(3px);
+        }
+
+        .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
@@ -130,294 +146,402 @@
             padding: 0.5rem;
         }
 
-        .mobile-toggle span {
+        .hamburger span {
             width: 24px;
             height: 2px;
             background: var(--text);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 2px;
         }
 
-        /* Hero */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
         .hero {
             min-height: 100dvh;
-            display: flex;
-            align-items: center;
-            padding-top: 8rem;
-            padding-bottom: 4rem;
-        }
-
-        .hero-grid {
             display: grid;
-            grid-template-columns: 60% 1fr;
-            gap: 4rem;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
+            gap: 4rem;
+            padding: 10rem 0 8rem;
+            position: relative;
         }
 
-        .hero-content h1 {
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-headline {
             font-size: clamp(3rem, 8vw, 6.5rem);
-            font-weight: 800;
             margin-bottom: 2rem;
-            letter-spacing: -0.03em;
+            color: var(--text);
         }
 
-        .hero-content p {
+        .hero-description {
             font-size: 1.25rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-bottom: 3rem;
-            max-width: 540px;
+            font-weight: 400;
             line-height: 1.8;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
             background: var(--accent);
             color: var(--white);
-            padding: 1.25rem 2.5rem;
+            padding: 1.125rem 2.5rem;
             border-radius: 9999px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.0625rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
         }
 
-        .hero-cta:hover {
+        .btn-primary:hover {
             background: var(--accent-hover);
-            transform: translateX(4px);
-            box-shadow: 0 8px 24px rgba(124, 106, 92, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px -10px rgba(139, 115, 85, 0.45);
         }
 
-        .hero-cta svg {
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary svg {
             width: 20px;
             height: 20px;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .hero-cta:hover svg {
+        .btn-primary:hover svg {
             transform: translateX(4px);
         }
 
-        .hero-gradient {
-            height: 600px;
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 1.125rem 2.5rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.0625rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.625rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .hero-image-panel {
+            position: relative;
+            height: 700px;
             border-radius: 2rem;
-            background: linear-gradient(135deg, #7C6A5C 0%, #9D8B7C 50%, #B5A394 100%);
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 25px 60px -15px rgba(139, 115, 85, 0.18);
         }
 
-        .hero-gradient::before {
+        .hero-image-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image-panel::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+            pointer-events: none;
         }
 
-        .hero-gradient::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle at 70% 70%, rgba(0, 0, 0, 0.1) 0%, transparent 50%);
-        }
-
-        /* Section Base */
+        /* Sections */
         section {
-            padding: 10rem 0;
-            position: relative;
+            padding: 8rem 0;
         }
 
         .section-header {
-            max-width: 720px;
-            margin-bottom: 5rem;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            text-align: center;
         }
 
-        .section-header h2 {
+        .section-label {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
             margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
         }
 
-        .section-header p {
-            font-size: 1.25rem;
-            color: var(--text-light);
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--text-muted);
             line-height: 1.8;
         }
 
-        /* Double Bezel Card */
-        .card-outer {
-            background: var(--stone-100);
-            border: 1px solid var(--stone-200);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            box-shadow: 0 24px 64px rgba(124, 106, 92, 0.03);
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 2rem;
         }
 
-        .card-inner {
+        .service-card {
+            background: rgba(228, 228, 231, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.375rem;
+        }
+
+        .service-card-inner {
+            background: var(--white);
+            border-radius: 1.75rem;
+            padding: 2.5rem;
+            height: 100%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-card-inner {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px -20px rgba(139, 115, 85, 0.15);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), #745d44);
+            border-radius: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.75rem;
+        }
+
+        .service-icon svg {
+            width: 32px;
+            height: 32px;
+            color: var(--white);
+        }
+
+        .service-title {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 240px;
+            border-radius: 1.25rem;
+            overflow: hidden;
+            margin-bottom: 1.75rem;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 25px 60px -15px rgba(139, 115, 85, 0.18);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            line-height: 1.85;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(139, 115, 85, 0.1);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+        }
+
+        .feature-text {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Portfolio/Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -20px rgba(139, 115, 85, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(24, 24, 27, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: var(--white);
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(228, 228, 231, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.375rem;
+        }
+
+        .testimonial-card-inner {
             background: var(--white);
             border-radius: 1.75rem;
             padding: 3rem;
             height: 100%;
         }
 
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        .service-card-large {
-            grid-column: span 2;
-        }
-
-        .service-card-large .card-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .service-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 1.25rem;
-        }
-
-        .service-card-large .service-image {
-            height: 100%;
-            min-height: 450px;
-        }
-
-        .service-content h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-content p {
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .service-features {
-            list-style: none;
+        .testimonial-stars {
             display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .service-features li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        .service-features li::before {
-            content: '→';
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 45% 1fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-images {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border-radius: 1.25rem;
-        }
-
-        .about-image:first-child {
-            grid-column: span 2;
-            height: 400px;
-        }
-
-        .about-content h2 {
-            font-size: clamp(2.5rem, 4vw, 3.5rem);
-            margin-bottom: 2rem;
-        }
-
-        .about-content p {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            line-height: 1.9;
+            gap: 0.25rem;
             margin-bottom: 1.5rem;
         }
 
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat h4 {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        /* Process */
-        .process-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .process-step {
-            position: relative;
-        }
-
-        .process-number {
-            font-family: 'Cabinet Grotesk', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: var(--stone-200);
-            line-height: 1;
-            margin-bottom: 1.5rem;
-        }
-
-        .process-step h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .process-step p {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 2rem;
+        .testimonial-stars svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
         }
 
         .testimonial-text {
-            font-size: 1.15rem;
+            font-size: 1.125rem;
             line-height: 1.8;
             color: var(--text);
             margin-bottom: 2rem;
@@ -428,13 +552,15 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
         }
 
         .testimonial-avatar {
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent) 0%, #9D8B7C 100%);
+            background: linear-gradient(135deg, var(--accent), #745d44);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -444,17 +570,30 @@
         }
 
         .testimonial-info h4 {
-            font-size: 1.1rem;
+            font-size: 1.125rem;
             margin-bottom: 0.25rem;
         }
 
         .testimonial-info p {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.9375rem;
+            color: var(--text-muted);
         }
 
-        /* Contact */
-        .contact-grid {
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            background: rgba(228, 228, 231, 0.3);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            padding: 0.375rem;
+        }
+
+        .contact-inner {
+            background: var(--white);
+            border-radius: 1.75rem;
+            padding: 4rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -462,102 +601,184 @@
 
         .contact-info h2 {
             font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
         }
 
         .contact-item {
-            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
         }
 
-        .contact-item h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
+        .contact-item-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(139, 115, 85, 0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 24px;
+            height: 24px;
             color: var(--accent);
         }
 
-        .contact-item p, .contact-item a {
-            color: var(--text-light);
+        .contact-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.375rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .contact-item-content a,
+        .contact-item-content p {
+            color: var(--text);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.125rem;
+            font-weight: 600;
             transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .contact-item a:hover {
+        .contact-item-content a:hover {
             color: var(--accent);
         }
 
-        .contact-map {
-            border-radius: 1.25rem;
-            overflow: hidden;
-            height: 500px;
-            box-shadow: 0 24px 64px rgba(124, 106, 92, 0.08);
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .contact-map iframe {
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            font-size: 0.9375rem;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: 1rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 450px;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            margin-top: 4rem;
+            box-shadow: 0 20px 50px -15px rgba(139, 115, 85, 0.15);
+        }
+
+        .map-container iframe {
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
         }
 
         /* Footer */
         footer {
             background: var(--text);
-            color: var(--stone-200);
+            color: rgba(255, 255, 255, 0.8);
             padding: 4rem 0 2rem;
         }
 
         .footer-content {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 4rem;
             margin-bottom: 3rem;
         }
 
         .footer-brand h3 {
-            font-size: 1.5rem;
             color: var(--white);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
         }
 
         .footer-brand p {
-            color: var(--stone-200);
             line-height: 1.8;
-            opacity: 0.8;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-links h4 {
-            font-size: 1.1rem;
+        .footer-column h4 {
             color: var(--white);
-            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            margin-bottom: 1.25rem;
+            font-weight: 700;
         }
 
-        .footer-links ul {
+        .footer-links {
             list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
         .footer-links a {
-            color: var(--stone-200);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .footer-links a:hover {
-            opacity: 1;
             color: var(--accent);
         }
 
         .footer-bottom {
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: var(--stone-200);
-            opacity: 0.6;
-            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-disclaimer {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
         }
 
         /* Animations */
@@ -572,124 +793,145 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .hero-gradient {
-                height: 400px;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-grid .about-images {
-                order: 2;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .service-card-large .card-inner {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
             nav {
-                top: 1rem;
-                width: calc(100% - 2rem);
+                padding: 0 1.25rem;
             }
 
             .nav-inner {
-                padding: 1rem;
+                padding: 1rem 1.5rem;
             }
 
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: calc(100% + 1rem);
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(24px);
-                border-radius: 1.5rem;
-                padding: 1.5rem;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--white);
                 flex-direction: column;
-                gap: 1rem;
-                box-shadow: 0 8px 32px rgba(124, 106, 92, 0.15);
+                align-items: flex-start;
+                padding: 6rem 2rem 2rem;
+                gap: 2rem;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
             }
 
-            .nav-menu.active {
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+            }
+
+            .hamburger {
                 display: flex;
-            }
-
-            .mobile-toggle {
-                display: flex;
-            }
-
-            .mobile-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(6px, 6px);
-            }
-
-            .mobile-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .mobile-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(6px, -6px);
             }
 
             .hero {
-                padding-top: 6rem;
+                grid-template-columns: 1fr;
+                padding: 8rem 0 4rem;
+                gap: 3rem;
             }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .hero-headline {
+                font-size: 2.75rem;
+            }
+
+            .hero-description {
+                font-size: 1.125rem;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero-image-panel {
+                height: 400px;
             }
 
             section {
-                padding: 5rem 0;
+                padding: 4rem 0;
+            }
+
+            .section-header {
+                margin-bottom: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .service-card-large {
-                grid-column: span 1;
-            }
-
-            .service-card-large .service-image {
-                min-height: 300px;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
 
-            .process-grid, .testimonials-grid {
+            .about-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image img {
+                height: 400px;
+            }
+
+            .about-features {
                 grid-template-columns: 1fr;
             }
 
-            .card-inner {
-                padding: 2rem;
+            .gallery-grid {
+                grid-template-columns: 1fr;
             }
 
-            .container {
-                padding: 0 1.5rem;
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-inner {
+                grid-template-columns: 1fr;
+                padding: 2.5rem;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-headline {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .nav-inner {
+                padding: 0.875rem 1.25rem;
+            }
+
+            .logo {
+                font-size: 1.125rem;
             }
         }
     </style>
@@ -698,36 +940,46 @@
     <nav>
         <div class="nav-inner">
             <a href="#" class="logo">Handwerk</a>
-            <ul class="nav-menu">
-                <li><a href="#startseite">Startseite</a></li>
-                <li><a href="#leistungen">Leistungen</a></li>
-                <li><a href="#ueber-uns">Über uns</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
-                <li><a href="#kontakt" class="nav-cta">Jetzt anfragen</a></li>
-            </ul>
-            <button class="mobile-toggle" aria-label="Menü öffnen">
+            <button class="hamburger" aria-label="Menü öffnen">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            <ul class="nav-links">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#kontakt" class="nav-cta">
+                    Jetzt anfragen
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a></li>
+            </ul>
         </div>
     </nav>
 
     <main>
         <section id="startseite" class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content reveal">
-                        <h1>Qualität und Präzision in jedem Detail</h1>
-                        <p>Professionelle Handwerksleistungen für Ihr Zuhause. Von der Renovierung bis zur Reparatur – wir setzen Ihre Projekte mit Erfahrung und Sorgfalt um.</p>
-                        <a href="#kontakt" class="hero-cta">
-                            Kostenlos beraten lassen
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            <div class="container" style="display: contents;">
+                <div class="hero-content reveal">
+                    <h1 class="hero-headline">Meisterhafte Holzarbeiten für Ihr Zuhause</h1>
+                    <p class="hero-description">Präzise Handwerkskunst trifft auf jahrzehntelange Erfahrung. Wir verwandeln Ihre Vision in erstklassige Holzarbeiten – von maßgefertigten Fenstern bis zu kompletten Renovierungen.</p>
+                    <div class="hero-cta-group">
+                        <a href="#kontakt" class="btn-primary">
+                            Kostenlose Beratung
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7"/>
                             </svg>
                         </a>
+                        <a href="#leistungen" class="btn-secondary">
+                            Unsere Leistungen
+                        </a>
                     </div>
-                    <div class="hero-gradient reveal"></div>
+                </div>
+                <div class="hero-image-panel reveal">
+                    <img src="https://images.pexels.com/photos/5691501/pexels-photo-5691501.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein erfahrener Handwerker repariert einen Fensterrahmen in Innenräumen mit Werkzeugen und Fachkenntnissen.">
                 </div>
             </div>
         </section>
@@ -735,51 +987,53 @@
         <section id="leistungen">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Unsere Leistungen</h2>
-                    <p>Von kleinen Reparaturen bis zu umfassenden Renovierungsprojekten – wir bieten Ihnen professionelle Handwerksleistungen für jeden Bedarf.</p>
+                    <span class="section-label">Leistungen</span>
+                    <h2 class="section-title">Umfassende Handwerkslösungen</h2>
+                    <p class="section-description">Von der Reparatur bis zur Neuanfertigung – wir bieten professionelle Dienstleistungen für alle Holzarbeiten und Renovierungsprojekte.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card-large card-outer reveal">
-                        <div class="card-inner">
-                            <img src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Close-up of a person using a power drill on wood indoors during daytime." class="service-image">
-                            <div class="service-content">
-                                <h3>Renovierung & Sanierung</h3>
-                                <p>Wir hauchen Ihren Räumen neues Leben ein. Von der Planung bis zur Fertigstellung begleiten wir Sie bei Ihrem Renovierungsprojekt mit Fachwissen und handwerklicher Präzision.</p>
-                                <ul class="service-features">
-                                    <li>Komplette Raumgestaltung</li>
-                                    <li>Boden- und Wandarbeiten</li>
-                                    <li>Modernisierung von Altbauten</li>
-                                    <li>Energetische Sanierung</li>
-                                </ul>
+                    <div class="service-card reveal">
+                        <div class="service-card-inner">
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Nahaufnahme einer Person, die tagsüber einen Bohrer auf Holz in Innenräumen verwendet.">
                             </div>
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    <path d="M3 9h18M9 21V9"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Fensterreparatur & Montage</h3>
+                            <p class="service-description">Professionelle Reparatur und Installation von Holzfenstern. Wir stellen optimale Wärmedämmung und perfekte Passform sicher.</p>
                         </div>
                     </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <img src="https://images.pexels.com/photos/5691502/pexels-photo-5691502.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unrecognizable professional male master using cordless screwdriver to install metal hinge on wooden window in light room during repair works" class="service-image">
-                            <div class="service-content">
-                                <h3>Fenster & Türen</h3>
-                                <p>Fachgerechte Installation und Reparatur von Fenstern und Türen für optimale Sicherheit und Energieeffizienz.</p>
-                                <ul class="service-features">
-                                    <li>Montage und Austausch</li>
-                                    <li>Reparatur und Wartung</li>
-                                    <li>Abdichtung</li>
-                                </ul>
+                    <div class="service-card reveal">
+                        <div class="service-card-inner">
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/5691502/pexels-photo-5691502.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unerkennbarer professioneller männlicher Meister, der einen kabellosen Schraubendreher verwendet, um ein Metallscharnier an einem Holzfenster in einem hellen Raum während Reparaturarbeiten zu installieren">
                             </div>
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Renovierung & Restaurierung</h3>
+                            <p class="service-description">Komplette Renovierungsarbeiten für Innen- und Außenbereiche. Vom Boden bis zur Decke – mit Liebe zum Detail.</p>
                         </div>
                     </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <img src="https://images.pexels.com/photos/34006937/pexels-photo-34006937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter cutting wood with a circular saw at an outdoor construction site, showcasing craftsmanship." class="service-image">
-                            <div class="service-content">
-                                <h3>Holzarbeiten</h3>
-                                <p>Maßgeschneiderte Holzkonstruktionen und -reparaturen für Innen- und Außenbereiche mit höchster Verarbeitungsqualität.</p>
-                                <ul class="service-features">
-                                    <li>Möbelbau nach Maß</li>
-                                    <li>Terrassenbau</li>
-                                    <li>Holzschutz</li>
-                                </ul>
+                    <div class="service-card reveal">
+                        <div class="service-card-inner">
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/34006937/pexels-photo-34006937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Schreiner schneidet Holz mit einer Kreissäge auf einer Baustelle im Freien und zeigt Handwerkskunst.">
                             </div>
+                            <div class="service-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Maßanfertigungen</h3>
+                            <p class="service-description">Individuelle Holzkonstruktionen nach Maß. Türen, Möbel, Treppen – exakt auf Ihre Wünsche abgestimmt.</p>
                         </div>
                     </div>
                 </div>
@@ -788,76 +1042,51 @@
 
         <section id="ueber-uns">
             <div class="container">
-                <div class="about-grid">
-                    <div class="about-images reveal">
-                        <img src="https://images.pexels.com/photos/5974058/pexels-photo-5974058.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Crop anonymous male drilling holes in wooden panel while working on table in workshop" class="about-image">
-                        <img src="https://images.pexels.com/photos/5974387/pexels-photo-5974387.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A skilled carpenter uses an electric drill on a wooden plank indoors, highlighting craftsmanship." class="about-image">
-                        <img src="https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Close-up of a handyman's hands using a drill to fix a window inside an apartment." class="about-image">
+                <div class="about-split">
+                    <div class="about-image reveal">
+                        <img src="https://images.pexels.com/photos/5974058/pexels-photo-5974058.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein anonymer Mann bohrt während der Arbeit am Tisch in der Werkstatt Löcher in eine Holzplatte">
                     </div>
                     <div class="about-content reveal">
-                        <h2>Handwerk mit Herz und Verstand</h2>
-                        <p>Seit über zwei Jahrzehnten steht unser Name für zuverlässige und hochwertige Handwerksarbeit. Was als kleiner Betrieb begann, hat sich zu einem erfahrenen Team entwickelt, das Wert auf Qualität, Präzision und Kundenzufriedenheit legt.</p>
-                        <p>Jedes Projekt ist für uns eine neue Gelegenheit, unser Können unter Beweis zu stellen. Wir arbeiten mit modernen Techniken und bewährten Methoden, um Ergebnisse zu liefern, die unsere Kunden begeistern.</p>
-                        <p>Unser Anspruch ist es, nicht nur Ihre Erwartungen zu erfüllen, sondern sie zu übertreffen – durch ehrliche Beratung, transparente Kommunikation und handwerkliche Exzellenz.</p>
-                        <div class="about-stats">
-                            <div class="stat">
-                                <h4>20+</h4>
-                                <p>Jahre Erfahrung</p>
+                        <span class="section-label">Über uns</span>
+                        <h2>Handwerkskunst aus Leidenschaft und Tradition</h2>
+                        <p>Seit über 25 Jahren steht unser Familienbetrieb für erstklassige Holzarbeiten und zuverlässigen Service. Was als kleine Werkstatt begann, ist heute ein etabliertes Unternehmen mit einem Team erfahrener Handwerker.</p>
+                        <p>Wir verbinden traditionelle Handwerkskunst mit modernen Techniken und legen größten Wert auf Qualität, Präzision und Kundenzufriedenheit. Jedes Projekt wird mit der gleichen Sorgfalt behandelt – egal ob kleine Reparatur oder komplette Renovierung.</p>
+                        <div class="about-features">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Über 25 Jahre Erfahrung</span>
                             </div>
-                            <div class="stat">
-                                <h4>850+</h4>
-                                <p>Projekte</p>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Meisterbetrieb</span>
                             </div>
-                            <div class="stat">
-                                <h4>100%</h4>
-                                <p>Engagement</p>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Umweltfreundliche Materialien</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="ablauf">
-            <div class="container">
-                <div class="section-header reveal">
-                    <h2>So arbeiten wir</h2>
-                    <p>Von der ersten Kontaktaufnahme bis zur finalen Abnahme – wir begleiten Sie Schritt für Schritt durch Ihr Projekt.</p>
-                </div>
-                <div class="process-grid">
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <div class="process-step">
-                                <div class="process-number">01</div>
-                                <h3>Erstberatung</h3>
-                                <p>In einem unverbindlichen Gespräch besprechen wir Ihre Wünsche und Anforderungen. Wir nehmen uns Zeit, um Ihre Vision zu verstehen und erste Lösungsansätze zu entwickeln.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <div class="process-step">
-                                <div class="process-number">02</div>
-                                <h3>Planung & Angebot</h3>
-                                <p>Nach einer detaillierten Vor-Ort-Besichtigung erstellen wir ein transparentes Angebot mit allen erforderlichen Arbeiten und Materialien. Sie erhalten eine klare Übersicht über Kosten und Zeitplan.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <div class="process-step">
-                                <div class="process-number">03</div>
-                                <h3>Umsetzung</h3>
-                                <p>Unser erfahrenes Team setzt Ihr Projekt professionell und termingerecht um. Dabei achten wir auf Sauberkeit, Ordnung und halten Sie stets über den Fortschritt auf dem Laufenden.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <div class="process-step">
-                                <div class="process-number">04</div>
-                                <h3>Abnahme</h3>
-                                <p>Nach Fertigstellung nehmen wir gemeinsam mit Ihnen das Projekt ab. Ihre Zufriedenheit ist unser Ziel – auch nach Projektabschluss stehen wir für Fragen und Nacharbeiten zur Verfügung.</p>
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <polyline points="22 4 12 14.01 9 11.01"/>
+                                    </svg>
+                                </div>
+                                <span class="feature-text">Garantierte Qualität</span>
                             </div>
                         </div>
                     </div>
@@ -865,45 +1094,96 @@
             </div>
         </section>
 
-        <section id="referenzen" style="background: var(--stone-100);">
+        <section id="projekte">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Das sagen unsere Kunden</h2>
-                    <p>Zufriedene Kunden sind unser bester Beweis für Qualität und Zuverlässigkeit.</p>
+                    <span class="section-label">Projekte</span>
+                    <h2 class="section-title">Unsere handwerklichen Arbeiten</h2>
+                    <p class="section-description">Ein Einblick in unsere vielfältigen Projekte – von präzisen Reparaturen bis zu umfangreichen Renovierungen.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item reveal">
+                        <img src="https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Nahaufnahme der Hände eines Handwerkers, der einen Bohrer verwendet, um ein Fenster in einer Wohnung zu reparieren.">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Fenstermontage</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-item reveal">
+                        <img src="https://images.pexels.com/photos/30592259/pexels-photo-30592259.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Schreiner schneidet Holz mit einer Handsäge und zeigt Handwerkskunst und Präzision.">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Präzise Holzarbeiten</h3>
+                        </div>
+                    </div>
+                    <div class="gallery-item reveal">
+                        <img src="https://images.pexels.com/photos/5974055/pexels-photo-5974055.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Ein selbstbewusster Handwerker konzentriert sich auf das Bohren einer Holzplanke in einer gut ausgestatteten Werkstatt.">
+                        <div class="gallery-overlay">
+                            <h3 class="gallery-title">Maßgefertigte Lösungen</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Kundenstimmen</span>
+                    <h2 class="section-title">Was unsere Kunden sagen</h2>
                 </div>
                 <div class="testimonials-grid">
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <p class="testimonial-text">„Die Renovierung unserer Altbauwohnung wurde professionell und termingerecht durchgeführt. Besonders beeindruckt hat uns die sorgfältige Arbeitsweise und die Liebe zum Detail. Absolute Empfehlung!"</p>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <p class="testimonial-text">Die Fensterreparatur wurde äußerst professionell durchgeführt. Das Team war pünktlich, sauber und hat exzellente Arbeit geleistet. Die neuen Fenster dichten perfekt ab und sehen fantastisch aus. Absolut empfehlenswert!</p>
                             <div class="testimonial-author">
                                 <div class="testimonial-avatar">MK</div>
                                 <div class="testimonial-info">
-                                    <h4>Martin Keller</h4>
-                                    <p>Hausbesitzer, München</p>
+                                    <h4>Martina Kowalski</h4>
+                                    <p>Hausbesitzerin</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <p class="testimonial-text">„Nach einem Wasserschaden mussten mehrere Fenster ausgetauscht werden. Die Beratung war kompetent, die Ausführung einwandfrei. Das Team war pünktlich, freundlich und hat die Baustelle jeden Tag sauber hinterlassen."</p>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <p class="testimonial-text">Wir haben eine komplette Renovierung unserer Altbauwohnung durchführen lassen. Von der Beratung bis zur Fertigstellung war alles perfekt. Die Handwerker haben mit großer Sorgfalt gearbeitet und auf alle Details geachtet. Vielen Dank!</p>
                             <div class="testimonial-author">
-                                <div class="testimonial-avatar">SW</div>
+                                <div class="testimonial-avatar">TS</div>
                                 <div class="testimonial-info">
-                                    <h4>Sabine Wagner</h4>
-                                    <p>Wohnungseigentümerin, Augsburg</p>
+                                    <h4>Thomas Schmidt</h4>
+                                    <p>Wohnungseigentümer</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-outer reveal">
-                        <div class="card-inner">
-                            <p class="testimonial-text">„Von der ersten Beratung bis zur finalen Abnahme hat alles perfekt geklappt. Die maßgefertigten Einbauschränke sind ein echter Hingucker und die Qualität überzeugt auf ganzer Linie. Vielen Dank!"</p>
+                    <div class="testimonial-card reveal">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-stars">
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            </div>
+                            <p class="testimonial-text">Die maßgefertigten Schranktüren sind wunderschön geworden. Die Qualität der Arbeit und die Liebe zum Detail sind beeindruckend. Das Preis-Leistungs-Verhältnis ist hervorragend. Ich werde diesen Betrieb definitiv weiterempfehlen.</p>
                             <div class="testimonial-author">
-                                <div class="testimonial-avatar">TH</div>
+                                <div class="testimonial-avatar">AW</div>
                                 <div class="testimonial-info">
-                                    <h4>Thomas Huber</h4>
-                                    <p>Eigenheimbesitzer, Landsberg</p>
+                                    <h4>Anna Weber</h4>
+                                    <p>Privatkundin</p>
                                 </div>
                             </div>
                         </div>
@@ -914,29 +1194,83 @@
 
         <section id="kontakt">
             <div class="container">
-                <div class="contact-grid">
-                    <div class="contact-info reveal">
-                        <h2>Lassen Sie uns über Ihr Projekt sprechen</h2>
-                        <div class="contact-item">
-                            <h3>Adresse</h3>
-                            <p>Musterstraße 123<br>80331 München</p>
+                <div class="section-header reveal">
+                    <span class="section-label">Kontakt</span>
+                    <h2 class="section-title">Lassen Sie uns sprechen</h2>
+                    <p class="section-description">Haben Sie ein Projekt im Kopf? Kontaktieren Sie uns für eine kostenlose Beratung und ein unverbindliches Angebot.</p>
+                </div>
+                <div class="contact-wrapper reveal">
+                    <div class="contact-inner">
+                        <div class="contact-info">
+                            <h2>Wir freuen uns auf Ihre Anfrage</h2>
+                            <p>Ob kleine Reparatur oder großes Renovierungsprojekt – wir beraten Sie gerne persönlich und erstellen Ihnen ein individuelles Angebot.</p>
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <div class="contact-item-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-item-content">
+                                        <h4>Telefon</h4>
+                                        <a href="tel:+4915012345678">+49 150 12345678</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-item-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                            <polyline points="22,6 12,13 2,6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-item-content">
+                                        <h4>E-Mail</h4>
+                                        <a href="mailto:info@handwerk-meister.de">info@handwerk-meister.de</a>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <div class="contact-item-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                    </div>
+                                    <div class="contact-item-content">
+                                        <h4>Adresse</h4>
+                                        <p>Musterstraße 42<br>10115 Berlin</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="contact-item">
-                            <h3>Telefon</h3>
-                            <a href="tel:+498912345678">+49 89 12345678</a>
-                        </div>
-                        <div class="contact-item">
-                            <h3>E-Mail</h3>
-                            <a href="mailto:kontakt@handwerk-beispiel.de">kontakt@handwerk-beispiel.de</a>
-                        </div>
-                        <div class="contact-item">
-                            <h3>Öffnungszeiten</h3>
-                            <p>Montag - Freitag: 7:00 - 18:00 Uhr<br>Samstag: Nach Vereinbarung</p>
+                        <div class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ihre Nachricht</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                Nachricht senden
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"/>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
-                    <div class="contact-map reveal">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.6274501581604!2d11.573678776832893!3d48.13743007124128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e75f9a38c5fd9%3A0x10cb84a7db1987d!2sMarienplatz%2C%2080331%20M%C3%BCnchen!5e0!3m2!1sde!2sde!4v1699999999999!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                </div>
+                <div class="map-container reveal">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2427.4181087888745!2d13.388860776806205!3d52.52472443722426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a851c655f20989%3A0x26bbfb4e84674c63!2sBrandenburger%20Tor!5e0!3m2!1sde!2sde!4v1698765432109!5m2!1sde!2sde" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -946,100 +1280,90 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Handwerk</h3>
-                    <p>Ihr zuverlässiger Partner für professionelle Handwerksleistungen. Qualität, Präzision und Kundenzufriedenheit seit über 20 Jahren.</p>
+                    <h3>Handwerk Meisterbetrieb</h3>
+                    <p>Qualität, Präzision und Zuverlässigkeit seit über 25 Jahren. Ihr Partner für erstklassige Holzarbeiten und Renovierungen.</p>
                 </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Navigation</h4>
-                    <ul>
+                    <ul class="footer-links">
                         <li><a href="#startseite">Startseite</a></li>
                         <li><a href="#leistungen">Leistungen</a></li>
                         <li><a href="#ueber-uns">Über uns</a></li>
-                        <li><a href="#kontakt">Kontakt</a></li>
+                        <li><a href="#projekte">Projekte</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <div class="footer-column">
                     <h4>Leistungen</h4>
-                    <ul>
+                    <ul class="footer-links">
+                        <li><a href="#leistungen">Fensterreparatur</a></li>
                         <li><a href="#leistungen">Renovierung</a></li>
-                        <li><a href="#leistungen">Fenster & Türen</a></li>
-                        <li><a href="#leistungen">Holzarbeiten</a></li>
-                        <li><a href="#leistungen">Reparaturen</a></li>
+                        <li><a href="#leistungen">Maßanfertigungen</a></li>
+                        <li><a href="#leistungen">Restaurierung</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+4915012345678">+49 150 12345678</a></li>
+                        <li><a href="mailto:info@handwerk-meister.de">info@handwerk-meister.de</a></li>
+                        <li><a href="#kontakt">Kontaktformular</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>Demo-Redesign — nicht verbunden mit Handwerk. © 2024 Alle Rechte vorbehalten.</p>
+                <p>&copy; 2024 Handwerk Meisterbetrieb. Alle Rechte vorbehalten.</p>
+                <p class="footer-disclaimer">Demo-Redesign — nicht verbunden mit Handwerk Meisterbetrieb</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-
-        mobileToggle.addEventListener('click', () => {
-            mobileToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
         });
 
         // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-menu a').forEach(link => {
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileToggle.classList.remove('active');
-                navMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
             });
         });
 
-        // Scroll reveal animation
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
-        }, observerOptions);
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
 
-        document.querySelectorAll('.reveal').forEach(element => {
-            observer.observe(element);
+        // Form Submission (Demo)
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.');
+            e.target.reset();
         });
 
-        // Smooth scroll with offset for fixed nav
+        // Smooth Scroll Enhancement
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 100;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Add backdrop blur effect on scroll
-        let lastScroll = 0;
-        const nav = document.querySelector('nav');
-
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 50) {
-                nav.style.top = currentScroll > lastScroll ? '-100px' : '2rem';
-            } else {
-                nav.style.top = '2rem';
-            }
-            
-            lastScroll = currentScroll;
-        }, { passive: true });
-    </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Zahnmedizin Alheim MVZ - Zahnärztliche Leitung Dr. Klaus Gerlach</p></body>
-</html>
+                    const offset = 100;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scroll
