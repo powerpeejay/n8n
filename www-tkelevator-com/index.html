@@ -166,13 +166,13 @@
             min-height: 100dvh;
             display: flex;
             align-items: center;
-            padding: 140px 0 80px;
+            padding: 180px 0 100px;
         }
 
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 100px;
             align-items: center;
         }
 
@@ -188,7 +188,7 @@
             border-radius: 100px;
             font-size: 13px;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 32px;
             letter-spacing: 0.3px;
         }
 
@@ -196,12 +196,13 @@
             font-size: 72px;
             margin-bottom: 32px;
             letter-spacing: -0.02em;
+            line-height: 1.1;
         }
 
         .hero p {
             font-size: 20px;
             color: rgba(24, 24, 27, 0.7);
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             line-height: 1.7;
         }
 
@@ -251,7 +252,7 @@
         }
 
         section {
-            padding: 100px 0;
+            padding: 120px 0;
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -264,12 +265,12 @@
 
         .section-header {
             text-align: center;
-            margin-bottom: 64px;
+            margin-bottom: 80px;
         }
 
         .section-header h2 {
             font-size: 56px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
             letter-spacing: -0.02em;
         }
 
@@ -278,6 +279,7 @@
             color: rgba(24, 24, 27, 0.6);
             max-width: 700px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
         .services-grid {
@@ -301,7 +303,7 @@
         .service-card-inner {
             background: var(--white);
             border-radius: 28px;
-            padding: 40px;
+            padding: 48px;
         }
 
         .service-card.featured {
@@ -328,7 +330,8 @@
 
         .service-card h3 {
             font-size: 24px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            line-height: 1.3;
         }
 
         .service-card p {
@@ -376,7 +379,7 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 100px;
             align-items: center;
         }
 
@@ -392,7 +395,7 @@
 
         .about-content h2 {
             font-size: 48px;
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             letter-spacing: -0.02em;
         }
 
@@ -404,7 +407,7 @@
         }
 
         .usps {
-            margin-top: 40px;
+            margin-top: 48px;
         }
 
         .usp-item {
@@ -459,7 +462,7 @@
             background: rgba(253, 251, 247, 0.05);
             border: 1px solid rgba(253, 251, 247, 0.1);
             border-radius: 24px;
-            padding: 32px;
+            padding: 40px;
         }
 
         .hours-card h3 {
@@ -477,12 +480,12 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 100px;
         }
 
         .contact-info h3 {
             font-size: 32px;
-            margin-bottom: 32px;
+            margin-bottom: 40px;
         }
 
         .contact-item {
@@ -501,6 +504,7 @@
         .contact-value {
             font-size: 18px;
             color: var(--text);
+            line-height: 1.6;
         }
 
         .contact-value a {
@@ -578,7 +582,7 @@
         footer {
             background: var(--text);
             color: var(--bg);
-            padding: 80px 0 40px;
+            padding: 100px 0 40px;
         }
 
         .footer-grid {
@@ -687,13 +691,13 @@
             }
 
             .hero {
-                padding: 120px 0 60px;
+                padding: 140px 0 80px;
                 min-height: auto;
             }
 
             .hero-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
             }
 
             .hero-content {
@@ -701,11 +705,12 @@
             }
 
             .hero h1 {
-                font-size: 42px;
+                font-size: 48px;
             }
 
             .hero p {
                 font-size: 18px;
+                margin-bottom: 40px;
             }
 
             .hero-image-wrap img {
@@ -713,11 +718,15 @@
             }
 
             section {
-                padding: 60px 0;
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 60px;
             }
 
             .section-header h2 {
-                font-size: 36px;
+                font-size: 40px;
             }
 
             .section-header p {
@@ -732,13 +741,17 @@
                 grid-row: span 1;
             }
 
+            .service-card-inner {
+                padding: 32px;
+            }
+
             .brands-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
             }
 
             .about-image-wrap img {
@@ -759,7 +772,7 @@
 
             .contact-grid {
                 grid-template-columns: 1fr;
-                gap: 40px;
+                gap: 48px;
             }
 
             .testimonials-grid {
@@ -803,7 +816,7 @@
                     <div class="hero-image-wrap">
                         <div class="double-bezel">
                             <div class="double-bezel-inner">
-                                <img src="https://images.pexels.com/photos/36624164/pexels-photo-36624164.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Cute Pomsky dog enjoying a spring sunset among blooming daffodils">
+                                <img src="https://picsum.photos/seed/warm-dog-owner-portrait/1200/600" alt="Hundebesitzerin mit glücklichem Hund in warmem natürlichen Licht">
                             </div>
                         </div>
                     </div>
@@ -823,7 +836,7 @@
                             <div class="service-icon">🐕</div>
                             <h3>Fachkundige Beratung rund um den Hund</h3>
                             <p>Beratung für alle Tierliebhaber oder die, die es werden wollen. Mit regelmäßigen Weiterbildungen zum Thema Hundeverhalten biete ich Ihnen kompetente und individuelle Unterstützung.</p>
-                            <img src="https://images.pexels.com/photos/27132949/pexels-photo-27132949.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A man training a sitting dog on an agility course with grass and visible obstacles" class="service-image">
+                            <img src="https://picsum.photos/seed/dog-training-consultation/800/240" alt="Hundetraining und fachkundige Beratung" class="service-image">
                         </div>
                     </div>
                     <div class="service-card">
@@ -894,7 +907,7 @@
                     <div class="about-image-wrap">
                         <div class="double-bezel">
                             <div class="double-bezel-inner">
-                                <img src="https://images.pexels.com/photos/36690455/pexels-photo-36690455.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A woman playing with her dog on the sandy beach of Kołobrzeg on a sunny day">
+                                <img src="https://picsum.photos/seed/friendly-pet-advisor-portrait/1200/600" alt="Freundliche Tierberaterin mit authentischem Portrait">
                             </div>
                         </div>
                     </div>
@@ -1112,5 +1125,5 @@
             });
         });
     </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p></body>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p><p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Das Hundelädchen – Martina Weitzel</p></body>
 </html>
