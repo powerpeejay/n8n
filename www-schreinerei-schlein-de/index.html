@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schreinerei Schlein – Schreinerei & Bestattungen Torsten Schlein</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #2C5234;
+            --bg: #F7F6F3;
+            --text: #111111;
+            --border: #EAEAEA;
+            --white: #FFFFFF;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .emergency-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .emergency-phone:hover {
+            background: #1e3823;
+        }
+
+        .phone-icon {
+            width: 18px;
+            height: 18px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: var(--text);
+            margin: 6px 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            padding: 32px 40px;
+            transform: translateY(-100%);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav .nav-links {
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav .nav-links a {
+            font-size: 20px;
+        }
+
+        .hero {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            min-height: 100dvh;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            background: var(--bg);
+        }
+
+        .hero-content h1 {
+            font-size: 52px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #555555;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-emergency {
+            background: var(--accent);
+            color: var(--white);
+            padding: 24px 32px;
+            border-radius: 4px;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .hero-emergency p {
+            font-size: 14px;
+            margin-bottom: 8px;
+            opacity: 0.9;
+        }
+
+        .hero-emergency a {
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border: 2px solid var(--text);
+            background: transparent;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--text);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #1e3823;
+            border-color: #1e3823;
+        }
+
+        section {
+            padding: 120px 40px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #555555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .business-areas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .business-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 48px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .business-card:hover {
+            border-color: var(--accent);
+        }
+
+        .business-card h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .business-card p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .business-card ul {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .business-card ul li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 16px;
+        }
+
+        .business-card ul li:last-child {
+            border-bottom: none;
+        }
+
+        .services-section {
+            background: #FDFCFA;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .service-card-content {
+            padding: 32px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: #555555;
+            line-height: 1.7;
+        }
+
+        .bestattungen-section {
+            background: linear-gradient(to bottom, #F7F6F3 0%, #FDFCFA 100%);
+        }
+
+        .bestattungen-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .bestattungen-text h3 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .bestattungen-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #555555;
+        }
+
+        .bestattungen-features {
+            list-style: none;
+            margin: 32px 0;
+        }
+
+        .bestattungen-features li {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .bestattungen-features li:last-child {
+            border-bottom: none;
+        }
+
+        .bestattungen-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-section {
+            background: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 36px;
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            color: #555555;
+        }
+
+        .about-highlight {
+            background: #F7F6F3;
+            padding: 32px;
+            border-left: 4px solid var(--accent);
+            margin: 32px 0;
+        }
+
+        .about-highlight p {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .team-member {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .team-member h4 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .team-member p {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .about-images img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .about-images img:first-child {
+            grid-column: 1 / -1;
+            height: 360px;
+        }
+
+        .testimonials-section {
+            background: #FDFCFA;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 40px;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+            color: #555555;
+        }
+
+        .testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .testimonial-service {
+            font-size: 14px;
+            color: var(--accent);
+        }
+
+        .contact-section {
+            background: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h3 {
+            font-size: 36px;
+            margin-bottom: 32px;
+        }
+
+        .contact-item {
+            margin-bottom: 32px;
+        }
+
+        .contact-item h4 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .contact-item p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555555;
+        }
+
+        .contact-item a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        .contact-cta {
+            background: #F7F6F3;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .contact-cta h4 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .contact-cta p {
+            font-size: 16px;
+            margin-bottom: 24px;
+            color: #555555;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        footer {
+            background: #111111;
+            color: #CCCCCC;
+            padding: 60px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            color: var(--white);
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .footer-links h4 {
+            color: var(--white);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid #333333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-bottom a {
+            color: #CCCCCC;
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--white);
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                height: 50vh;
+            }
+
+            .hero-content {
+                padding: 60px 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bestattungen-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 16px 24px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .emergency-phone-mobile {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                background: var(--accent);
+                color: var(--white);
+                padding: 12px 20px;
+                border-radius: 4px;
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 14px;
+                margin-left: 12px;
+            }
+
+            .emergency-phone-mobile .phone-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .hero {
+                margin-top: 64px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .section-header h2 {
+                font-size: 36px;
+            }
+
+            .section-header p {
+                font-size: 16px;
+            }
+
+            .business-areas {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .business-card {
+                padding: 32px;
+            }
+
+            .business-card h3 {
+                font-size: 28px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bestattungen-text h3,
+            .about-text h3,
+            .contact-info h3 {
+                font-size: 28px;
+            }
+
+            .about-images {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Schreinerei Schlein</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#geschaeftsbereiche">Geschäftsbereiche</a></li>
+                    <li><a href="#schreinerei">Schreinerei</a></li>
+                    <li><a href="#bestattungen">Bestattungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+                <a href="tel:+4900000000" class="emergency-phone">
+                    <svg class="phone-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                    </svg>
+                    24h Notdienst
+                </a>
+            </nav>
+            <div style="display: flex; align-items: center;">
+                <button class="mobile-menu-toggle" aria-label="Menü öffnen">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a href="tel:+4900000000" class="emergency-phone-mobile">
+                    <svg class="phone-icon" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <ul class="nav-links">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#geschaeftsbereiche">Geschäftsbereiche</a></li>
+                <li><a href="#schreinerei">Schreinerei</a></li>
+                <li><a href="#bestattungen">Bestattungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="startseite" class="hero">
+            <img src="https://images.pexels.com/photos/18091841/pexels-photo-18091841.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A warm, inviting hallway featuring wooden doors and floor, and a potted plant for added charm." class="hero-image">
+            <div class="hero-content">
+                <h1>Schreinerei & Bestattungen Schlein</h1>
+                <p class="hero-subtitle">Traditionelles Handwerk und würdevoller Abschied – seit Generationen in vertrauensvollen Händen</p>
+                <div class="hero-emergency">
+                    <p>24-Stunden-Notdienst</p>
+                    <a href="tel:+4900000000">Jetzt anrufen</a>
+                </div>
+                <div class="hero-ctas">
+                    <a href="#schreinerei" class="btn btn-primary">Schreinerei-Leistungen</a>
+                    <a href="#bestattungen" class="btn">Bestattungen</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="geschaeftsbereiche">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Unsere Geschäftsbereiche</h2>
+                    <p>Zwei Bereiche, eine Philosophie: Mit Sorgfalt, Respekt und handwerklicher Präzision begleiten wir Sie in allen Lebenslagen</p>
+                </div>
+                <div class="business-areas">
+                    <div class="business-card reveal">
+                        <h3>Schreinerei</h3>
+                        <p>Von maßgefertigten Türen und Fenstern bis hin zu kompletten Innenausbauten – unser Handwerk verbindet Tradition mit zeitgemäßer Präzision. Jedes Projekt entsteht in enger Abstimmung mit unseren Kunden.</p>
+                        <ul>
+                            <li>Türen & Fenster</li>
+                            <li>Innenausbau</li>
+                            <li>Trockenbau</li>
+                            <li>Hausverkleidungen</li>
+                            <li>Sonderanfertigungen</li>
+                        </ul>
+                        <a href="#schreinerei" class="btn">Mehr zur Schreinerei</a>
+                    </div>
+                    <div class="business-card reveal">
+                        <h3>Bestattungen</h3>
+                        <p>In schweren Stunden stehen wir Ihnen mit Einfühlungsvermögen und professioneller Begleitung zur Seite. Wir organisieren würdevolle Abschiede und kümmern uns um alle formalen und organisatorischen Aspekte.</p>
+                        <ul>
+                            <li>Vollständige Bestattungsdienstleistungen</li>
+                            <li>Persönliche Beratung</li>
+                            <li>Organisation und Durchführung</li>
+                            <li>Trauerbegleitung</li>
+                            <li>24-Stunden-Notdienst</li>
+                        </ul>
+                        <a href="#bestattungen" class="btn">Mehr zu Bestattungen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="schreinerei" class="services-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Leistungen Schreinerei</h2>
+                    <p>Individuelle Holzarbeiten für Ihr Zuhause – von der Planung bis zur perfekten Ausführung</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/9551394/pexels-photo-9551394.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A modern room featuring a blue accent wall, unique patterned wallpaper, and contemporary lighting.">
+                        <div class="service-card-content">
+                            <h3>Türen & Fenster</h3>
+                            <p>Maßgefertigte Türen und Fenster aus hochwertigen Materialien. Passgenau auf Ihre baulichen Gegebenheiten abgestimmt und mit höchsten Ansprüchen an Dämmung und Langlebigkeit.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/15798782/pexels-photo-15798782.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A red brick wall under construction with tools and materials scattered around in a renovation project.">
+                        <div class="service-card-content">
+                            <h3>Innenausbau</h3>
+                            <p>Vom Dachgeschossausbau bis zur Wohnraumgestaltung – wir schaffen funktionale und ästhetische Räume, die zu Ihrem Leben passen. Individuelle Lösungen für jedes Projekt.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/11427524/pexels-photo-11427524.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Black and white photo of a worker installing drywall indoors, Falun, Sweden.">
+                        <div class="service-card-content">
+                            <h3>Trockenbau</h3>
+                            <p>Professionelle Trockenbauarbeiten für Wände, Decken und Raumteilungen. Schnelle Umsetzung mit präzisen Ergebnissen für moderne Raumkonzepte.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/7937308/pexels-photo-7937308.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Interior view of a simple white corridor in an unfinished building, showing raw construction details.">
+                        <div class="service-card-content">
+                            <h3>Hausverkleidungen</h3>
+                            <p>Hochwertige Fassadenverkleidungen aus Holz schützen Ihr Gebäude und verleihen ihm ein einzigartiges Erscheinungsbild. Langlebig und witterungsbeständig.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/11596876/pexels-photo-11596876.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Minimalist black and white interior featuring a stove, window with curtains, and wooden stairs.">
+                        <div class="service-card-content">
+                            <h3>Sonderanfertigungen</h3>
+                            <p>Ihre Vision, unser Handwerk: Von Einbaumöbeln über Treppen bis zu individuellen Holzkonstruktionen – wir realisieren Ihre besonderen Wünsche mit Liebe zum Detail.</p>
+                        </div>
+                    </div>
+                    <div class="service-card reveal">
+                        <img src="https://images.pexels.com/photos/9895227/pexels-photo-9895227.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Clean and simple white doors with handles, reflecting in a mirror for a minimalist aesthetic.">
+                        <div class="service-card-content">
+                            <h3>Beratung & Planung</h3>
+                            <p>In einem persönlichen Gespräch entwickeln wir gemeinsam die beste Lösung für Ihr Vorhaben. Profitieren Sie von unserer langjährigen Erfahrung und fachlichen Expertise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bestattungen" class="bestattungen-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Bestattungsleistungen</h2>
+                    <p>Mit Würde und Mitgefühl begleiten wir Sie durch eine schwere Zeit</p>
+                </div>
+                <div class="bestattungen-content">
+                    <div class="bestattungen-text reveal">
+                        <h3>Vollständige Bestattungsdienstleistungen</h3>
+                        <p>Der Abschied von einem geliebten Menschen ist eine der schwersten Erfahrungen im Leben. Wir stehen Ihnen in dieser Zeit mit Einfühlungsvermögen, Respekt und professioneller Unterstützung zur Seite.</p>
+                        <p>Von der ersten Kontaktaufnahme über die Organisation bis zur würdevollen Durchführung der Trauerfeier – wir übernehmen alle notwendigen Schritte und entlasten Sie in organisatorischen und formalen Belangen.</p>
+                        <ul class="bestattungen-features">
+                            <li>Persönliche Beratung und Begleitung</li>
+                            <li>Organisation und Durchführung der Bestattung</li>
+                            <li>Überführung und Versorgung</li>
+                            <li>Trauerdrucksachen und Floristik</li>
+                            <li>Behördengänge und Formalitäten</li>
+                            <li>24-Stunden-Erreichbarkeit im Trauerfall</li>
+                        </ul>
+                        <a href="#kontakt" class="btn btn-primary">Persönliches Gespräch vereinbaren</a>
+                    </div>
+                    <img src="https://images.pexels.com/photos/5691550/pexels-photo-5691550.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Back view of unrecognizable workman in apron mounting window near drilling machine and doors in flat" class="bestattungen-image reveal">
+                </div>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="about-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Über uns</h2>
+                    <p>Tradition, Handwerk und Vertrauen – seit Generationen in der Region verwurzelt</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text reveal">
+                        <h3>Schreinerei Schlein</h3>
+                        <p>Herzlich Willkommen bei der Schreinerei & Bestattungen Torsten Schlein. Unser Familienunternehmen verbindet zwei auf den ersten Blick unterschiedliche Bereiche – doch beide eint die gleiche Philosophie: Sorgfalt, Respekt und höchste Qualität in der Ausführung.</p>
+                        <p>In unserer Schreinerei entstehen seit vielen Jahren maßgefertigte Holzarbeiten für Privatkunden und Gewerbetreibende. Mit handwerklicher Präzision und einem Auge für zeitgemäße Gestaltung realisieren wir Projekte vom kleinen Fenster bis zum kompletten Innenausbau.</p>
+                        <div class="about-highlight">
+                            <p>„Unsere Kombination aus Schreinerei und Bestattungsdienst ist einzigartig in der Region. Sie ermöglicht es uns, Menschen in verschiedenen Lebensphasen mit Expertise und Menschlichkeit zu begleiten."</p>
+                        </div>
+                        <p>Im Bereich der Bestattungen stehen wir Familien in ihrer schwersten Stunde bei. Mit Einfühlungsvermögen und diskreter Professionalität organisieren wir würdevolle Abschiede und kümmern uns um alle formalen Angelegenheiten.</p>
+                        <div class="team-member">
+                            <h4>Torsten Schlein</h4>
+                            <p>Inhaber</p>
+                        </div>
+                    </div>
+                    <div class="about-images reveal">
+                        <img src="https://images.pexels.com/photos/15798783/pexels-photo-15798783.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Interior view of a room under renovation with construction materials and a ladder.">
+                        <img src="https://images.pexels.com/photos/5691550/pexels-photo-5691550.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Back view of unrecognizable workman in apron mounting window near drilling machine and doors in flat">
+                        <img src="https://images.pexels.com/photos/7937308/pexels-photo-7937308.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Interior view of a simple white corridor in an unfinished building, showing raw construction details.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Kundenstimmen</h2>
+                    <p>Was unsere Kunden über uns sagen</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„Die Sanierung unserer alten Holzfenster hat Herr Schlein mit großer Sorgfalt durchgeführt. Die Fenster sehen aus wie neu und dämmen deutlich besser. Ein Handwerker, dem man vertrauen kann."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Familie Bergmann</span>
+                            <span class="testimonial-service">Türen & Fenster</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„In der schweren Zeit nach dem Verlust meines Vaters hat uns die Familie Schlein mit außergewöhnlichem Einfühlungsvermögen begleitet. Alle organisatorischen Belange wurden diskret und professionell geregelt. Vielen Dank für diese Unterstützung."</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Anna-Maria Hoffmann</span>
+                            <span class="testimonial-service">Bestattungsleistungen</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">„Der Dachgeschossausbau wurde termingerecht und in hervorragender Qualität umgesetzt. Besonders beeindruckt hat uns die Liebe zum Detail bei den Holzarbeiten. Absolute Weiterempfehlung!"</p>
+                        <div class="testimonial-author">
+                            <span class="testimonial-name">Markus Weber</span>
+                            <span class="testimonial-service">Innenausbau</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="contact-section">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Kontakt</h2>
+                    <p>Nehmen Sie Kontakt mit uns auf – wir sind für Sie da</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info reveal">
+                        <h3>Schreinerei & Bestattungen Torsten Schlein</h3>
+                        <div class="contact-item">
+                            <h4>Erreichbarkeit</h4>
+                            <p>Für Anfragen zu unseren Schreinereiarbeiten erreichen Sie uns während unserer Geschäftszeiten telefonisch oder per E-Mail.</p>
+                            <p>Im Trauerfall stehen wir Ihnen rund um die Uhr zur Verfügung.</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>24-Stunden-Notdienst</h4>
+                            <p>Im Trauerfall sind wir jederzeit für Sie erreichbar. Rufen Sie uns an – wir sind sofort für Sie da.</p>
+                            <p><a href="tel:+4900000000">Notdienst: Jederzeit erreichbar</a></p>
+                        </div>
+                        <div class="contact-cta">
+                            <h4>Persönliche Beratung gewünscht?</h4>
+                            <p>Gerne besprechen wir Ihr Anliegen in einem persönlichen Gespräch. Schildern Sie uns Ihr Projekt oder vereinbaren Sie einen Beratungstermin.</p>
+                            <p>Hier entsteht in Kürze unsere neue Firmen-Website mit vollständigen Kontaktinformationen.</p>
+                        </div>
+                    </div>
+                    <div class="contact-form reveal">
+                        <h3>Anfrage senden</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Ihr Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail-Adresse</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefonnummer (optional)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Bereich</label>
+                                <select id="service" name="service" style="padding: 14px 16px; border: 1px solid var(--border); border-radius: 4px; font-family: 'Inter', sans-serif; font-size: 15px;">
+                                    <option>Schreinerei</option>
+                                    <option>Bestattungen</option>
+                                    <option>Allgemeine Anfrage</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ihre Nachricht</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Anfrage absenden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Schreinerei Schlein</h3>
+                <p>Traditionelles Handwerk und würdevolle Bestattungen – seit Generationen in vertrauensvollen Händen. Wir verbinden Schreinerei-Expertise mit einfühlsamen Bestattungsdienstleistungen.</p>
+                <p style="margin-top: 24px; font-size: 14px; opacity: 0.8;">Demo-Redesign — nicht verbunden mit Schreinerei Schlein</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#geschaeftsbereiche">Geschäftsbereiche</a></li>
+                    <li><a href="#schreinerei">Schreinerei</a></li>
+                    <li><a href="#bestattungen">Bestattungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#schreinerei">Türen & Fenster</a></li>
+                    <li><a href="#schreinerei">Innenausbau</a></li>
+                    <li><a href="#schreinerei">Trockenbau</a></li>
+                    <li><a href="#schreinerei">Hausverkleidungen</a></li>
+                    <li><a href="#schreinerei">Sonderanfertigungen</a></li>
+                    <li><a href="#bestattungen">Bestattungsleistungen</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Schreinerei & Bestattungen Torsten Schlein. Alle Rechte vorbehalten.</p>
+            <div style="display: flex; gap: 24px;">
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form Submission Handler
+        const contactForm = document.querySelector('form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Anfrage! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            contactForm.reset();
+        });
+
+        // Header Shadow on Scroll
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 8px rgba(0,0,0,0.08)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Schreinerei Schlein</p></body>
+</html>
