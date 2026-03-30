@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1A Service Bajric – Unterstützung an IHRER Zukunft | Kassel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #0D9488;
+            --text: #1A1A1A;
+            --text-light: #4A4A4A;
+            --border: #EAEAEA;
+            --bg: #FFFFFF;
+            --serif: 'Playfair Display', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1.25rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9375rem;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-phone {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-cta {
+            background: var(--text);
+            color: var(--bg);
+            padding: 0.75rem 1.75rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover {
+            background: #000;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            z-index: 2000;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        .mobile-menu-links {
+            list-style: none;
+            margin-top: 5rem;
+        }
+
+        .mobile-menu-links li {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu-links a {
+            font-family: var(--serif);
+            font-size: 2rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu-links a:hover {
+            color: var(--accent);
+        }
+
+        .mobile-fab {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+            z-index: 999;
+            text-decoration: none;
+            color: var(--bg);
+            font-size: 1.5rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-fab:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .hero-image {
+            width: 55%;
+            background: url('https://images.pexels.com/photos/8961339/pexels-photo-8961339.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200') center/cover no-repeat;
+        }
+
+        .hero-content {
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 4rem;
+            background: var(--bg);
+        }
+
+        .hero-phone {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .hero-phone svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .hero-headline {
+            font-family: var(--serif);
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .hero-subheadline {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #000;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Section Base */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--bg);
+            font-size: 1.5rem;
+        }
+
+        .service-name {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        .service-description {
+            font-size: 0.9375rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* USP Section */
+        .usp-section {
+            background: #F9FAFB;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+        }
+
+        .usp-item {
+            text-align: center;
+        }
+
+        .usp-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--bg);
+            font-size: 1.75rem;
+        }
+
+        .usp-title {
+            font-family: var(--serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        /* Vorher-Nachher */
+        .vorher-nachher {
+            background: var(--bg);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            position: relative;
+            aspect-ratio: 4/3;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .comparison-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .comparison-label {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--bg);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text);
+        }
+
+        /* About */
+        .about {
+            background: var(--bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-text h2 {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .about-features li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: #F9FAFB;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--bg);
+            padding: 3rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-text {
+            font-size: 1.25rem;
+            font-style: italic;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            font-family: var(--serif);
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Kontakt */
+        .kontakt {
+            background: var(--bg);
+        }
+
+        .kontakt-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .kontakt-info h2 {
+            font-family: var(--serif);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .kontakt-info p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .kontakt-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .kontakt-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .kontakt-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .kontakt-text h3 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--text);
+        }
+
+        .kontakt-text p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .kontakt-form {
+            background: #F9FAFB;
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--sans);
+            font-size: 1rem;
+            color: var(--text);
+            background: var(--bg);
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--bg);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                width: 100%;
+                min-height: 50vh;
+            }
+
+            .hero-content {
+                width: 100%;
+                padding: 4rem 2rem;
+            }
+
+            .hero-headline {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .usp-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .kontakt-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links,
+            .nav-right {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .mobile-fab {
+                display: flex;
+            }
+
+            .hero-headline {
+                font-size: 2rem;
+            }
+
+            .hero-subheadline {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">1A Service Bajric</a>
+            <ul class="nav-links">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="#kontakt" class="nav-cta">Kontakt</a>
+            </div>
+            <button class="mobile-menu-btn" aria-label="Menü öffnen">☰</button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <button class="mobile-menu-close" aria-label="Menü schließen">×</button>
+        <ul class="mobile-menu-links">
+            <li><a href="#startseite">Startseite</a></li>
+            <li><a href="#leistungen">Leistungen</a></li>
+            <li><a href="#projekte">Projekte</a></li>
+            <li><a href="#ueber-uns">Über uns</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </div>
+
+    <a href="#kontakt" class="mobile-fab" aria-label="Kontakt aufnehmen">📞</a>
+
+    <main>
+        <section id="startseite" class="hero">
+            <div class="hero-image"></div>
+            <div class="hero-content">
+                <div class="hero-phone">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    Jetzt anrufen
+                </div>
+                <h1 class="hero-headline">Ihre Räume. Unsere Meisterwerke.</h1>
+                <p class="hero-subheadline">Bei 1A Service Bajric verwandeln wir Ihre Räume in Meisterwerke durch spezialisierte Innenbausanierung. Qualität und Zuverlässigkeit für Kassel und Umgebung.</p>
+                <div class="hero-buttons">
+                    <a href="#kontakt" class="btn-primary">Jetzt Beratung vereinbaren</a>
+                    <a href="#projekte" class="btn-secondary">Projekte ansehen</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="usp-section">
+            <div class="container">
+                <div class="usp-grid">
+                    <div class="usp-item reveal">
+                        <div class="usp-icon">★</div>
+                        <h3 class="usp-title">1A Qualität und Zuverlässigkeit garantiert</h3>
+                    </div>
+                    <div class="usp-item reveal">
+                        <div class="usp-icon">⚙</div>
+                        <h3 class="usp-title">Umfassende Palette von Innenbausanierung bis Elektro</h3>
+                    </div>
+                    <div class="usp-item reveal">
+                        <div class="usp-icon">🏗</div>
+                        <h3 class="usp-title">Partner für Neubau und Altbau</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="leistungen" class="services">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Unsere Leistungen</h2>
+                    <p class="section-subtitle">Von der Planung bis zur Fertigstellung – wir bieten Ihnen professionelle Handwerksleistungen aus einer Hand.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon">🏠</div>
+                        <h3 class="service-name">Komplettsanierung</h3>
+                        <p class="service-description">Planung bis Fertigstellung umfassend – wir begleiten Ihr Projekt von der ersten Idee bis zum finalen Schliff.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🎨</div>
+                        <h3 class="service-name">Malerarbeiten</h3>
+                        <p class="service-description">Präzise makellose Wandgestaltung – für Innenräume, die Ihre Persönlichkeit widerspiegeln.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">📐</div>
+                        <h3 class="service-name">Bodenverlegung</h3>
+                        <p class="service-description">Laminat, Parkett, Fliesen, Teppich – jeder Boden wird fachgerecht und langlebig verlegt.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🔲</div>
+                        <h3 class="service-name">Fliesenarbeiten</h3>
+                        <p class="service-description">Bad, Küche langlebig ästhetisch – Fliesenverlegung mit höchstem Anspruch an Qualität.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">⚡</div>
+                        <h3 class="service-name">Elektroarbeiten</h3>
+                        <p class="service-description">Sicherheit, Effizienz, Elektrofachleute – alle elektrischen Installationen von zertifizierten Experten.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                    <div class="service-card reveal">
+                        <div class="service-icon">🔧</div>
+                        <h3 class="service-name">Montagearbeiten</h3>
+                        <p class="service-description">Fenster, Türen, Komfort, Energieeffizienz – professionelle Montage für mehr Wohnqualität.</p>
+                        <a href="#kontakt" class="service-link">Mehr erfahren →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projekte" class="vorher-nachher">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Unsere Projekte</h2>
+                    <p class="section-subtitle">Einblicke in unsere handwerkliche Arbeit – von der ersten Planung bis zum fertigen Ergebnis.</p>
+                </div>
+                <div class="comparison-grid">
+                    <div class="comparison-card reveal">
+                        <img src="https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Handwerker bei Montagearbeiten an einem Fenster" class="comparison-image">
+                        <div class="comparison-label">Montagearbeiten</div>
+                    </div>
+                    <div class="comparison-card reveal">
+                        <img src="https://images.pexels.com/photos/30592259/pexels-photo-30592259.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Präzises Zusägen von Holz für Innenausbau" class="comparison-image">
+                        <div class="comparison-label">Holzarbeiten</div>
+                    </div>
+                    <div class="comparison-card reveal">
+                        <img src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Professionelle Bohrarbeiten bei Renovierung" class="comparison-image">
+                        <div class="comparison-label">Bodenverlegung</div>
+                    </div>
+                    <div class="comparison-card reveal">
+                        <img src="https://images.pexels.com/photos/5691502/pexels-photo-5691502.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Installation von Fensterbeschlägen mit Akkuschrauber" class="comparison-image">
+                        <div class="comparison-label">Fensterbau</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ueber-uns" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="reveal">
+                        <img src="https://images.pexels.com/photos/5974058/pexels-photo-5974058.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Handwerker bei präzisen Bohrarbeiten in Holz" class="about-image">
+                    </div>
+                    <div class="about-text reveal">
+                        <h2>Über 1A Service Bajric</h2>
+                        <p>Aus kleinen Anfängen mit Hingabe, Integrität und Zusammenarbeit gewachsen, konzentriert auf Qualität und persönliche Aufmerksamkeit.</p>
+                        <p>Unser Team in Kassel steht für handwerkliche Exzellenz und zuverlässige Ausführung. Wir verstehen jedes Projekt als Chance, Vertrauen zu beweisen und bleibende Werte zu schaffen.</p>
+                        <ul class="about-features">
+                            <li>Erfahrene Handwerker mit Leidenschaft für Qualität</li>
+                            <li>Persönliche Betreuung vom Erstgespräch bis zur Abnahme</li>
+                            <li>Transparente Kommunikation und verlässliche Terminplanung</li>
+                            <li>Faire Preise ohne versteckte Kosten</li>
+                        </ul>
+                        <a href="#kontakt" class="btn-primary">Jetzt kennenlernen</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 class="section-title">Kundenstimmen</h2>
+                    <p class="section-subtitle">Was unsere Kunden über unsere Arbeit sagen</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">"Die Zusammenarbeit war ein voller Erfolg, Qualität und Zuverlässigkeit haben Erwartungen übertroffen."</p>
+                        <div class="testimonial-author">Ein zufriedener Kunde</div>
+                        <div class="testimonial-role">Privatkunde aus Kassel</div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">"Von der Beratung bis zur finalen Umsetzung – alles lief professionell und termingerecht. Die Malerarbeiten in unserem Altbau sind perfekt geworden."</p>
+                        <div class="testimonial-author">Familie Hoffmann</div>
+                        <div class="testimonial-role">Altbausanierung Kassel</div>
+                    </div>
+                    <div class="testimonial-card reveal">
+                        <p class="testimonial-text">"Herr Bajric und sein Team haben unsere Wohnung komplett saniert. Die Fliesenarbeiten im Bad sind makellos, die Bodenverlegung im Wohnbereich ein Traum. Absolut empfehlenswert!"</p>
+                        <div class="testimonial-author">Thomas Weber</div>
+                        <div class="testimonial-role">Komplettsanierung</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt" class="kontakt">
+            <div class="container">
+                <div class="kontakt-content">
+                    <div class="kontakt-info reveal">
+                        <h2>Bereit für Ihr Projekt?</h2>
+                        <p>Kontaktieren Sie uns für ein unverbindliches Erstgespräch. Wir freuen uns darauf, Ihre Vision Wirklichkeit werden zu lassen.</p>
+                        <div class="kontakt-details">
+                            <div class="kontakt-item">
+                                <div class="kontakt-icon">📍</div>
+                                <div class="kontakt-text">
+                                    <h3>Servicegebiet</h3>
+                                    <p>Kassel und Umgebung</p>
+                                </div>
+                            </div>
+                            <div class="kontakt-item">
+                                <div class="kontakt-icon">📞</div>
+                                <div class="kontakt-text">
+                                    <h3>Telefon</h3>
+                                    <p>Rufen Sie uns an für eine kostenlose Beratung</p>
+                                </div>
+                            </div>
+                            <div class="kontakt-item">
+                                <div class="kontakt-icon">✉</div>
+                                <div class="kontakt-text">
+                                    <h3>Anfrage</h3>
+                                    <p>Nutzen Sie unser Kontaktformular</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kontakt-form reveal">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Ihr Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefon">Telefon</label>
+                                <input type="tel" id="telefon" name="telefon">
+                            </div>
+                            <div class="form-group">
+                                <label for="leistung">Gewünschte Leistung</label>
+                                <input type="text" id="leistung" name="leistung" placeholder="z.B. Komplettsanierung, Malerarbeiten">
+                            </div>
+                            <div class="form-group">
+                                <label for="nachricht">Ihre Nachricht *</label>
+                                <textarea id="nachricht" name="nachricht" required placeholder="Beschreiben Sie Ihr Projekt..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%;">Anfrage senden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>1A Service Bajric</h3>
+                <p>Unterstützung an IHRER Zukunft – Ihr zuverlässiger Partner für Innenbausanierung, Maler-, Boden- und Elektroarbeiten in Kassel.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#leistungen">Komplettsanierung</a></li>
+                    <li><a href="#leistungen">Malerarbeiten</a></li>
+                    <li><a href="#leistungen">Bodenverlegung</a></li>
+                    <li><a href="#leistungen">Fliesenarbeiten</a></li>
+                    <li><a href="#leistungen">Elektroarbeiten</a></li>
+                    <li><a href="#leistungen">Montagearbeiten</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Unternehmen</h4>
+                <ul>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#projekte">Projekte</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Servicegebiet</h4>
+                <ul>
+                    <li>Kassel</li>
+                    <li>Umgebung</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 1A Service Bajric. Alle Rechte vorbehalten.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.75rem;">Demo-Redesign — nicht verbunden mit 1A Service Bajric</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form Submission
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Anfrage! Wir melden uns in Kürze bei Ihnen.');
+            form.reset();
+        });
+
+        // Smooth Scroll Enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit 1A Service Bajric</p></body>
+</html>
