@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostikum Nuklearmedizin – Dr. Körber und Kollegen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #e8540b;
+            --navy: #4a5c8f;
+            --bg: #FFFFFF;
+            --text: #111111;
+            --text-muted: #5A5A5A;
+            --border: #EAEAEA;
+            --border-hover: #D0D0D0;
+            --serif: 'Instrument Serif', serif;
+            --sans: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--serif);
+            font-weight: 600;
+            line-height: 1.15;
+        }
+
+        h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+        }
+
+        h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom-color: var(--border);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled .nav-container {
+            padding: 12px 40px;
+        }
+
+        .logo {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-accent {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover {
+            background: #d14a09;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            padding: 80px 60px 80px 80px;
+            max-width: 720px;
+        }
+
+        .hero-tagline {
+            font-size: 16px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .hero-description {
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 540px;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            min-width: 180px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: #d14a09;
+            border-color: #d14a09;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 84, 11, 0.25);
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .btn-secondary::after {
+            content: '→';
+            margin-left: 8px;
+            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            color: var(--accent);
+        }
+
+        .btn-secondary:hover::after {
+            margin-left: 12px;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 100%;
+            min-height: 600px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(74, 92, 143, 0.4) 0%, rgba(74, 92, 143, 0.2) 100%);
+            z-index: 1;
+        }
+
+        .location-badges {
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            z-index: 2;
+            max-width: 300px;
+            justify-content: flex-end;
+        }
+
+        .location-badge {
+            background: white;
+            padding: 10px 18px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .location-badge::before {
+            content: '📍';
+            font-size: 12px;
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 40px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+
+        /* Standorte */
+        .standorte-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .standort-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .standort-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .standort-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(232, 84, 11, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .standort-card h3 {
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .standort-card p {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .standorte-info {
+            background: #F9F9F9;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .standorte-info h3 {
+            margin-bottom: 12px;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--border-hover);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 24px;
+            color: var(--navy);
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .service-card h3 {
+            color: var(--text);
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .usp-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .usp-list li {
+            padding: 16px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 16px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .usp-list li:last-child {
+            border-bottom: none;
+        }
+
+        .usp-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 540px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 24px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-family: var(--serif);
+            font-weight: 600;
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .team-role {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Ausbildung */
+        .ausbildung {
+            background: #F9F9F9;
+        }
+
+        .ausbildung-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .ausbildung-image {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 480px;
+        }
+
+        .ausbildung-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .ausbildung-text h2 {
+            margin-bottom: 24px;
+        }
+
+        .ausbildung-text p {
+            margin-bottom: 20px;
+        }
+
+        .ausbildung-positions {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .position-tag {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 16px 24px;
+            font-weight: 600;
+            color: var(--text);
+            display: inline-block;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--navy);
+            color: white;
+        }
+
+        .contact .section-subtitle {
+            color: var(--accent);
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .contact-details a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+        }
+
+        .contact-form h3 {
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--sans);
+            font-size: 15px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-submit:hover {
+            background: #d14a09;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #18181B;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 40px 32px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+
+        .footer-about h3 {
+            color: white;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .footer-about p {
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-family: var(--sans);
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent);
+        }
+
+        .footer-disclaimer {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            padding: 32px 40px;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-size: 32px;
+            margin: 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 32px;
+            right: 40px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-body h3 {
+            font-size: 24px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .modal-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .modal-body p {
+            margin-bottom: 16px;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .modal-body li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 44px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                margin-top: 70px;
+            }
+
+            .hero-content {
+                padding: 60px 40px;
+            }
+
+            .hero-image {
+                min-height: 400px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .about-content,
+            .ausbildung-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 32px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 24px;
+                font-family: var(--serif);
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            section {
+                padding: 80px 24px;
+            }
+
+            .nav-container {
+                padding: 16px 24px;
+            }
+
+            .hero-content {
+                padding: 40px 24px;
+            }
+
+            .hero-description {
+                font-size: 17px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .btn-primary {
+                width: 100%;
+            }
+
+            .location-badges {
+                bottom: 20px;
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+
+            .standorte-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .about-image,
+            .ausbildung-image {
+                height: 320px;
+            }
+
+            .contact-form {
+                padding: 32px 24px;
+            }
+
+            .modal-header,
+            .modal-body {
+                padding: 24px;
+            }
+
+            .modal-close {
+                top: 24px;
+                right: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-accent">Diagnostikum</span> Nuklearmedizin
+            </a>
+            <button class="mobile-toggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#standorte">Standorte</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#ausbildung">Ausbildung</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#kontakt" class="nav-cta">Termin buchen</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section class="hero" id="startseite">
+            <div class="hero-content">
+                <div class="hero-tagline">Diagnostikum Nuklearmedizin Netz</div>
+                <h1>Nuklearmedizinische Diagnostik in Mittelhessen</h1>
+                <p class="hero-description">Ultraschall wird bei der Untersuchung der Schilddrüse und der Halsweichteile angewendet. Standortverteilung vorwiegend an Krankenhäusern im Raum Mittelhessen für bessere Therapieentscheidungen.</p>
+                <div class="hero-ctas">
+                    <a href="#kontakt" class="btn-primary">Jetzt Termin buchen</a>
+                    <a href="#standorte" class="btn-secondary">Standorte & Kontakt</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/7789616/pexels-photo-7789616.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A minimalist medical examination room featuring a desk, chairs, and an examination bed in a sterile, neutral setting.">
+                <div class="location-badges">
+                    <div class="location-badge">Fulda</div>
+                    <div class="location-badge">Lauterbach</div>
+                    <div class="location-badge">Marburg</div>
+                    <div class="location-badge">Gießen</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standorte -->
+        <section id="standorte">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Unsere Standorte</div>
+                    <h2>Flächendeckende Versorgung in Mittelhessen</h2>
+                    <p>Standorte direkt an Krankenhäusern in der Region für optimale Patientenbetreuung</p>
+                </div>
+                <div class="standorte-grid">
+                    <div class="standort-card">
+                        <div class="standort-icon">🏥</div>
+                        <h3>Fulda</h3>
+                        <p>Nuklearmedizinische Diagnostik mit modernster Ausstattung direkt am Klinikum</p>
+                    </div>
+                    <div class="standort-card">
+                        <div class="standort-icon">🏥</div>
+                        <h3>Lauterbach</h3>
+                        <p>Spezialisierte Untersuchungen der Schilddrüse und Halsweichteile</p>
+                    </div>
+                    <div class="standort-card">
+                        <div class="standort-icon">🏥</div>
+                        <h3>Marburg</h3>
+                        <p>Umfassende nuklearmedizinische Versorgung in zentraler Lage</p>
+                    </div>
+                    <div class="standort-card">
+                        <div class="standort-icon">🏥</div>
+                        <h3>Gießen</h3>
+                        <p>Modernste Diagnostik für präzise Therapieentscheidungen</p>
+                    </div>
+                </div>
+                <div class="standorte-info">
+                    <h3>Alle Standorte im Raum Mittelhessen</h3>
+                    <p>Unsere Praxen befinden sich vorwiegend direkt an Krankenhäusern, um eine optimale Integration in die klinische Versorgung zu gewährleisten.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="leistungen">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Unsere Leistungen</div>
+                    <h2>Spezialisierte nuklearmedizinische Diagnostik</h2>
+                    <p>Moderne Verfahren für präzise Befunde und optimale Therapieplanung</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 2v4M15 2v4M9 18v4M15 18v4M20 9h-4M20 15h-4M4 9h4M4 15h4"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
+                        <h3>Ultraschall</h3>
+                        <p>Schilddrüse und Halsweichteile – hochauflösende sonographische Diagnostik für präzise Befundung</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>Thermoablation</h3>
+                        <p>Spezialisiertes minimal-invasives Verfahren – inklusive Kongress-Präsentationen und wissenschaftlichem Austausch</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 8h6M9 12h6M9 16h3"/>
+                            </svg>
+                        </div>
+                        <h3>Kongress-Präsentation</h3>
+                        <p>Aktive Teilnahme an wissenschaftlichen Kongressen zur Weitergabe aktueller Forschungsergebnisse</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                            </svg>
+                        </div>
+                        <h3>Medizinische Ausbildung</h3>
+                        <p>MFA und MTRA Ausbildung – wir bilden die nächste Generation medizinischer Fachkräfte aus</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="ueber-uns">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="section-subtitle">Über uns</div>
+                        <h2>Diagnostikum Nuklearmedizin – Dr. Körber und Kollegen</h2>
+                        <p>Unser Diagnostikum ist auf nuklearmedizinische Verfahren spezialisiert und verfügt über mehrere Standorte vorwiegend an Krankenhäusern im Raum Mittelhessen. Diese strategische Verteilung ermöglicht eine optimale Integration in die klinische Versorgung und trägt zu besseren Therapieentscheidungen bei.</p>
+                        <p>Mit modernster Technik und langjähriger Erfahrung bieten wir hochwertige diagnostische Leistungen in den Bereichen Ultraschall, Thermoablation und weiteren nuklearmedizinischen Verfahren.</p>
+                        <ul class="usp-list">
+                            <li>Standorte direkt an Krankenhäusern in Mittelhessen</li>
+                            <li>Thermoablation als spezialisiertes Verfahren</li>
+                            <li>Ausbildungsplätze für MFA und MTRA</li>
+                        </ul>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/7108389/pexels-photo-7108389.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bright and clean interior of a modern clinic with medical equipment and examination table.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team -->
+        <section id="team">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Unser Team</div>
+                    <h2>Erfahrene Fachärzte für Ihre Gesundheit</h2>
+                    <p>Kompetente medizinische Betreuung durch spezialisierte Nuklearmediziner</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo">CK</div>
+                        <h3>Dr. med. Carsten Körber</h3>
+                        <p class="team-role">Facharzt für Nuklearmedizin</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ausbildung -->
+        <section class="ausbildung" id="ausbildung">
+            <div class="container">
+                <div class="ausbildung-content">
+                    <div class="ausbildung-image">
+                        <img src="https://images.pexels.com/photos/7598696/pexels-photo-7598696.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Young female doctor standing confidently with medical equipment in the background.">
+                    </div>
+                    <div class="ausbildung-text">
+                        <div class="section-subtitle">Karriere & Ausbildung</div>
+                        <h2>Werde Teil unseres Teams</h2>
+                        <p>Wir bilden die nächste Generation medizinischer Fachkräfte aus und bieten qualifizierte Ausbildungsplätze in modernen nuklearmedizinischen Einrichtungen.</p>
+                        <p>Unsere Ausbildungsprogramme kombinieren theoretisches Wissen mit praktischer Erfahrung in einem professionellen Umfeld direkt an Krankenhäusern in Mittelhessen.</p>
+                        <div class="ausbildung-positions">
+                            <div class="position-tag">Medizinische Fachangestellte (MFA)</div>
+                            <div class="position-tag">Medizinisch-technische Radiologieassistenz (MTRA)</div>
+                        </div>
+                        <div style="margin-top: 32px;">
+                            <a href="mailto:bewerbung@nuklearmedizin-fulda.de" class="btn-primary">Jetzt bewerben</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="kontakt">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-subtitle">Kontakt</div>
+                    <h2>Vereinbaren Sie einen Termin</h2>
+                    <p>Wir sind für Sie da – an vier Standorten in Mittelhessen</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h3>Standorte</h3>
+                                <p>Fulda, Lauterbach, Marburg, Gießen</p>
+                                <p>Vorwiegend an Krankenhäusern im Raum Mittelhessen</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-details">
+                                <h3>E-Mail</h3>
+                                <a href="mailto:bewerbung@nuklearmedizin-fulda.de">bewerbung@nuklearmedizin-fulda.de</a>
+                                <p style="margin-top: 8px; font-size: 14px;">Für Bewerbungen und allgemeine Anfragen</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">🏥</div>
+                            <div class="contact-details">
+                                <h3>Terminvereinbarung</h3>
+                                <p>Kontaktieren Sie uns per E-Mail für die Vereinbarung eines Untersuchungstermins an einem unserer Standorte.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Anfrage senden</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="standort">Bevorzugter Standort</label>
+                                <input type="text" id="standort" name="standort" placeholder="z.B. Fulda">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Nachricht</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="form-submit">Anfrage absenden</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Diagnostikum Nuklearmedizin</h3>
+                <p>Dr. Körber und Kollegen – Spezialisierte nuklearmedizinische Diagnostik an mehreren Standorten in Mittelhessen. Moderne Verfahren für präzise Befunde und optimale Therapieentscheidungen.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Schnellzugriff</h4>
+                <ul>
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#standorte">Standorte</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#ausbildung">Ausbildung</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Standorte</h4>
+                <ul>
+                    <li><a href="#standorte">Fulda</a></li>
+                    <li><a href="#standorte">Lauterbach</a></li>
+                    <li><a href="#standorte">Marburg</a></li>
+                    <li><a href="#standorte">Gießen</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a class="legal-link" data-modal="impressum">Impressum</a>
+                <a class="legal-link" data-modal="datenschutz">Datenschutz</a>
+            </div>
+            <div class="footer-disclaimer">
+                Demo-Redesign — nicht verbunden mit Diagnostikum Nuklearmedizin – Dr. Körber und Kollegen
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal-overlay" id="impressum-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Impressum</h2>
+                <button class="modal-close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>[Impressum hier einfügen]</p>
+                <p>Bitte fügen Sie hier die vollständigen Impressumsinformationen gemäß § 5 TMG ein, einschließlich:</p>
+                <ul>
+                    <li>Name und Anschrift des Diensteanbieters</li>
+                    <li>Kontaktdaten (Telefon, E-Mail)</li>
+                    <li>Vertretungsberechtigte Personen</li>
+                    <li>Handelsregister und Registernummer</li>
+                    <li>Umsatzsteuer-Identifikationsnummer</li>
+                    <li>Zuständige Aufsichtsbehörde</li>
+                    <li>Berufsbezeichnung und berufsrechtliche Regelungen</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal-overlay" id="datenschutz-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Datenschutzerklärung</h2>
+                <button class="modal-close" aria-label="Schließen">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>[Datenschutzerklärung hier einfügen]</p>
+                <p>Bitte fügen Sie hier die vollständige Datenschutzerklärung gemäß DSGVO ein, einschließlich:</p>
+                <ul>
+                    <li>Name und Kontaktdaten des Verantwortlichen</li>
+                    <li>Zwecke und Rechtsgrundlagen der Datenverarbeitung</li>
+                    <li>Empfänger oder Kategorien von Empfängern</li>
+                    <li>Dauer der Datenspeicherung</li>
+                    <li>Rechte der betroffenen Person (Auskunft, Berichtigung, Löschung, etc.)</li>
+                    <li>Widerrufsrecht bei Einwilligung</li>
+                    <li>Beschwerderecht bei Aufsichtsbehörde</li>
+                    <li>Informationen zu Cookies und Tracking</li>
+                    <li>SSL/TLS-Verschlüsselung</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Vielen Dank für Ihre Anfrage! Wir werden uns schnellstmöglich bei Ihnen melden.');
+                contactForm.reset();
+            });
+        }
+
+        // Legal modals
+        const modalLinks = document.querySelectorAll('.legal-link');
+        const modals = document.querySelectorAll('.modal-overlay');
+        const modalCloses = document.querySelectorAll('.modal-close');
+
+        modalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = link.dataset.modal + '-modal';
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        modalCloses.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.modal-overlay').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        modals.forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Trigger initial visibility for hero
+        document.querySelector('.hero').classList.add('visible');
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Herr Dr. med. Carsten Körber</p></body>
+</html>
