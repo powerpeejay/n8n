@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bäder & Heizungsbau Meisterbetrieb Hahn – Ihr Experte für Bad, Heizung & Solar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1A1A1A;
+            background-color: #F7F6F3;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(247, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .header.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .header-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #1A1A1A;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 15px;
+            color: #1A1A1A;
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #D84315;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D84315;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .notdienst-badge {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 20px;
+            background: #D84315;
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .notdienst-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(216, 67, 21, 0.3);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 28px;
+            height: 2px;
+            background: #1A1A1A;
+            margin: 6px 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: 55fr 45fr;
+            margin-top: 80px;
+        }
+
+        .hero-image-side {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .hero-content-side {
+            background: #F7F6F3;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+        }
+
+        .hero-headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            color: #1A1A1A;
+            margin-bottom: 32px;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: #D84315;
+            margin-bottom: 32px;
+        }
+
+        .hero-tagline {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4A4A4A;
+            margin-bottom: 48px;
+            max-width: 460px;
+        }
+
+        .hero-phone {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 36px;
+            text-decoration: none;
+        }
+
+        .phone-icon {
+            width: 24px;
+            height: 24px;
+            stroke: #D84315;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .phone-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #D84315;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: #D84315;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            align-self: flex-start;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(216, 67, 21, 0.3);
+        }
+
+        .hero-cta:active {
+            transform: translateY(0);
+        }
+
+        .section {
+            padding: 120px 40px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: #6A6A6A;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            border: 1px solid #EAEAEA;
+            border-radius: 8px;
+            padding: 40px 32px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            margin-bottom: 24px;
+            stroke: #D84315;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 16px;
+        }
+
+        .service-description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #6A6A6A;
+        }
+
+        .trust-section {
+            background: white;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 48px;
+            text-align: center;
+        }
+
+        .trust-item {
+            padding: 32px 24px;
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            stroke: #D84315;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .trust-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 12px;
+        }
+
+        .trust-text {
+            font-size: 15px;
+            color: #6A6A6A;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            background: #F7F6F3;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text-wrapper h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 32px;
+            line-height: 1.2;
+        }
+
+        .about-text-wrapper p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4A4A4A;
+            margin-bottom: 24px;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 40px;
+        }
+
+        .about-features li {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #EAEAEA;
+            font-size: 17px;
+            font-weight: 500;
+        }
+
+        .about-features li:last-child {
+            border-bottom: none;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            stroke: #D84315;
+            stroke-width: 2.5;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        .gallery-section {
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .testimonials-section {
+            background: #F7F6F3;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: white;
+            border: 1px solid #EAEAEA;
+            border-radius: 8px;
+            padding: 40px 36px;
+        }
+
+        .testimonial-quote {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #4A4A4A;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .author-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D84315, #FF6F47);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            font-size: 16px;
+            color: #1A1A1A;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 14px;
+            color: #6A6A6A;
+        }
+
+        .contact-section {
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 32px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4A4A4A;
+            margin-bottom: 40px;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px 0;
+            border-bottom: 1px solid #EAEAEA;
+        }
+
+        .contact-detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-icon {
+            width: 28px;
+            height: 28px;
+            stroke: #D84315;
+            stroke-width: 2;
+            fill: none;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-content h4 {
+            font-weight: 600;
+            font-size: 15px;
+            color: #1A1A1A;
+            margin-bottom: 6px;
+        }
+
+        .contact-detail-content a,
+        .contact-detail-content p {
+            font-size: 17px;
+            color: #6A6A6A;
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-detail-content a:hover {
+            color: #D84315;
+        }
+
+        .contact-form-wrapper {
+            background: #F7F6F3;
+            padding: 48px;
+            border-radius: 12px;
+        }
+
+        .contact-form-wrapper h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            font-size: 15px;
+            color: #1A1A1A;
+            margin-bottom: 10px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid #D5D5D5;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #1A1A1A;
+            background: white;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #D84315;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 16px;
+            background: #D84315;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(216, 67, 21, 0.3);
+        }
+
+        .form-submit:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            background: #1A1A1A;
+            color: #B5B5B5;
+            padding: 60px 40px 32px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            font-size: 16px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #B5B5B5;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            color: #D84315;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 32px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-disclaimer {
+            color: #858585;
+            font-style: italic;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image-side {
+                min-height: 400px;
+            }
+
+            .hero-content-side {
+                padding: 60px 40px;
+            }
+
+            .hero-headline {
+                font-size: 44px;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                padding: 16px 24px;
+            }
+
+            .nav-main {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: rgba(247, 246, 243, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 24px;
+                transform: translateY(-120%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            }
+
+            .nav-main.active {
+                transform: translateY(0);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 24px;
+                width: 100%;
+            }
+
+            .nav-links a {
+                font-size: 18px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .notdienst-badge {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero {
+                margin-top: 72px;
+            }
+
+            .hero-content-side {
+                padding: 48px 24px;
+            }
+
+            .hero-headline {
+                font-size: 36px;
+            }
+
+            .phone-number {
+                font-size: 26px;
+            }
+
+            .section {
+                padding: 80px 24px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .section-header {
+                margin-bottom: 48px;
+            }
+
+            .services-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-wrapper {
+                padding: 32px 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="#" class="logo">Meisterbetrieb Hahn</a>
+            <nav class="nav-main" id="navMain">
+                <ul class="nav-links">
+                    <li><a href="#startseite">Startseite</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#referenzen">Referenzen</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                </ul>
+                <a href="tel:+4900000000" class="notdienst-badge">
+                    <svg class="phone-icon" viewBox="0 0 24 24">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    24h Notdienst
+                </a>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero" id="startseite">
+        <div class="hero-image-side">
+            <img src="https://images.pexels.com/photos/8089093/pexels-photo-8089093.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Sleek modern bathroom featuring a minimalist sink and elegant hanging lights.">
+        </div>
+        <div class="hero-content-side">
+            <h1 class="hero-headline">Ihr Meisterbetrieb für Bäder & Heizung</h1>
+            <div class="hero-divider"></div>
+            <p class="hero-tagline">Herzlich Willkommen auf unserer Internetseite und vielen Dank für Ihr Interesse. Als zertifizierter Meisterbetrieb stehen wir für höchste Qualität und handwerkliche Präzision.</p>
+            <a href="tel:+4900000000" class="hero-phone">
+                <svg class="phone-icon" viewBox="0 0 24 24">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                <span class="phone-number">Jetzt anrufen</span>
+            </a>
+            <a href="#kontakt" class="hero-cta">
+                Kostenlose Beratung anfragen
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="section" id="leistungen">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Unsere Leistungen</h2>
+                <p class="section-subtitle">Von der modernen Badgestaltung bis zur effizienten Heizungsanlage – wir bieten Ihnen umfassende Lösungen aus Meisterhand.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    <h3 class="service-title">Bäder</h3>
+                    <p class="service-description">Komplette Badplanung und -sanierung nach Ihren individuellen Wünschen. Von der modernen Walk-In-Dusche bis zum barrierefreien Bad – wir setzen Ihre Vorstellungen mit präzisem Handwerk um.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M12 2v20M17 7l-5-5-5 5M7 17l5 5 5-5"/>
+                    </svg>
+                    <h3 class="service-title">Heizung</h3>
+                    <p class="service-description">Installation und Wartung moderner Heizungsanlagen. Ob Gas, Öl oder Wärmepumpe – wir beraten Sie zu energieeffizienten Lösungen und sorgen für zuverlässige Wärme in Ihrem Zuhause.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <h3 class="service-title">Solar</h3>
+                    <p class="service-description">Nachhaltige Solartechnik für Warmwasser und Heizungsunterstützung. Nutzen Sie die Kraft der Sonne und reduzieren Sie Ihre Energiekosten mit unseren fachgerecht installierten Solaranlagen.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                    </svg>
+                    <h3 class="service-title">Weitere Leistungen</h3>
+                    <p class="service-description">Umfassender Service rund um Sanitär, Heizung und Badsanierung. Wir übernehmen Reparaturen, Wartungen und Notdienste – schnell, zuverlässig und mit der Erfahrung eines Meisterbetriebs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section trust-section" id="vertrauen">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Vertrauen Sie auf Qualität</h2>
+                <p class="section-subtitle">Als Meisterbetrieb vereinen wir traditionelles Handwerk mit modernster Technik</p>
+            </div>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <h3 class="trust-title">Meisterbetrieb</h3>
+                    <p class="trust-text">Zertifizierte Meisterqualität und jahrelange Erfahrung im Sanitär- und Heizungsbau</p>
+                </div>
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    <h3 class="trust-title">Geprüfte Qualität</h3>
+                    <p class="trust-text">Alle Arbeiten werden nach höchsten Qualitätsstandards ausgeführt und geprüft</p>
+                </div>
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <h3 class="trust-title">24h Notdienst</h3>
+                    <p class="trust-text">Wir sind rund um die Uhr für Sie erreichbar – auch an Wochenenden und Feiertagen</p>
+                </div>
+                <div class="trust-item">
+                    <svg class="trust-icon" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <h3 class="trust-title">Persönliche Beratung</h3>
+                    <p class="trust-text">Individuelle Planung und Beratung für Ihr Projekt – von der ersten Idee bis zur Umsetzung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section about-section" id="ueber-uns">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text-wrapper">
+                    <h2>Informieren Sie sich und lernen Sie uns kennen</h2>
+                    <p>Der Meisterbetrieb Hahn steht für höchste Qualität im Sanitär-, Heizungs- und Solarbereich. Mit jahrelanger Erfahrung und fundiertem Fachwissen setzen wir Ihre Projekte präzise und zuverlässig um.</p>
+                    <p>Unsere Aufgabenbereiche umfassen die komplette Badplanung und -sanierung, die Installation moderner Heizungsanlagen sowie die fachgerechte Montage von Solaranlagen. Dabei legen wir besonderen Wert auf individuelle Beratung und maßgeschneiderte Lösungen.</p>
+                    <ul class="about-features">
+                        <li>
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Zertifizierter Meisterbetrieb mit langjähriger Tradition
+                        </li>
+                        <li>
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Komplettservice von der Planung bis zur Fertigstellung
+                        </li>
+                        <li>
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Einsatz modernster Technik und hochwertiger Materialien
+                        </li>
+                        <li>
+                            <svg class="checkmark" viewBox="0 0 24 24">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Persönliche Betreuung durch erfahrene Fachkräfte
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-image-wrapper">
+                    <img src="https://images.pexels.com/photos/6782431/pexels-photo-6782431.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Stylish modern bathroom with marble vanity, wooden cabinets, and elegant fixtures.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section gallery-section" id="referenzen">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Unsere Referenzen</h2>
+                <p class="section-subtitle">Überzeugen Sie sich von der Qualität unserer Arbeit – eine Auswahl unserer realisierten Projekte</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/29252571/pexels-photo-29252571.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Sleek modern bathroom featuring a marble countertop, stylish circular mirror, and elegant lighting.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/9551365/pexels-photo-9551365.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Stylish bathroom featuring a bidet and bathtub with vibrant purple and white tiles.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/6580370/pexels-photo-6580370.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Stylish bathroom featuring a unique mirror and elegant decor elements.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/7031215/pexels-photo-7031215.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Elegant bathroom with a modern washbasin, wood paneling, and black marble decor.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/6653889/pexels-photo-6653889.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Stylish bathroom interior featuring a ceramic sink, bathtub, and modern fixtures.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/8143696/pexels-photo-8143696.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Sleek modern bathroom featuring a glass shower, floating vanity, and stylish decor.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Das sagen unsere Kunden</h2>
+                <p class="section-subtitle">Zufriedene Kunden sind unser größter Erfolg</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Die Badsanierung wurde professionell und termingerecht durchgeführt. Das Team war sehr freundlich und hat sauber gearbeitet. Besonders beeindruckt hat uns die kompetente Beratung bei der Auswahl der Armaturen."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MS</div>
+                        <div class="author-info">
+                            <h4>Michael Schmidt</h4>
+                            <p>Badsanierung, Köln</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Nach einem Heizungsausfall im Winter war der Notdienst innerhalb von zwei Stunden vor Ort. Die Reparatur wurde schnell und fachgerecht durchgeführt. Absolute Empfehlung für den Meisterbetrieb Hahn!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Andrea Müller</h4>
+                            <p>Heizungswartung, Bonn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">„Die Installation unserer Solaranlage verlief reibungslos. Herr Hahn hat uns ausführlich beraten und alle Fragen zur Förderung beantwortet. Die Anlage läuft einwandfrei und wir sparen bereits merklich Heizkosten."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TW</div>
+                        <div class="author-info">
+                            <h4>Thomas Weber</h4>
+                            <p>Solaranlage, Düsseldorf</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="kontakt">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Kontaktieren Sie uns</h2>
+                    <p>Haben Sie Fragen zu unseren Leistungen oder möchten Sie einen Beratungstermin vereinbaren? Wir freuen uns auf Ihre Kontaktaufnahme und beraten Sie gerne persönlich.</p>
+                    <ul class="contact-details">
+                        <li class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <div class="contact-detail-content">
+                                <h4>Telefon</h4>
+                                <a href="tel:+4900000000">Rufen Sie uns an</a>
+                            </div>
+                        </li>
+                        <li class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <div class="contact-detail-content">
+                                <h4>E-Mail</h4>
+                                <a href="mailto:info@meisterbetrieb-hahn.de">info@meisterbetrieb-hahn.de</a>
+                            </div>
+                        </li>
+                        <li class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <div class="contact-detail-content">
+                                <h4>Servicegebiet</h4>
+                                <p>Köln und Umgebung</p>
+                            </div>
+                        </li>
+                        <li class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                            <div class="contact-detail-content">
+                                <h4>Notdienst</h4>
+                                <p>24 Stunden erreichbar</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form-wrapper">
+                    <h3>Anfrage senden</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Ihr Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail-Adresse</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon (optional)</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Meisterbetrieb Hahn</h3>
+                <p>Ihr zuverlässiger Partner für Bäder, Heizung und Solar. Qualität aus Meisterhand – seit Jahren Ihr Vertrauensbetrieb in der Region.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Leistungen</h4>
+                <ul class="footer-links">
+                    <li><a href="#leistungen">Bäder</a></li>
+                    <li><a href="#leistungen">Heizung</a></li>
+                    <li><a href="#leistungen">Solar</a></li>
+                    <li><a href="#leistungen">Notdienst</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Unternehmen</h4>
+                <ul class="footer-links">
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                    <li><a href="#referenzen">Referenzen</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="#">Impressum</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Rechtliches</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Datenschutz</a></li>
+                    <li><a href="#">AGB</a></li>
+                    <li><a href="#">Widerrufsrecht</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Bäder & Heizungsbau Meisterbetrieb Hahn. Alle Rechte vorbehalten.</p>
+            <p class="footer-disclaimer">Demo-Redesign — nicht verbunden mit Bäder & Heizungsbau Meisterbetrieb Hahn</p>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMain = document.getElementById('navMain');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navMain.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navMain.classList.remove('active');
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        document.querySelector('.contact-form-wrapper form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Anfrage! Wir melden uns schnellstmöglich bei Ihnen.');
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Fahrion Garten- und Landschaftsbau GmbH</p></body>
+</html>
