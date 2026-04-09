@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Der Handwerk – Hochwertiger Möbelbau in Hamburg & Dänemark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Cabinet Grotesk';
+            src: url('https://fonts.cdnfonts.com/css/cabinet-grotesk') format('woff2');
+            font-weight: 100 900;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #6b8ca8;
+            --bg: #fafaf9;
+            --text: #18181B;
+            --stone-100: #f5f5f4;
+            --stone-200: #e7e5e4;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: backdrop-filter 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            backdrop-filter: blur(12px);
+            background: rgba(250, 249, 249, 0.85);
+            border-bottom: 1px solid var(--stone-200);
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-contact {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            padding-top: 120px;
+            padding-bottom: 80px;
+            background: var(--bg);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .hero h1 {
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: #52525b;
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .hero-cta:active {
+            transform: translateY(0);
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+
+        .section-subtitle {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .section-header h2 {
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: #52525b;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--stone-100);
+            border: 1px solid var(--stone-200);
+            border-radius: 24px;
+            padding: 2px;
+        }
+
+        .service-card-inner {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 48px 32px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), #8ba4be);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #52525b;
+            line-height: 1.7;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 240px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: auto;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .projects-bento {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .project-card {
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            background: var(--stone-100);
+        }
+
+        .project-card:nth-child(1) {
+            grid-column: span 7;
+        }
+
+        .project-card:nth-child(2) {
+            grid-column: span 5;
+        }
+
+        .project-card:nth-child(3) {
+            grid-column: span 5;
+        }
+
+        .project-card:nth-child(4) {
+            grid-column: span 7;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 32px;
+            background: linear-gradient(to top, rgba(24, 24, 27, 0.95), transparent);
+            color: white;
+            transform: translateY(80px);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card:hover .project-overlay {
+            transform: translateY(0);
+        }
+
+        .project-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .project-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            padding: 120px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            margin-bottom: 32px;
+        }
+
+        .about-content p {
+            font-size: 1.15rem;
+            color: #52525b;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .usps {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .usp-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .usp-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .usp-item p {
+            font-size: 1rem;
+            margin: 0;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .about-image:first-child {
+            transform: translateY(40px);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .contact-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-wrapper h2 {
+            margin-bottom: 24px;
+        }
+
+        .contact-description {
+            font-size: 1.15rem;
+            color: #52525b;
+            margin-bottom: 48px;
+        }
+
+        .contact-card {
+            background: var(--stone-100);
+            border: 1px solid var(--stone-200);
+            border-radius: 24px;
+            padding: 2px;
+        }
+
+        .contact-card-inner {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 56px 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), #8ba4be);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .contact-details {
+            text-align: left;
+        }
+
+        .contact-label {
+            font-size: 0.85rem;
+            color: #71717a;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .contact-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 48px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-cta:hover {
+            transform: translateY(-2px);
+            opacity: 0.9;
+        }
+
+        .service-areas {
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--stone-200);
+        }
+
+        .service-areas h3 {
+            font-size: 1.25rem;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .areas-list {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .area-tag {
+            padding: 12px 24px;
+            background: var(--bg);
+            border-radius: 50px;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--stone-100);
+            border: 1px solid var(--stone-200);
+            border-radius: 24px;
+            padding: 2px;
+        }
+
+        .testimonial-card-inner {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text);
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding-top: 24px;
+            border-top: 1px solid var(--stone-200);
+        }
+
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), #8ba4be);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        .author-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #71717a;
+        }
+
+        /* Footer */
+        footer {
+            padding: 64px 0 32px;
+            background: var(--text);
+            color: white;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: #a1a1aa;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #71717a;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            max-width: 800px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 48px;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--stone-100);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--text);
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            background: var(--stone-200);
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            margin: 32px 0 16px;
+            color: var(--text);
+        }
+
+        .modal-content p {
+            color: #52525b;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .modal-content ul {
+            margin: 16px 0;
+            padding-left: 24px;
+            color: #52525b;
+        }
+
+        .modal-content li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero-image-wrapper img {
+                height: 400px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-images {
+                order: -1;
+            }
+
+            .projects-bento .project-card {
+                grid-column: span 12 !important;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 280px;
+                background: white;
+                flex-direction: column;
+                padding: 100px 32px 32px;
+                gap: 24px;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                transform: translateX(0);
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-contact {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 100px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .services, .projects, .about, .contact, .testimonials {
+                padding: 80px 0;
+            }
+
+            .section-header {
+                margin-bottom: 56px;
+            }
+
+            .about-image:first-child {
+                transform: translateY(0);
+            }
+
+            .contact-card-inner {
+                padding: 40px 24px;
+            }
+
+            .modal-content {
+                padding: 32px 24px;
+            }
+
+            .modal-close {
+                top: 16px;
+                right: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Der Handwerk</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#projekte">Projekte</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-content fade-in">
+                        <div class="hero-subtitle">Tischlermeister</div>
+                        <h1>Hochwertige Möbel mit Liebe zum Detail</h1>
+                        <p class="hero-description">Selbstständiger Tischler mit langjähriger Erfahrung im hochwertigen Möbelbau und Qualitätssicherung in Hamburg und Dänemark</p>
+                        <a href="#kontakt" class="hero-cta">
+                            <span>Projekt anfragen</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                    <div class="hero-image-wrapper fade-in">
+                        <img src="https://images.pexels.com/photos/5691501/pexels-photo-5691501.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unrecognizable male master wearing dirty apron standing near window with white frames on wooden workbench while working in professional studio">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="leistungen">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">Leistungen</div>
+                    <h2>Maßgeschneiderte Tischlerarbeiten</h2>
+                    <p>Jedes Projekt wird mit größter Präzision und höchstem Qualitätsanspruch umgesetzt</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-card-inner">
+                            <div class="service-icon">⚒</div>
+                            <div>
+                                <h3>Hochwertiger Möbelbau</h3>
+                                <p>Langjährige Erfahrung im Möbelbau mit Fokus auf Langlebigkeit und ästhetische Perfektion. Vom klassischen Schrank bis zum modernen Designerstück.</p>
+                            </div>
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/5974053/pexels-photo-5974053.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Crop anonymous male drilling timber plank with professional screwdriver on table in workshop">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-card-inner">
+                            <div class="service-icon">✏</div>
+                            <div>
+                                <h3>Maßgeschneiderte Lösungen</h3>
+                                <p>Individuelle Umsetzung von Kundenvorstellungen. Jedes Möbelstück wird nach Ihren spezifischen Wünschen und räumlichen Gegebenheiten gefertigt.</p>
+                            </div>
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/5691502/pexels-photo-5691502.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unrecognizable professional male master using cordless screwdriver to install metal hinge on wooden window in light room during repair works">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-card-inner">
+                            <div class="service-icon">✓</div>
+                            <div>
+                                <h3>Qualitätssicherung</h3>
+                                <p>Präzision und hoher Qualitätsanspruch in jedem Arbeitsschritt. Von der Materialauswahl bis zur finalen Oberflächenbehandlung.</p>
+                            </div>
+                            <div class="service-image">
+                                <img src="https://images.pexels.com/photos/36866648/pexels-photo-36866648.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter measuring wood with a square outdoors, showcasing precise craftsmanship and manual labor.">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects" id="projekte">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">Projekte</div>
+                    <h2>Referenzen aus der Werkstatt</h2>
+                    <p>Einblicke in realisierte Tischlerprojekte</p>
+                </div>
+                <div class="projects-bento">
+                    <div class="project-card fade-in">
+                        <img src="https://images.pexels.com/photos/5974387/pexels-photo-5974387.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Crop anonymous male carpenter making hole on wooden plank with drill during work in studio on sunny day">
+                        <div class="project-overlay">
+                            <h3>Präzisionsarbeiten</h3>
+                            <p>Detaillierte Holzbearbeitung für maßgefertigte Möbelstücke</p>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="https://images.pexels.com/photos/5691515/pexels-photo-5691515.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Unrecognizable professional male worker assembling white window with cordless screwdriver with drill near windowsill with reflection on glass during repair works in apartment">
+                        <div class="project-overlay">
+                            <h3>Fenster & Rahmen</h3>
+                            <p>Maßgeschneiderte Holzfenster und Einbauarbeiten</p>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="https://images.pexels.com/photos/30592259/pexels-photo-30592259.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter cutting wood with a hand saw, showcasing craftsmanship and precision.">
+                        <div class="project-overlay">
+                            <h3>Traditionelles Handwerk</h3>
+                            <p>Klassische Sägearbeiten für authentische Holzverbindungen</p>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in">
+                        <img src="https://images.pexels.com/photos/8961339/pexels-photo-8961339.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A construction worker with a hard hat uses a power drill on a wooden plank at a renovation site.">
+                        <div class="project-overlay">
+                            <h3>Renovierungsprojekte</h3>
+                            <p>Professionelle Sanierung und Modernisierung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <div class="section-subtitle">Kundenstimmen</div>
+                    <h2>Was unsere Kunden sagen</h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-quote">
+                                "Die maßgefertigte Schrankwand ist ein absolutes Meisterstück. Die Liebe zum Detail und die Präzision der Verarbeitung haben uns begeistert. Jeder Zentimeter wurde optimal genutzt."
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">MK</div>
+                                <div class="author-info">
+                                    <h4>Michael Krüger</h4>
+                                    <p>Hamburg-Eppendorf</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-quote">
+                                "Vom ersten Beratungsgespräch bis zur finalen Montage war alles perfekt organisiert. Die Qualität der Arbeit übertrifft alle Erwartungen. Absolut empfehlenswert!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">SB</div>
+                                <div class="author-info">
+                                    <h4>Sabine Becker</h4>
+                                    <p>Kopenhagen</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-card-inner">
+                            <div class="testimonial-quote">
+                                "Unser Esstisch ist nicht nur funktional, sondern ein echtes Kunstwerk. Die individuelle Beratung und die handwerkliche Präzision machen den Unterschied. Vielen Dank!"
+                            </div>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">TH</div>
+                                <div class="author-info">
+                                    <h4>Thomas Hansen</h4>
+                                    <p>Hamburg-Altona</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content fade-in">
+                        <div class="section-subtitle">Über uns</div>
+                        <h2>Erfahrung trifft Leidenschaft</h2>
+                        <p>Selbstständiger Tischler mit langjähriger Erfahrung im hochwertigen Möbelbau und Qualitätssicherung in Hamburg und Dänemark. Jedes Projekt wird mit höchster Sorgfalt und einem Auge für Details umgesetzt.</p>
+                        <div class="usps">
+                            <div class="usp-item">
+                                <div class="usp-icon">✓</div>
+                                <p>Langjährige Erfahrung in Hamburg und Dänemark</p>
+                            </div>
+                            <div class="usp-item">
+                                <div class="usp-icon">✓</div>
+                                <p>Liebe zum Detail und sorgfältige Verarbeitung</p>
+                            </div>
+                            <div class="usp-item">
+                                <div class="usp-icon">✓</div>
+                                <p>Individuelle Umsetzung maßgeschneiderter Kundenlösungen</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-images fade-in">
+                        <div class="about-image">
+                            <img src="https://images.pexels.com/photos/34006937/pexels-photo-34006937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter cutting wood with a circular saw at an outdoor construction site, showcasing craftsmanship.">
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.pexels.com/photos/4817843/pexels-photo-4817843.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A woman working on home renovation featuring a wooden staircase.">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="kontakt">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="section-header fade-in">
+                        <div class="section-subtitle">Kontakt</div>
+                        <h2>Lassen Sie uns gemeinsam Ihr Projekt verwirklichen</h2>
+                        <p class="contact-description">Kontaktieren Sie uns für eine unverbindliche Beratung und ein individuelles Angebot</p>
+                    </div>
+                    <div class="contact-card fade-in">
+                        <div class="contact-card-inner">
+                            <a href="#kontakt" class="contact-cta">
+                                <span>Jetzt anfragen</span>
+                                <span>→</span>
+                            </a>
+                            <div class="service-areas">
+                                <h3>Unsere Servicegebiete</h3>
+                                <div class="areas-list">
+                                    <div class="area-tag">Hamburg</div>
+                                    <div class="area-tag">Dänemark</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Der Handwerk</h3>
+                    <p>Hochwertiger Möbelbau mit Liebe zum Detail. Langjährige Erfahrung in Hamburg und Dänemark.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Startseite</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#projekte">Projekte</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a class="modal-trigger" data-modal="impressum">Impressum</a></li>
+                        <li><a class="modal-trigger" data-modal="datenschutz">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Demo-Redesign — nicht verbunden mit Der Handwerk</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal" id="impressumModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">&times;</button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal" id="datenschutzModal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        }, { passive: true });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functionality
+        const modals = {
+            impressum: document.getElementById('impressumModal'),
+            datenschutz: document.getElementById('datenschutzModal')
+        };
+
+        document.querySelectorAll('.modal-trigger').forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalName = trigger.getAttribute('data-modal');
+                const modal = modals[modalName];
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        document.querySelectorAll('.modal-close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.modal').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#kontakt') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 100;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Der Handwerk</p></body>
+</html>
