@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finanzberatung für Unternehmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #D97706;
+            --accent-hover: #B45309;
+            --bg: #FAFAF9;
+            --text: #18181B;
+            --text-soft: #52525B;
+            --border: #E4E4E7;
+            --white: #FFFFFF;
+            --zinc-50: #FAFAFA;
+            --zinc-100: #F4F4F5;
+            --zinc-200: #E4E4E7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.hidden {
+            transform: translateY(-100%);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9375rem;
+            color: var(--text);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 999;
+            padding: 6rem 2rem 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-menu a {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active a {
+            animation: menuItemFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .mobile-menu a:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu a:nth-child(2) { animation-delay: 0.15s; }
+        .mobile-menu a:nth-child(3) { animation-delay: 0.2s; }
+        .mobile-menu a:nth-child(4) { animation-delay: 0.25s; }
+        .mobile-menu a:nth-child(5) { animation-delay: 0.3s; }
+
+        @keyframes menuItemFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 1.5rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 60% 40%;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text-soft);
+            margin-bottom: 2.5rem;
+            max-width: 540px;
+        }
+
+        .cta-cluster {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--accent);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(0);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(217, 119, 6, 0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 1.5rem;
+            position: relative;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-soft);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Double Bezel Card */
+        .card {
+            background: var(--white);
+            border: 1px solid var(--zinc-200);
+            padding: 1.5px;
+            border-radius: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
+        }
+
+        .card-inner {
+            background: var(--zinc-50);
+            padding: 2rem;
+            border-radius: 1.75rem;
+            height: 100%;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--accent);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--white);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-link:hover {
+            gap: 0.75rem;
+        }
+
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .bento-grid.two-col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .bento-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .bento-item-large {
+            grid-row: span 2;
+        }
+
+        /* Leistungen Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Prozess Section */
+        .process-steps {
+            display: grid;
+            gap: 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .process-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .process-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-content p {
+            color: var(--text-soft);
+            font-size: 1.0625rem;
+        }
+
+        /* Über Uns Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: var(--text-soft);
+            font-size: 1.0625rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            position: relative;
+            height: 500px;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Vertrauen Section */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Cabinet Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        /* Kontakt Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1px solid var(--zinc-200);
+            padding: 1.5px;
+            border-radius: 2rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-form-inner {
+            background: var(--zinc-50);
+            padding: 3rem;
+            border-radius: 1.75rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            border: 1px solid var(--zinc-200);
+            border-radius: 12px;
+            font-family: 'Geist', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            font-size: 1.0625rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--white);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-item-content p {
+            color: var(--text-soft);
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 3rem 1.5rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-soft);
+            font-size: 0.9375rem;
+        }
+
+        .footer-column h4 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-column a {
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-soft);
+            font-size: 0.875rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--white);
+            border-radius: 1.5rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 3rem;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: var(--zinc-100);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            background: var(--zinc-200);
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--text);
+            stroke-width: 2;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            padding-right: 3rem;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .modal-content ul {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .modal-content li {
+            color: var(--text-soft);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-container,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image,
+            .about-image {
+                height: 400px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger,
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-sub {
+                font-size: 1.125rem;
+            }
+
+            .hero-image,
+            .about-image {
+                height: 300px;
+            }
+
+            section {
+                padding: 4rem 1.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bento-grid.two-col,
+            .bento-grid.three-col {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                grid-template-columns: 60px 1fr;
+                gap: 1.5rem;
+            }
+
+            .process-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                max-height: 90vh;
+            }
+
+            .modal-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-cluster {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Finanzberatung</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#prozess">Prozess</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <a href="#hero">Startseite</a>
+            <a href="#leistungen">Leistungen</a>
+            <a href="#prozess">Prozess</a>
+            <a href="#ueber-uns">Über uns</a>
+            <a href="#kontakt">Kontakt</a>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Finanzberatung für Unternehmer</h1>
+                <p class="hero-sub">Strategische Beratung für nachhaltiges Wachstum und finanzielle Sicherheit Ihres Unternehmens</p>
+                <div class="cta-cluster">
+                    <a href="#kontakt" class="btn-primary">
+                        Erstgespräch vereinbaren
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                    <a href="#leistungen" class="btn-secondary">
+                        Leistungen ansehen
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/8961339/pexels-photo-8961339.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A construction worker with a hard hat uses a power drill on a wooden plank at a renovation site.">
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen Section -->
+    <section id="leistungen">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2>Unsere Leistungen</h2>
+                <p>Maßgeschneiderte Finanzlösungen für Ihren unternehmerischen Erfolg</p>
+            </div>
+            <div class="services-grid">
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                            </svg>
+                        </div>
+                        <h3>Unternehmensfinanzierung</h3>
+                        <p>Wir entwickeln individuelle Finanzierungsstrategien für Ihr Unternehmenswachstum. Von Investitionsplanung bis zur Kapitalstrukturoptimierung begleiten wir Sie auf jedem Schritt.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                                <line x1="12" y1="22.08" x2="12" y2="12"/>
+                            </svg>
+                        </div>
+                        <h3>Steueroptimierung</h3>
+                        <p>Nutzen Sie alle legalen Möglichkeiten zur Reduzierung Ihrer Steuerlast. Wir analysieren Ihre Situation und entwickeln intelligente Strategien für maximale Effizienz.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <h3>Altersvorsorge</h3>
+                        <p>Sichern Sie Ihre finanzielle Zukunft als Unternehmer. Wir erstellen einen maßgeschneiderten Vorsorgeplan, der perfekt zu Ihrer Lebensplanung und Ihren Zielen passt.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            </svg>
+                        </div>
+                        <h3>Risikomanagement</h3>
+                        <p>Schützen Sie Ihr Unternehmen und Ihr Vermögen vor unvorhergesehenen Ereignissen. Wir identifizieren Risiken und entwickeln wirksame Absicherungsstrategien.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <h3>Vermögensaufbau</h3>
+                        <p>Bauen Sie systematisch Vermögen auf durch intelligente Investmentstrategien. Wir beraten Sie zu Anlageformen, die zu Ihrer Risikobereitschaft und Ihren Zielen passen.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="8.5" cy="7" r="4"/>
+                                <polyline points="17 11 19 13 23 9"/>
+                            </svg>
+                        </div>
+                        <h3>Nachfolgeplanung</h3>
+                        <p>Planen Sie die Zukunft Ihres Unternehmens rechtzeitig. Wir unterstützen Sie bei der steueroptimalen Gestaltung der Unternehmensnachfolge und Vermögensübertragung.</p>
+                        <a href="#kontakt" class="card-link">
+                            Mehr erfahren
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prozess Section -->
+    <section id="prozess" style="background: var(--white);">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2>Unser Beratungsprozess</h2>
+                <p>Transparent, strukturiert und auf Ihre individuellen Bedürfnisse zugeschnitten</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3>Kostenfreies Erstgespräch</h3>
+                        <p>In einem unverbindlichen Erstgespräch lernen wir uns kennen und analysieren Ihre aktuelle finanzielle Situation. Wir hören zu, stellen Fragen und verschaffen uns einen umfassenden Überblick über Ihre Ziele und Herausforderungen.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3>Detaillierte Analyse</h3>
+                        <p>Wir analysieren Ihre Unternehmenszahlen, Steuerunterlagen und bestehende Finanzstrukturen im Detail. Dabei identifizieren wir Optimierungspotenziale und mögliche Risiken, die Ihre finanzielle Sicherheit beeinträchtigen könnten.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3>Individuelle Strategieentwicklung</h3>
+                        <p>Basierend auf der Analyse entwickeln wir eine maßgeschneiderte Finanzstrategie. Diese umfasst konkrete Handlungsempfehlungen für Steueroptimierung, Vermögensaufbau, Absicherung und langfristige Planung.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3>Umsetzungsbegleitung</h3>
+                        <p>Wir setzen die vereinbarten Maßnahmen gemeinsam mit Ihnen um und koordinieren bei Bedarf mit Ihrem Steuerberater, Rechtsanwalt oder anderen Partnern. Sie haben stets einen direkten Ansprechpartner an Ihrer Seite.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3>Laufende Betreuung</h3>
+                        <p>Ihre finanzielle Situation verändert sich ständig. Wir überprüfen regelmäßig Ihre Strategie, passen sie bei Bedarf an und informieren Sie proaktiv über neue Chancen und relevante gesetzliche Änderungen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über Uns Section -->
+    <section id="ueber-uns">
+        <div class="section-container">
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h2>Über uns</h2>
+                    <p>Als unabhängige Finanzberater unterstützen wir Unternehmer seit über 15 Jahren dabei, ihre finanziellen Ziele zu erreichen und ihr Vermögen nachhaltig zu sichern.</p>
+                    <p>Unser Team vereint umfassende Expertise in den Bereichen Unternehmensfinanzierung, Steueroptimierung und Vermögensplanung. Wir arbeiten produkt- und provisionsunabhängig und haben ausschließlich Ihre Interessen im Blick.</p>
+                    <p>Vertrauen ist die Basis unserer Zusammenarbeit. Wir nehmen uns Zeit für Sie, sprechen Klartext und entwickeln Lösungen, die wirklich zu Ihrer individuellen Situation passen. Dabei pflegen wir einen persönlichen, verbindlichen Beratungsstil auf Augenhöhe.</p>
+                    <a href="#kontakt" class="btn-primary" style="margin-top: 1rem;">
+                        Jetzt kennenlernen
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </div>
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/34006937/pexels-photo-34006937.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter cutting wood with a circular saw at an outdoor construction site, showcasing craftsmanship.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vertrauen Section -->
+    <section id="vertrauen" style="background: var(--white);">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2>Vertrauen Sie auf Expertise</h2>
+                <p>Über ein Jahrzehnt Erfahrung in der Finanzberatung für Unternehmer</p>
+            </div>
+            <div class="trust-grid">
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="stat-card">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Jahre Erfahrung</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="stat-card">
+                            <div class="stat-number">350+</div>
+                            <div class="stat-label">Zufriedene Mandanten</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <div class="stat-card">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Weiterempfehlungsrate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bento-grid two-col" style="margin-top: 2rem;">
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <h3>Zertifizierte Expertise</h3>
+                        <p>Unsere Berater verfügen über anerkannte Qualifikationen und bilden sich kontinuierlich weiter, um Ihnen stets die beste Beratung bieten zu können. Wir sind Mitglied im Bundesverband unabhängiger Finanzberater.</p>
+                    </div>
+                </div>
+                <div class="card reveal">
+                    <div class="card-inner">
+                        <h3>Unabhängige Beratung</h3>
+                        <p>Als honorarberatender Finanzberater arbeiten wir ausschließlich in Ihrem Interesse – frei von Provisionen und Produktbindungen. Ihre finanzielle Sicherheit steht für uns an erster Stelle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt Section -->
+    <section id="kontakt">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <h2>Lassen Sie uns sprechen</h2>
+                <p>Vereinbaren Sie ein unverbindliches Erstgespräch und erfahren Sie, wie wir Sie unterstützen können</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info reveal">
+                    <h3>Wir freuen uns auf Ihre Nachricht</h3>
+                    <p>Schildern Sie uns Ihre Situation und wir melden uns zeitnah bei Ihnen für ein persönliches Gespräch.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Adresse</h4>
+                                <p>Musterstraße 123<br>10115 Berlin</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>Telefon</h4>
+                                <p>+49 30 12345678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item-content">
+                                <h4>E-Mail</h4>
+                                <p>kontakt@finanzberatung.de</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form reveal">
+                    <div class="contact-form-inner">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Ihr Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail-Adresse</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Telefon (optional)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ihre Nachricht</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" style="width: 100%;">
+                                Nachricht senden
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Finanzberatung</h3>
+                <p>Strategische Beratung für nachhaltiges Wachstum und finanzielle Sicherheit.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#hero">Startseite</a></li>
+                    <li><a href="#leistungen">Leistungen</a></li>
+                    <li><a href="#prozess">Prozess</a></li>
+                    <li><a href="#ueber-uns">Über uns</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#leistungen">Unternehmensfinanzierung</a></li>
+                    <li><a href="#leistungen">Steueroptimierung</a></li>
+                    <li><a href="#leistungen">Altersvorsorge</a></li>
+                    <li><a href="#leistungen">Risikomanagement</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Rechtliches</h4>
+                <ul>
+                    <li><a href="#" id="openImpressum">Impressum</a></li>
+                    <li><a href="#" id="openDatenschutz">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Demo-Redesign — nicht verbunden mit Finanzberatung für Unternehmer</p>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal" id="impressumModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('impressumModal')">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal" id="datenschutzModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('datenschutzModal')">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Process Steps Animation
+        const processSteps = document.querySelectorAll('.process-step');
+        const processObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        processSteps.forEach(step => processObserver.observe(step));
+
+        // Navbar Hide on Scroll Down
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll <= 0) {
+                navbar.classList.remove('hidden');
+                return;
+            }
+            
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Modal Event Listeners
+        document.getElementById('openImpressum').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('impressumModal');
+        });
+
+        document.getElementById('openDatenschutz').addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal('datenschutzModal');
+        });
+
+        // Close modal on backdrop click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    closeModal(modal.id);
+                });
+            }
+        });
+
+        // Form Submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns in Kürze bei Ihnen melden.');
+            e.target.reset();
+        });
+
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href.startsWith('#open')) return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Heide - Aktiv - Trockenbau GmbH & Co. KG</p></body>
+</html>
