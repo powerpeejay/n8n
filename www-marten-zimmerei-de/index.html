@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MARTEN GmbH Tischlerei & Zimmerei – Qualität für Generationen seit 1940</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #D97706;
+            --bg: #F7F6F3;
+            --text: #1F2937;
+            --text-light: #6B7280;
+            --border: #EAEAEA;
+            --white: #FFFFFF;
+            --dark-overlay: rgba(0, 0, 0, 0.45);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            border: 1px solid var(--text);
+            padding: 0.625rem 1.5rem;
+            border-radius: 4px;
+            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover {
+            background-color: var(--text);
+            color: var(--white);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            padding-top: 80px;
+        }
+
+        .hero-image {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.15) contrast(1.1);
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--dark-overlay) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            background: var(--bg);
+            padding: 8rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .year-badge {
+            position: absolute;
+            top: 3rem;
+            right: 5rem;
+            background: var(--accent);
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(217, 119, 6, 0.25);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-text {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 500px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: var(--text);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            align-self: flex-start;
+        }
+
+        .hero-button:hover {
+            background: #111827;
+            transform: translateY(-2px);
+        }
+
+        .hero-button:active {
+            transform: translateY(0);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Trust Signals */
+        .trust-signals {
+            background: var(--white);
+            padding: 4rem 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .trust-item h3 {
+            font-size: 1.35rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .trust-item p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: scale(0.99);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.12);
+        }
+
+        .service-content {
+            padding: 2rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            filter: sepia(0.12);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin-top: 2.5rem;
+        }
+
+        .about-features li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+            color: var(--text);
+        }
+
+        .about-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.25rem;
+        }
+
+        /* References / Gallery */
+        .references {
+            background: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+            border: 1px solid var(--border);
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--accent);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: sepia(0.08);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Contact Section */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .contact-item-content p, .contact-item-content a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.05rem;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--accent);
+        }
+
+        .contact-map {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: 500px;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-about h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            padding: 2rem;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 3rem;
+            position: relative;
+            margin: 4rem auto;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: var(--bg);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--text);
+            transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-content h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .modal-content p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+
+            .hero-content {
+                padding: 6rem 3rem;
+            }
+
+            .year-badge {
+                right: 3rem;
+            }
+
+            .about-wrapper,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 77px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                align-items: flex-start;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-image {
+                min-height: 400px;
+            }
+
+            .hero-content {
+                padding: 4rem 2rem;
+            }
+
+            .year-badge {
+                top: 2rem;
+                right: 2rem;
+                font-size: 1.25rem;
+                padding: 0.75rem 1.25rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-map {
+                height: 350px;
+            }
+
+            .modal-content {
+                padding: 2rem;
+                margin: 2rem auto;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">MARTEN</a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#referenzen">Referenzen</a></li>
+                <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-image">
+            <img src="https://images.pexels.com/photos/7484154/pexels-photo-7484154.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Two male carpenters working together in a well-equipped workshop.">
+        </div>
+        <div class="hero-content">
+            <div class="year-badge">1940</div>
+            <div class="hero-eyebrow">84 Jahre Handwerkstradition</div>
+            <h1>Zimmerei & Tischlerei MARTEN</h1>
+            <p class="hero-text">Die Marten GmbH stellt sich als kompetenter Partner rund ums Bauen mit Holz vor. Seit 1940 verbinden wir traditionelles Handwerk mit moderner Ausführung – für Projekte, die Generationen überdauern.</p>
+            <a href="#kontakt" class="hero-button">Beratung anfragen</a>
+        </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="trust-signals">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-icon">84</div>
+                    <h3>Jahre Erfahrung</h3>
+                    <p>Seit 1940 im Familienbetrieb – Wissen und Können über vier Generationen</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">2</div>
+                    <h3>Gewerke unter einem Dach</h3>
+                    <p>Kompetenz in Tischlerei und Zimmerei kombiniert für durchgängige Qualität</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">✓</div>
+                    <h3>Regional verwurzelt</h3>
+                    <p>Ihr verlässlicher Partner in Porta Westfalica und Umgebung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="leistungen">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">Unsere Leistungen</div>
+                <h2 class="section-title">Meisterhafte Holzbearbeitung</h2>
+                <p class="section-subtitle">Von der Dachkonstruktion bis zum maßgefertigten Möbelstück – wir beherrschen das gesamte Spektrum der Holzverarbeitung.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/7479023/pexels-photo-7479023.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Profile view of a man in denim overalls working in an industrial workshop environment.">
+                    </div>
+                    <div class="service-content">
+                        <h3>Zimmerei</h3>
+                        <p>Holzkonstruktionen und Dacharbeiten mit höchster Präzision. Wir realisieren tragende Holzkonstruktionen, Dachstühle, Carports und Holzhäuser nach individuellen Anforderungen – solide gebaut für höchste Standfestigkeit.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.pexels.com/photos/13005858/pexels-photo-13005858.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A craftsman shaping wooden planks indoors, focusing on precise woodworking techniques.">
+                    </div>
+                    <div class="service-content">
+                        <h3>Tischlerei</h3>
+                        <p>Individuelle Holzarbeiten für Ihr Zuhause und Gewerbe. Von maßgefertigten Möbeln über Einbauschränke bis zu hochwertigen Türen und Fenstern – jedes Stück ein Unikat, gefertigt mit Liebe zum Detail und handwerklicher Perfektion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="ueber-uns">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-content">
+                    <div class="section-eyebrow">Über uns</div>
+                    <h2>Seit 1940 Partner für Bauen mit Holz in Porta Westfalica</h2>
+                    <p>Die MARTEN GmbH verbindet seit über acht Jahrzehnten Tradition und Innovation. Was 1940 als kleine Werkstatt begann, ist heute ein etablierter Fachbetrieb, der für Qualität, Zuverlässigkeit und handwerkliche Exzellenz steht.</p>
+                    <p>Unser Anspruch ist es, jedem Projekt – ob Neubau, Sanierung oder Maßanfertigung – mit derselben Sorgfalt und Leidenschaft zu begegnen. Dabei setzen wir auf bewährte Handwerkstechniken und moderne Verfahren, um Ihnen Lösungen zu bieten, die nicht nur funktional, sondern auch ästhetisch überzeugen.</p>
+                    <ul class="about-features">
+                        <li>Seit 1940 im Familienbetrieb</li>
+                        <li>Kompetenz in Tischlerei und Zimmerei kombiniert</li>
+                        <li>Individuelle Beratung und maßgeschneiderte Lösungen</li>
+                        <li>Höchste Qualitätsstandards bei Material und Ausführung</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.pexels.com/photos/28513058/pexels-photo-28513058.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Carpenter using a table saw in a workshop, focusing on precise cuts on wood.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References / Gallery -->
+    <section class="references" id="referenzen">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-eyebrow">Referenzen</div>
+                <h2 class="section-title">Einblicke in unsere Arbeit</h2>
+                <p class="section-subtitle">Jedes Projekt erzählt seine eigene Geschichte – von der handwerklichen Planung bis zur perfekten Umsetzung.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/35680060/pexels-photo-35680060.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Black and white photo of a vintage sawmill in Switzerland's scenic forest.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/28513061/pexels-photo-28513061.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Skilled carpenter using machinery in a well-lit woodworking shop.">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.pexels.com/photos/5089175/pexels-photo-5089175.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A craftsman measuring wood with precision tools in a workshop setting.">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="kontakt">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="section-eyebrow">Kontakt</div>
+                    <h2>Lassen Sie uns über Ihr Projekt sprechen</h2>
+                    <p>Ob Beratung, Angebot oder konkrete Planung – wir freuen uns auf Ihre Anfrage und stehen Ihnen mit unserer Expertise zur Seite.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">T</div>
+                            <div class="contact-item-content">
+                                <h4>Telefon</h4>
+                                <a href="tel:057316641">05731 - 66 41</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">@</div>
+                            <div class="contact-item-content">
+                                <h4>E-Mail</h4>
+                                <a href="mailto:info@marten-zimmerei.de">info@marten-zimmerei.de</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✎</div>
+                            <div class="contact-item-content">
+                                <h4>Adresse</h4>
+                                <p>Hebbelstr. 41<br>32457 Porta Westfalica</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2449.8547989213885!2d8.916373476904837!3d52.23837897197582!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ba49b7c0a8ef45%3A0x4f1a4c8b3e8d5c9f!2sHebbelstra%C3%9Fe%2041%2C%2032457%20Porta%20Westfalica!5e0!3m2!1sde!2sde!4v1704817200000!5m2!1sde!2sde" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>MARTEN GmbH</h3>
+                    <p>Tischlerei & Zimmerei seit 1940<br>Qualität für Generationen</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" class="social-icon" target="_blank" rel="noopener">f</a>
+                        <a href="https://whatsapp.com" class="social-icon" target="_blank" rel="noopener">W</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#hero">Startseite</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#referenzen">Referenzen</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="#" id="impressumLink">Impressum</a></li>
+                        <li><a href="#" id="datenschutzLink">Datenschutz</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MARTEN GmbH Tischlerei & Zimmerei. Demo-Redesign — nicht verbunden mit MARTEN GmbH Tischlerei & Zimmerei</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal-overlay" id="impressumModal">
+        <div class="modal-content">
+            <button class="modal-close" id="impressumClose">&times;</button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal-overlay" id="datenschutzModal">
+        <div class="modal-content">
+            <button class="modal-close" id="datenschutzClose">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        let lastScroll = 0;
+
+        function checkScroll() {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+            lastScroll = currentScroll;
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+
+        // Mobile menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations using IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Modal functionality
+        const impressumModal = document.getElementById('impressumModal');
+        const datenschutzModal = document.getElementById('datenschutzModal');
+        const impressumLink = document.getElementById('impressumLink');
+        const datenschutzLink = document.getElementById('datenschutzLink');
+        const impressumClose = document.getElementById('impressumClose');
+        const datenschutzClose = document.getElementById('datenschutzClose');
+
+        function openModal(modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        impressumLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(impressumModal);
+        });
+
+        datenschutzLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(datenschutzModal);
+        });
+
+        impressumClose.addEventListener('click', () => closeModal(impressumModal));
+        datenschutzClose.addEventListener('click', () => closeModal(datenschutzModal));
+
+        // Close modal on backdrop click
+        impressumModal.addEventListener('click', (e) => {
+            if (e.target === impressumModal) closeModal(impressumModal);
+        });
+
+        datenschutzModal.addEventListener('click', (e) => {
+            if (e.target === datenschutzModal) closeModal(datenschutzModal);
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal(impressumModal);
+                closeModal(datenschutzModal);
+            }
+        });
+
+        // Initialize scroll check
+        checkScroll();
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit MARTEN GmbH Tischlerei & Zimmerei</p></body>
+</html>
