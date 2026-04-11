@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eckhard Völlkopf GmbH – BÄDER·HEIZUNG·SOLAR·KLIMA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #10B981;
+            --bg: #FFFFFF;
+            --text: #18181B;
+            --text-muted: #52525B;
+            --border: #E4E4E7;
+            --red-accent: #9e1b32;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 12px 32px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            color: var(--red-accent) !important;
+            font-size: 16px;
+        }
+
+        .nav-logo:hover {
+            color: var(--red-accent) !important;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100dvh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            padding: 120px 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .hero-tagline {
+            font-size: 18px;
+            color: var(--red-accent);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: var(--bg);
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Services */
+        .services {
+            padding: 120px 80px;
+            background: #FAFAFA;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--accent), #059669);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 28px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* About */
+        .about {
+            padding: 120px 80px;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .usp-list {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .usp-list li {
+            padding: 16px 0;
+            padding-left: 40px;
+            position: relative;
+            font-size: 17px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .usp-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .about-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .about-images.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-image {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image:first-child {
+            grid-column: 1 / -1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 80px;
+            background: linear-gradient(135deg, #F0FDF4, #ECFDF5);
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 48px;
+            border-radius: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .testimonial-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-text {
+            font-size: 24px;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .testimonial-source {
+            font-size: 16px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 120px 80px;
+            background: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-info h2 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: #FAFAFA;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-item-content h4 {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item-content a,
+        .contact-item-content span {
+            font-size: 18px;
+            color: var(--text);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-item-content a:hover {
+            color: var(--accent);
+        }
+
+        .contact-form {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #18181B;
+            color: white;
+            padding: 80px 80px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--accent);
+        }
+
+        .footer-brand p {
+            color: #A1A1AA;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #A1A1AA;
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #27272A;
+            padding-top: 32px;
+            text-align: center;
+            color: #71717A;
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            margin-bottom: 16px;
+        }
+
+        .footer-legal a {
+            color: #A1A1AA;
+            text-decoration: none;
+            margin: 0 16px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 800px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 48px;
+            position: relative;
+            margin: 40px auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: #F4F4F5;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            background: #E4E4E7;
+        }
+
+        .modal-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        .modal-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .modal-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .modal-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .modal-content li {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 8px;
+        }
+
+        .modal-placeholder {
+            background: #F4F4F5;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            font-style: italic;
+            color: var(--text-muted);
+            border: 2px dashed var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 100px 40px 60px;
+                gap: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 48px;
+            }
+
+            .services,
+            .about,
+            .testimonials,
+            .contact,
+            footer {
+                padding: 80px 40px;
+            }
+
+            .about-content,
+            .contact-content {
+                gap: 60px;
+            }
+
+            .footer-content {
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                top: 16px;
+                left: 16px;
+                right: 16px;
+                transform: none;
+                width: calc(100% - 32px);
+                padding: 16px 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                position: fixed;
+                top: 76px;
+                left: 16px;
+                right: 16px;
+                background: white;
+                padding: 24px;
+                border-radius: 16px;
+                box-shadow: var(--shadow-lg);
+                display: none;
+                border: 1px solid var(--border);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+                padding: 12px 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 24px 60px;
+                min-height: auto;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .services,
+            .about,
+            .testimonials,
+            .contact,
+            footer {
+                padding: 60px 24px;
+            }
+
+            .section-header h2,
+            .about-text h2,
+            .contact-info h2 {
+                font-size: 36px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-images {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image:first-child {
+                grid-column: 1;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .testimonial-card {
+                padding: 32px 24px;
+            }
+
+            .testimonial-text {
+                font-size: 20px;
+            }
+
+            .modal-content {
+                padding: 32px 24px;
+            }
+
+            .modal-content h2 {
+                font-size: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <button class="mobile-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul>
+            <li><a href="#hero" class="nav-logo">Völlkopf</a></li>
+            <li><a href="#services">Leistungen</a></li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero -->
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <div class="hero-tagline">BÄDER·HEIZUNG·SOLAR·KLIMA</div>
+                <h1>Für mehr Energieeffizienz: Testsieger-Wärmepumpen von Buderus</h1>
+                <p>Inhabergeführter Meisterbetrieb mit Fokus auf Qualität und persönliche Beratung durch den Meister</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Jetzt beraten lassen</a>
+                    <a href="#services" class="btn btn-secondary">Unsere Leistungen</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.pexels.com/photos/8089093/pexels-photo-8089093.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Sleek modern bathroom featuring a minimalist sink and elegant hanging lights.">
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Unsere Leistungen</div>
+                    <h2>Ihr Meisterbetrieb für Haustechnik</h2>
+                    <p>Von der Heizung bis zum kompletten Bad – wir bieten Ihnen alle Leistungen aus einer Hand</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🔥</div>
+                        <h3>Heizung</h3>
+                        <p>Moderne Heizungssysteme und Wärmepumpen für maximale Energieeffizienz. Testsieger-Produkte von Buderus für Ihre Zukunft.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🪵</div>
+                        <h3>Kamine</h3>
+                        <p>Kaminöfen für behagliches Wohnen. Professionelle Planung und Installation für wohlige Wärme in Ihren vier Wänden.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚿</div>
+                        <h3>Bad / Sanitär</h3>
+                        <p>Komplette Badplanung und Renovierung vom Meister. Von der ersten Idee bis zur schlüsselfertigen Umsetzung.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">☀️</div>
+                        <h3>Solar</h3>
+                        <p>Regenerative Energie vom Profi. Nutzen Sie die Kraft der Sonne für Ihr Zuhause und senken Sie Ihre Energiekosten.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Klempnerei</h3>
+                        <p>Dachrinnen und Abdichtungen in Meisterqualität. Professioneller Schutz für Ihr Gebäude gegen Witterungseinflüsse.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Service</h3>
+                        <p>Schnelle Hilfe bei Notfällen und regelmäßige Wartung. Unser Kundenservice ist für Sie da – zuverlässig und kompetent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="section-label">Über uns</div>
+                        <h2>Eckhard Völlkopf GmbH</h2>
+                        <p>Inhabergeführter Meisterbetrieb mit Fokus auf Qualität und persönliche Beratung durch den Meister. Bei uns erhalten Sie nicht nur erstklassige Handwerksleistungen, sondern auch die Erfahrung und das Engagement eines Familienbetriebs.</p>
+                        <ul class="usp-list">
+                            <li>Testsieger-Produkte im Wärmepumpen-Segment</li>
+                            <li>Meisterbetrieb mit persönlicher Beratung</li>
+                            <li>Vollservice für Heizung, Bad und Solar</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary">Kontakt aufnehmen</a>
+                    </div>
+                    <div class="about-images">
+                        <div class="about-image">
+                            <img src="https://images.pexels.com/photos/6782431/pexels-photo-6782431.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Interior of modern bright restroom with sink and faucet on cabinet under mirror on tile wall next to bathtub" style="height: 400px;">
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.pexels.com/photos/7031215/pexels-photo-7031215.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="White sink and faucet in stylish modern bathroom with marble and wood look tiles" style="height: 300px;">
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.pexels.com/photos/6653889/pexels-photo-6653889.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Stylish bathroom interior featuring a ceramic sink, bathtub, and modern fixtures." style="height: 300px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Auszeichnung</div>
+                    <h2>Testsieger-Qualität</h2>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-badge">Testsieger</div>
+                    <div class="testimonial-text">
+                        Testsieger bei Luft-Wasser-Wärmepumpen: Buderus Logatherm WLW186i-10 AR E*
+                    </div>
+                    <div class="testimonial-source">
+                        *Ausgezeichnete Produkte, die wir für Sie installieren
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="section-label">Kontakt</div>
+                    <h2>Lassen Sie uns sprechen</h2>
+                    <p>Haben Sie Fragen zu unseren Leistungen oder möchten Sie ein Angebot einholen? Wir freuen uns auf Ihre Kontaktaufnahme und beraten Sie gerne persönlich.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-item-content">
+                                <h4>Telefon</h4>
+                                <a href="tel:066237334">06623 7334</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-item-content">
+                                <h4>E-Mail</h4>
+                                <a href="mailto:buero@voellkopf.de">buero@voellkopf.de</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-item-content">
+                                <h4>Servicegebiet</h4>
+                                <span>Pfinztal und Umgebung</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Ihre Nachricht</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Eckhard Völlkopf GmbH</h3>
+                <p>Ihr Meisterbetrieb für Bäder, Heizung, Solar und Klima in Pfinztal. Qualität und persönliche Beratung seit Jahren.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#services">Heizung</a></li>
+                    <li><a href="#services">Kamine</a></li>
+                    <li><a href="#services">Bad / Sanitär</a></li>
+                    <li><a href="#services">Solar</a></li>
+                    <li><a href="#services">Klempnerei</a></li>
+                    <li><a href="#services">Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:066237334">06623 7334</a></li>
+                    <li><a href="mailto:buero@voellkopf.de">buero@voellkopf.de</a></li>
+                    <li>Pfinztal</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="#" class="legal-link" data-modal="impressum">Impressum</a>
+                <a href="#" class="legal-link" data-modal="datenschutz">Datenschutz</a>
+            </div>
+            <p>Demo-Redesign – nicht verbunden mit Eckhard Völlkopf GmbH</p>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div id="impressum-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">&times;</button>
+            <h2>Impressum</h2>
+            <div class="modal-placeholder">
+                [Impressum hier einfügen]
+            </div>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div id="datenschutz-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <div class="modal-placeholder">
+                [Datenschutzerklärung hier einfügen]
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .about-text, .about-images, .testimonial-card, .contact-info, .contact-form').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Modal functionality
+        const modals = {
+            impressum: document.getElementById('impressum-modal'),
+            datenschutz: document.getElementById('datenschutz-modal')
+        };
+
+        // Open modal
+        document.querySelectorAll('.legal-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalName = link.getAttribute('data-modal');
+                if (modals[modalName]) {
+                    modals[modalName].classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal function
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close buttons
+        document.querySelectorAll('.modal-close').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const modal = btn.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        // Close on backdrop click
+        Object.values(modals).forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                Object.values(modals).forEach(modal => {
+                    if (modal.classList.contains('active')) {
+                        closeModal(modal);
+                    }
+                });
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir werden uns schnellstmöglich bei Ihnen melden.');
+            e.target.reset();
+        });
+
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Eckhard Völlkopf GmbH</p></body>
+</html>
