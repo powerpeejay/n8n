@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVV Immobilien & Kapital Management GmbH – Immobilienverwaltung in Elmshorn</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #8B1A1A;
+            --bg: #FFFFFF;
+            --text: #111111;
+            --text-secondary: #4A4A4A;
+            --border: #EAEAEA;
+            --border-hover: #CCCCCC;
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            padding: 12px 24px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-cta:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            width: 28px;
+        }
+
+        .nav-hamburger span {
+            width: 100%;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero */
+        .hero {
+            margin-top: 72px;
+            min-height: 100dvh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 55%;
+            padding: 120px 80px 80px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(139, 26, 26, 0.08);
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 32px;
+            width: fit-content;
+        }
+
+        .hero-badge-icon {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 48px;
+            max-width: 540px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 16px 32px;
+            background: var(--accent);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #6E1515;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            padding: 16px 32px;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: 2px solid white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--accent);
+        }
+
+        .hero-image {
+            width: 45%;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+        }
+
+        .hero-trust {
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            background: white;
+            padding: 16px 20px;
+            border-radius: 4px;
+            font-size: 12px;
+            line-height: 1.4;
+            max-width: 220px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        /* Section Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            max-width: 720px;
+            margin-bottom: 64px;
+        }
+
+        .section-label {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            margin-bottom: 24px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 24px;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--accent);
+        }
+
+        .service-card h3 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            flex-grow: 1;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 15px;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-link:hover {
+            gap: 12px;
+        }
+
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+            fill: var(--accent);
+        }
+
+        /* About */
+        .about {
+            background: #FAFAFA;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 40fr 60fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 42px;
+            margin-bottom: 32px;
+        }
+
+        .about-text p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .about-features {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .about-feature-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .about-feature-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--accent);
+        }
+
+        .about-feature-text {
+            font-size: 16px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Trust */
+        .trust-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 64px;
+        }
+
+        .trust-certification {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px;
+            max-width: 700px;
+            margin: 0 auto 64px;
+        }
+
+        .trust-cert-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-cert-logo svg {
+            width: 40px;
+            height: 40px;
+            fill: white;
+        }
+
+        .trust-cert-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .trust-cert-text {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--border-hover);
+        }
+
+        .testimonial-quote {
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .testimonial-role {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Contact */
+        .contact {
+            background: #FAFAFA;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 45fr 55fr;
+            gap: 80px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 14px 16px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            color: var(--text);
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contact-info-box {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 48px;
+        }
+
+        .contact-info-box h3 {
+            font-size: 28px;
+            margin-bottom: 32px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .contact-info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-info-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .contact-info-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--accent);
+        }
+
+        .contact-info-text {
+            flex: 1;
+        }
+
+        .contact-info-label {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .contact-info-value {
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .contact-info-value a {
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-info-value a:hover {
+            color: var(--accent);
+        }
+
+        .contact-map {
+            margin-top: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 64px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 64px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            list-style: none;
+        }
+
+        .footer-link {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .footer-legal a:hover {
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-backdrop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            position: relative;
+            background: white;
+            border-radius: 8px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 48px;
+            z-index: 1;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            opacity: 0.6;
+        }
+
+        .modal-close svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text);
+        }
+
+        .modal-content h2 {
+            font-size: 32px;
+            margin-bottom: 32px;
+            padding-right: 40px;
+        }
+
+        .modal-content h3 {
+            font-size: 20px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .modal-content p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .modal-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .modal-content li {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid var(--border);
+            padding: 16px 0;
+            z-index: 1500;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cookie-banner.active {
+            transform: translateY(0);
+        }
+
+        .cookie-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 32px;
+        }
+
+        .cookie-banner-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            flex: 1;
+        }
+
+        .cookie-banner-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cookie-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .cookie-btn-accept {
+            background: var(--accent);
+            color: white;
+        }
+
+        .cookie-btn-accept:hover {
+            background: #6E1515;
+        }
+
+        .cookie-btn-settings {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .cookie-btn-settings:hover {
+            border-color: var(--border-hover);
+        }
+
+        /* Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                padding: 100px 48px 80px 48px;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .hero-sub {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 24px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: white;
+                flex-direction: column;
+                padding: 48px 24px;
+                gap: 32px;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                align-items: flex-start;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-link {
+                font-size: 24px;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-content,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-content {
+                padding: 80px 24px 48px 24px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero-sub {
+                font-size: 17px;
+            }
+
+            .hero-image {
+                min-height: 400px;
+            }
+
+            .hero-trust {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+                max-width: none;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-description {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-content .about-text {
+                order: 2;
+            }
+
+            .about-content .about-image {
+                order: 1;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .cookie-banner-content {
+                flex-direction: column;
+                padding: 0 24px;
+                gap: 16px;
+                align-items: stretch;
+            }
+
+            .cookie-banner-actions {
+                flex-direction: column;
+            }
+
+            .modal-content {
+                padding: 32px 24px;
+            }
+
+            .modal-content h2 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">EVV</div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Startseite</a></li>
+                <li><a href="#services" class="nav-link">Management</a></li>
+                <li><a href="#services" class="nav-link">Verkauf / Vermietung</a></li>
+                <li><a href="#contact" class="nav-cta">Kontakt</a></li>
+            </ul>
+            <div class="nav-hamburger" id="navHamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg class="hero-badge-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+                Verband zertifiziert
+            </div>
+            <h1>Immobilien- und Kapitalmanagement mit Erfahrung</h1>
+            <p class="hero-sub">Nutzen Sie unser Fachwissen für Ihre Immobilien</p>
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-primary">Kostenlose Erstberatung</a>
+                <a href="tel:04121-23320" class="btn-secondary">04121 - 23320</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.pexels.com/photos/5563473/pexels-photo-5563473.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Exterior of contemporary cottage with large windows and stylish terrace against cloudy blue sky" loading="eager">
+            <div class="hero-trust">
+                <strong>Mitglied im Verband der Immobilienverwalter Schleswig-Holstein</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Unsere Leistungen</div>
+                <h2 class="section-title">Professionelle Betreuung Ihrer Immobilien</h2>
+                <p class="section-description">Wir bieten Ihnen umfassende Dienstleistungen in der Immobilienverwaltung und Vermarktung. Mit langjähriger Erfahrung und lokalem Expertenwissen sind wir Ihr verlässlicher Partner in Elmshorn und Umgebung.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z"/>
+                            <path d="M9 7H7V9H9V7Z"/>
+                            <path d="M13 7H11V9H13V7Z"/>
+                            <path d="M17 7H15V9H17V7Z"/>
+                            <path d="M9 11H7V13H9V11Z"/>
+                            <path d="M13 11H11V13H13V11Z"/>
+                            <path d="M17 11H15V13H17V11Z"/>
+                            <path d="M9 15H7V17H9V15Z"/>
+                            <path d="M13 15H11V17H13V15Z"/>
+                            <path d="M17 15H15V17H17V15Z"/>
+                        </svg>
+                    </div>
+                    <h3>Management</h3>
+                    <p>Immobilienverwaltung und Kapitalmanagement – Wir kümmern uns um die professionelle Verwaltung Ihrer Immobilien und optimieren Ihre Kapitalanlagen mit fundiertem Fachwissen.</p>
+                    <a href="#contact" class="service-link">
+                        Mehr erfahren
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"/>
+                            <path d="M9 22V12H15V22"/>
+                        </svg>
+                    </div>
+                    <h3>Verkauf / Vermietung</h3>
+                    <p>Vermarktung von Immobilien – Ob Verkauf oder Vermietung, wir sorgen für eine zielgerichtete und erfolgreiche Vermarktung Ihrer Immobilie mit maximaler Reichweite.</p>
+                    <a href="#contact" class="service-link">
+                        Mehr erfahren
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text reveal">
+                    <h2>Ihr Partner für Immobilien in Elmshorn</h2>
+                    <p>Die EVV Immobilien & Kapital Management GmbH ist Ihr kompetenter Ansprechpartner für alle Fragen rund um Immobilienverwaltung und -vermarktung in Elmshorn und Umgebung.</p>
+                    <p>Mit unserer Expertise und lokalem Marktwissen bieten wir Ihnen individuelle Lösungen, die auf Ihre persönlichen Anforderungen zugeschnitten sind. Unser Ziel ist es, den Wert Ihrer Immobilie zu erhalten und zu steigern.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"/>
+                                </svg>
+                            </div>
+                            <div class="about-feature-text">Langjährige Erfahrung in der Immobilienbranche</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"/>
+                                </svg>
+                            </div>
+                            <div class="about-feature-text">Persönliche Beratung und individuelle Betreuung</div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"/>
+                                </svg>
+                            </div>
+                            <div class="about-feature-text">Fundiertes Marktwissen in Elmshorn und Region</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image reveal">
+                    <img src="https://images.pexels.com/photos/7937225/pexels-photo-7937225.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bright suburban house exterior with a for sale sign in the foreground." loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust -->
+    <section id="trust">
+        <div class="container">
+            <div class="trust-content reveal">
+                <div class="section-label">Vertrauen & Kompetenz</div>
+                <h2 class="section-title">Zertifizierte Qualität für Ihre Sicherheit</h2>
+            </div>
+            <div class="trust-certification reveal">
+                <div class="trust-cert-logo">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                </div>
+                <div class="trust-cert-title">Verband der Immobilienverwalter</div>
+                <p class="trust-cert-text">Mitglied im Verband der Immobilienverwalter Schleswig-Holstein/Hamburg/Mecklenburg-Vorpommern e.V. – Wir erfüllen höchste Standards in der Immobilienverwaltung und unterliegen regelmäßigen Qualitätskontrollen.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"Die Verwaltung unserer Eigentumswohnungen läuft seit Jahren reibungslos. Alle Abrechnungen sind transparent und termingerecht. Wir fühlen uns sehr gut aufgehoben."</div>
+                    <div class="testimonial-author">Familie Petersen</div>
+                    <div class="testimonial-role">Eigentümergemeinschaft Elmshorn</div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"Der Verkauf unseres Mehrfamilienhauses wurde professionell begleitet. Vom ersten Gespräch bis zur Schlüsselübergabe – alles hat perfekt funktioniert."</div>
+                    <div class="testimonial-author">Dr. Michael Hansen</div>
+                    <div class="testimonial-role">Immobilienverkauf</div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-quote">"Als Kapitalanleger schätze ich die kompetente Beratung und die zuverlässige Verwaltung meiner Investitionsobjekte. Eine Zusammenarbeit, auf die man sich verlassen kann."</div>
+                    <div class="testimonial-author">Thomas Schneider</div>
+                    <div class="testimonial-role">Kapitalanleger</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-label">Kontakt</div>
+                <h2 class="section-title">Lassen Sie uns über Ihr Projekt sprechen</h2>
+                <p class="section-description">Nehmen Sie Kontakt mit uns auf. Wir freuen uns auf Ihre Anfrage und beraten Sie gerne zu allen Fragen rund um Ihre Immobilie.</p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form reveal">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Ihr Name</label>
+                        <input type="text" id="name" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">E-Mail-Adresse</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="phone">Telefonnummer</label>
+                        <input type="tel" id="phone" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Ihre Nachricht</label>
+                        <textarea id="message" class="form-textarea" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Nachricht senden</button>
+                </form>
+                <div class="reveal">
+                    <div class="contact-info-box">
+                        <h3>Kontaktinformationen</h3>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Telefon</div>
+                                <div class="contact-info-value"><a href="tel:04121-23320">04121 - 23320</a></div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.6569 16.6569C16.7202 17.5935 14.7616 19.5521 13.4138 20.8999C12.6327 21.681 11.3677 21.6814 10.5866 20.9003C9.26234 19.576 7.34159 17.6553 6.34315 16.6569C3.21895 13.5327 3.21895 8.46734 6.34315 5.34315C9.46734 2.21895 14.5327 2.21895 17.6569 5.34315C20.781 8.46734 20.781 13.5327 17.6569 16.6569Z"/>
+                                    <path d="M15 11C15 12.6569 13.6569 14 12 14C10.3431 14 9 12.6569 9 11C9 9.34315 10.3431 8 12 8C13.6569 8 15 9.34315 15 11Z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Standort</div>
+                                <div class="contact-info-value">25335 Elmshorn</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon">
+                                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 8V12L15 15M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Erreichbarkeit</div>
+                                <div class="contact-info-value">Mo–Fr nach Vereinbarung</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18648.50831682649!2d9.643714!3d53.751389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b24e0c9b7c8e75%3A0x4263df27bd63aa0!2s25335%20Elmshorn!5e0!3m2!1sde!2sde!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">EVV Immobilien & Kapital Management</div>
+                    <p class="footer-description">Ihr verlässlicher Partner für Immobilienverwaltung und -vermarktung in Elmshorn und Umgebung.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#hero" class="footer-link">Startseite</a></li>
+                        <li><a href="#services" class="footer-link">Leistungen</a></li>
+                        <li><a href="#about" class="footer-link">Über uns</a></li>
+                        <li><a href="#contact" class="footer-link">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Leistungen</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services" class="footer-link">Management</a></li>
+                        <li><a href="#services" class="footer-link">Verkauf / Vermietung</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link">04121 - 23320</li>
+                        <li class="footer-link">25335 Elmshorn</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>Demo-Redesign – nicht verbunden mit EVV Immobilien & Kapital Management GmbH</div>
+                <div class="footer-legal">
+                    <a class="modal-trigger" data-modal="impressum">Impressum</a>
+                    <a class="modal-trigger" data-modal="datenschutz">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal" id="impressumModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <div class="modal" id="datenschutzModal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner active" id="cookieBanner">
+        <div class="cookie-banner-content">
+            <p class="cookie-banner-text">Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Durch die weitere Nutzung der Website stimmen Sie der Verwendung von Cookies zu.</p>
+            <div class="cookie-banner-actions">
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akzeptieren</button>
+                <button class="cookie-btn cookie-btn-settings">Einstellungen</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        const navHamburger = document.getElementById('navHamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        navHamburger.addEventListener('click', () => {
+            navHamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    navHamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll reveal
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Modal functionality
+        const modalTriggers = document.querySelectorAll('.modal-trigger');
+        const modals = document.querySelectorAll('.modal');
+        const modalCloses = document.querySelectorAll('.modal-close');
+        const modalBackdrops = document.querySelectorAll('.modal-backdrop');
+
+        modalTriggers.forEach(trigger => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = trigger.dataset.modal + 'Modal';
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        modalCloses.forEach(close => {
+            close.addEventListener('click', () => {
+                closeModal(close.closest('.modal'));
+            });
+        });
+
+        modalBackdrops.forEach(backdrop => {
+            backdrop.addEventListener('click', () => {
+                closeModal(backdrop.closest('.modal'));
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    if (modal.classList.contains('active')) {
+                        closeModal(modal);
+                    }
+                });
+            }
+        });
+
+        // Cookie banner
+        const cookieBanner = document.getElementById('cookieBanner');
+        const cookieAccept = document.getElementById('cookieAccept');
+
+        cookieAccept.addEventListener('click', () => {
+            cookieBanner.classList.remove('active');
+            localStorage.setItem('cookiesAccepted', 'true');
+        });
+
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
+            cookieBanner.classList.remove('active');
+        }
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.');
+            contactForm.reset();
+        });
+    </script>
+
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit EVV Immobilien & Kapital Management GmbH</p></body>
+</html>
