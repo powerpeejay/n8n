@@ -75,12 +75,12 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 60px;
+            height: 80px;
         }
 
         .nav-logo {
             font-family: 'Archivo', sans-serif;
-            font-size: 1.125rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text);
             text-decoration: none;
@@ -93,7 +93,7 @@
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             list-style: none;
             align-items: center;
         }
@@ -134,12 +134,18 @@
             font-size: 1rem;
             color: var(--text);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 9999px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 16px -4px rgba(15, 118, 110, 0.4);
         }
 
         .nav-phone:hover {
-            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -4px rgba(15, 118, 110, 0.5);
         }
 
         .mobile-menu-btn {
@@ -172,6 +178,10 @@
         }
 
         @media (max-width: 768px) {
+            nav .container {
+                height: 60px;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 60px;
@@ -206,28 +216,29 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100dvh;
-            padding: 8rem 0 8rem;
+            min-height: 100vh;
+            padding: 10rem 0 6rem;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #FAFAFA 0%, #F4F4F5 100%);
+            background: linear-gradient(135deg, rgba(250, 250, 250, 0.95) 0%, rgba(244, 244, 245, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
+            background-blend-mode: overlay;
         }
 
-        .hero::before {
+        .hero::after {
             content: '';
             position: absolute;
-            top: 10%;
-            right: -10%;
-            width: 60%;
-            height: 80%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><path d="M50,150 Q100,50 200,100 T350,150 L350,300 Q300,350 200,300 T50,300 Z" fill="none" stroke="%230F766E" stroke-width="0.5" opacity="0.08"/><path d="M80,180 L120,160 L140,200 L100,220 Z" fill="%230F766E" opacity="0.05"/><circle cx="280" cy="120" r="40" fill="none" stroke="%230F766E" stroke-width="0.5" opacity="0.06"/><rect x="260" y="250" width="60" height="80" fill="%230F766E" opacity="0.04"/></svg>') no-repeat center;
-            background-size: contain;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--bg), transparent);
             pointer-events: none;
         }
 
         .hero .container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 4rem;
             align-items: center;
             position: relative;
@@ -235,21 +246,64 @@
         }
 
         .hero-content {
-            max-width: 70%;
+            max-width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(15, 118, 110, 0.1);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3.75rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
             color: var(--text);
+            line-height: 1.1;
         }
 
         .hero-subline {
             font-size: 1.25rem;
-            line-height: 1.8;
+            line-height: 1.7;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-features {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .hero-feature::before {
+            content: '✓';
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.875rem;
+            flex-shrink: 0;
         }
 
         .hero-card {
@@ -263,7 +317,7 @@
         .hero-card-inner {
             background: var(--card-inner);
             border-radius: 1.75rem;
-            padding: 3rem;
+            padding: 2.5rem;
             box-shadow: 0 20px 50px -12px rgba(161, 161, 170, 0.15);
         }
 
@@ -275,16 +329,29 @@
 
         .hero-card-phone {
             display: block;
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: var(--accent);
             text-decoration: none;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .hero-card-phone:hover {
             opacity: 0.8;
+        }
+
+        .hero-card-email {
+            display: block;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-card-email:hover {
+            color: var(--accent);
         }
 
         .btn-primary {
@@ -304,6 +371,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            width: 100%;
         }
 
         .btn-primary:hover {
@@ -315,18 +383,36 @@
             transform: translateY(0);
         }
 
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            color: var(--accent);
+            padding: 0.875rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            min-height: 44px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -4px rgba(15, 118, 110, 0.3);
+        }
+
         @media (max-width: 1024px) {
             .hero .container {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
 
-            .hero-content {
-                max-width: 100%;
-            }
-
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.75rem;
             }
         }
 
@@ -336,7 +422,7 @@
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
             .hero-subline {
@@ -349,6 +435,61 @@
 
             .hero-card-phone {
                 font-size: 1.5rem;
+            }
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: white;
+            padding: 4rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .trust-item {
+            padding: 1.5rem;
+        }
+
+        .trust-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: 'Archivo', sans-serif;
+        }
+
+        .trust-label {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        @media (max-width: 1024px) {
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trust-section {
+                padding: 3rem 0;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .trust-number {
+                font-size: 2.5rem;
             }
         }
 
@@ -409,6 +550,11 @@
             border: 1px solid var(--border);
             border-radius: 2rem;
             padding: 1.5rem;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
         }
 
         .service-card-inner {
@@ -416,17 +562,29 @@
             border-radius: 1.75rem;
             padding: 3rem;
             box-shadow: 0 20px 50px -12px rgba(161, 161, 170, 0.15);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card h3 {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--text);
+        }
+
+        .service-card > .service-card-inner > p {
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
         }
 
         .service-card ul {
             list-style: none;
             margin-top: 1.5rem;
+            margin-bottom: 2rem;
+            flex-grow: 1;
         }
 
         .service-card li {
@@ -532,12 +690,22 @@
             border-radius: 2rem;
             overflow: hidden;
             box-shadow: 0 20px 50px -12px rgba(161, 161, 170, 0.2);
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.1), transparent);
+            z-index: 1;
         }
 
         .about-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            aspect-ratio: 4/5;
         }
 
         @media (max-width: 1024px) {
@@ -702,7 +870,7 @@
         footer {
             background: var(--text);
             color: rgba(250, 250, 250, 0.8);
-            padding: 3rem 0 2rem;
+            padding: 4rem 0 2rem;
         }
 
         .footer-content {
@@ -722,6 +890,29 @@
             font-size: 0.875rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
+        }
+
+        .footer-contact {
+            margin-top: 1.5rem;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .footer-contact-item a {
+            color: rgba(250, 250, 250, 0.8);
+            text-decoration: none;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-contact-item a:hover {
+            color: white;
         }
 
         .footer-links h4 {
@@ -948,6 +1139,7 @@
                 <li><a href="#ueber-uns">Über uns</a></li>
                 <li><a href="#kontakt">Kontakt</a></li>
             </ul>
+            <a href="tel:+4940123456789" class="nav-phone">040 123 456 789</a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menü öffnen">
                 <span></span>
                 <span></span>
@@ -960,14 +1152,46 @@
         <section class="hero visible" id="startseite">
             <div class="container">
                 <div class="hero-content">
+                    <div class="hero-badge">
+                        🏡 Ihr Partner in Hamburg
+                    </div>
                     <h1>Ihre Immobilie in besten Händen</h1>
-                    <p class="hero-subline">Professioneller Verkauf und verlässliche Hausverwaltung in Hamburg – mit lokaler Expertise und persönlicher Betreuung</p>
+                    <p class="hero-subline">Professioneller Verkauf und verlässliche Hausverwaltung in Hamburg – mit lokaler Expertise und persönlicher Betreuung seit über 15 Jahren</p>
+                    <div class="hero-features">
+                        <div class="hero-feature">Lokale Marktkenntnis in Hamburg</div>
+                        <div class="hero-feature">Über 500 erfolgreich vermittelte Objekte</div>
+                        <div class="hero-feature">Persönliche Beratung von Anfang an</div>
+                    </div>
                 </div>
                 <div class="hero-card">
                     <div class="hero-card-inner">
                         <h3>Jetzt Kontakt aufnehmen</h3>
                         <a href="tel:+4940123456789" class="hero-card-phone">040 123 456 789</a>
+                        <a href="mailto:kontakt@gladigau-immobilien.de" class="hero-card-email">kontakt@gladigau-immobilien.de</a>
                         <a href="#kontakt" class="btn-primary">Kostenlose Erstberatung</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="trust-section visible">
+            <div class="container">
+                <div class="trust-grid">
+                    <div class="trust-item">
+                        <div class="trust-number">15+</div>
+                        <div class="trust-label">Jahre Erfahrung</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">500+</div>
+                        <div class="trust-label">Verkaufte Objekte</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">200+</div>
+                        <div class="trust-label">Verwaltete Einheiten</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-number">98%</div>
+                        <div class="trust-label">Kundenzufriedenheit</div>
                     </div>
                 </div>
             </div>
@@ -990,6 +1214,7 @@
                                 <li>Qualifizierte Käuferauswahl und Besichtigungsorganisation</li>
                                 <li>Verhandlungsführung und Begleitung bis zum Notartermin</li>
                             </ul>
+                            <a href="#kontakt" class="btn-secondary">Mehr erfahren</a>
                         </div>
                     </div>
                     <div class="service-card">
@@ -1002,6 +1227,7 @@
                                 <li>Instandhaltungsplanung und Koordination von Handwerkern</li>
                                 <li>Transparente Kommunikation und digitale Verwaltungsunterlagen</li>
                             </ul>
+                            <a href="#kontakt" class="btn-secondary">Mehr erfahren</a>
                         </div>
                     </div>
                 </div>
@@ -1031,7 +1257,7 @@
                         </div>
                     </div>
                     <div class="about-image">
-                        <img src="https://images.pexels.com/photos/8815933/pexels-photo-8815933.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Group of business professionals smiling inside office setting, showcasing teamwork and real estate partnership." loading="lazy">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&h=1000" alt="Modernes Bürogebäude in Hamburg mit Glasfassade bei Sonnenuntergang" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1101,6 +1327,17 @@
                 <div class="footer-brand">
                     <h3>Gladigau Immobilien Hamburg</h3>
                     <p>Ihr vertrauensvoller Partner für Immobilienverkauf und Hausverwaltung in Hamburg. Mit lokaler Expertise und persönlicher Betreuung begleiten wir Sie zu Ihrem Erfolg.</p>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            📞 <a href="tel:+4940123456789">040 123 456 789</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            ✉️ <a href="mailto:kontakt@gladigau-immobilien.de">kontakt@gladigau-immobilien.de</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            📍 Hamburg
+                        </div>
+                    </div>
                     <p style="margin-top: 1.5rem; font-size: 0.75rem; opacity: 0.6;">Demo-Redesign — nicht verbunden mit Gladigau Immobilien Hamburg</p>
                 </div>
                 <div class="footer-links">
@@ -1138,7 +1375,22 @@
                 <button class="modal-close" onclick="closeModal('impressum')" aria-label="Schließen">&times;</button>
             </div>
             <div class="modal-body">
-                <p>[Impressum hier einfügen]</p>
+                <h3>Angaben gemäß § 5 TMG</h3>
+                <p>Gladigau Immobilien Hamburg<br>
+                Musterstraße 123<br>
+                20095 Hamburg</p>
+
+                <h3>Kontakt</h3>
+                <p>Telefon: 040 123 456 789<br>
+                E-Mail: kontakt@gladigau-immobilien.de</p>
+
+                <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
+                <p>Gladigau Immobilien Hamburg<br>
+                Musterstraße 123<br>
+                20095 Hamburg</p>
+
+                <h3>Haftungsausschluss</h3>
+                <p>Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
             </div>
         </div>
     </div>
@@ -1151,7 +1403,17 @@
                 <button class="modal-close" onclick="closeModal('datenschutz')" aria-label="Schließen">&times;</button>
             </div>
             <div class="modal-body">
-                <p>[Datenschutzerklärung hier einfügen]</p>
+                <h3>1. Datenschutz auf einen Blick</h3>
+                <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+
+                <h3>2. Allgemeine Hinweise und Pflichtinformationen</h3>
+                <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+
+                <h3>3. Datenerfassung auf dieser Website</h3>
+                <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+
+                <h3>4. Ihre Rechte</h3>
+                <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
             </div>
         </div>
     </div>
@@ -1270,7 +1532,7 @@
                     e.preventDefault();
                     const target = document.querySelector(href);
                     if (target) {
-                        const offsetTop = target.offsetTop - 60;
+                        const offsetTop = target.offsetTop - 80;
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
@@ -1280,5 +1542,5 @@
             });
         });
     </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Gladigau Immobilien Hamburg | Verkauf | Hausverwaltung</p></body>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Gladigau Immobilien Hamburg | Verkauf | Hausverwaltung</p><p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Gladigau Immobilien Hamburg | Verkauf | Hausverwaltung</p></body>
 </html>
