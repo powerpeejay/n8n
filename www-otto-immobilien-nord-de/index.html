@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otto Immobilien Nord – Ihr Immobilienmakler im Norden</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #0A3D62;
+            --bg: #FFFFFF;
+            --text: #111111;
+            --text-soft: #787774;
+            --border: #EAEAEA;
+            --serif: 'Instrument Serif', serif;
+            --sans: 'Geist Sans', system-ui, -apple-system, sans-serif;
+            --container: 1400px;
+            --spacing-unit: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 3);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg);
+            z-index: 1000;
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 0 var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: calc(var(--spacing-unit) * 5);
+            padding-bottom: calc(var(--spacing-unit) * 5);
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 5);
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 15px;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links .nav-cta {
+            background: var(--accent);
+            color: var(--bg);
+            padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 3);
+            border-radius: 6px;
+            transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links .nav-cta:hover {
+            background: #082F4D;
+            transform: translateY(-1px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: calc(var(--spacing-unit) * 1);
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 999;
+            padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 3);
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 3);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            font-size: 28px;
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 85vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-top: calc(var(--spacing-unit) * 10);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.2) 100%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            padding-top: calc(var(--spacing-unit) * 10);
+            padding-bottom: calc(var(--spacing-unit) * 10);
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(42px, 5.5vw, 68px);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            color: var(--text);
+        }
+
+        .hero-sub {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--text-soft);
+            margin-bottom: calc(var(--spacing-unit) * 6);
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg);
+            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 5);
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .hero-cta:hover {
+            background: #082F4D;
+            transform: translateY(-2px);
+        }
+
+        .hero-phone {
+            display: block;
+            font-size: 15px;
+            color: var(--text-soft);
+            margin-top: calc(var(--spacing-unit) * 2);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: calc(var(--spacing-unit) * 15) 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto calc(var(--spacing-unit) * 8);
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--serif);
+            font-size: clamp(36px, 4vw, 52px);
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            line-height: 1.2;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* LEISTUNGEN */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: calc(var(--spacing-unit) * 4);
+        }
+
+        .service-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: calc(var(--spacing-unit) * 6);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-soft);
+            line-height: 1.7;
+        }
+
+        /* REFERENZEN */
+        .referenzen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: calc(var(--spacing-unit) * 5);
+        }
+
+        .referenz-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .referenz-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .referenz-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .referenz-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sold-badge {
+            position: absolute;
+            top: calc(var(--spacing-unit) * 2);
+            right: calc(var(--spacing-unit) * 2);
+            background: var(--accent);
+            color: var(--bg);
+            padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 2);
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .referenz-content {
+            padding: calc(var(--spacing-unit) * 3);
+        }
+
+        .referenz-content h3 {
+            font-family: var(--serif);
+            font-size: 20px;
+            margin-bottom: calc(var(--spacing-unit) * 1.5);
+            font-weight: 600;
+        }
+
+        .referenz-content p {
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* ÜBER UNS */
+        .about-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 8);
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 3.5vw, 44px);
+            margin-bottom: calc(var(--spacing-unit) * 3);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .about-content p {
+            color: var(--text-soft);
+            font-size: 17px;
+            line-height: 1.8;
+            margin-bottom: calc(var(--spacing-unit) * 3);
+        }
+
+        .about-values {
+            display: grid;
+            gap: calc(var(--spacing-unit) * 2);
+            margin-top: calc(var(--spacing-unit) * 5);
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .value-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .value-item strong {
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+            margin-bottom: calc(var(--spacing-unit) * 0.5);
+        }
+
+        /* SERVICEGEBIETE */
+        .servicegebiete {
+            background: #FAFAFA;
+        }
+
+        .gebiete-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        .gebiet-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: calc(var(--spacing-unit) * 4);
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gebiet-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .gebiet-card h3 {
+            font-family: var(--serif);
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+
+        .gebiet-card p {
+            color: var(--text-soft);
+            font-size: 14px;
+        }
+
+        /* KONTAKT */
+        .kontakt-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 8);
+        }
+
+        .kontakt-info {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 4);
+        }
+
+        .kontakt-info h2 {
+            font-family: var(--serif);
+            font-size: clamp(32px, 3.5vw, 44px);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .kontakt-info p {
+            color: var(--text-soft);
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .kontakt-methods {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        .kontakt-method {
+            padding: calc(var(--spacing-unit) * 3);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kontakt-method:hover {
+            border-color: var(--accent);
+        }
+
+        .kontakt-method strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+            color: var(--text-soft);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        .kontakt-method a {
+            font-size: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .kontakt-method a:hover {
+            color: #082F4D;
+        }
+
+        .kontakt-form {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 1);
+        }
+
+        .form-group label {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: calc(var(--spacing-unit) * 2);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-family: var(--sans);
+            font-size: 16px;
+            color: var(--text);
+            transition: border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: var(--accent);
+            color: var(--bg);
+            padding: calc(var(--spacing-unit) * 2.5) calc(var(--spacing-unit) * 5);
+            border: none;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: 500;
+            font-family: var(--sans);
+            cursor: pointer;
+            transition: background 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .form-submit:hover {
+            background: #082F4D;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #FAFAFA;
+            padding: calc(var(--spacing-unit) * 10) 0 calc(var(--spacing-unit) * 5);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: calc(var(--spacing-unit) * 8);
+            margin-bottom: calc(var(--spacing-unit) * 8);
+        }
+
+        .footer-logo {
+            font-family: var(--serif);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            color: var(--text);
+        }
+
+        .footer-about {
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .footer-section h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing-unit) * 1.5);
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            padding-top: calc(var(--spacing-unit) * 4);
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-soft);
+            font-size: 14px;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 3);
+        }
+
+        .footer-legal a {
+            color: var(--text-soft);
+            text-decoration: none;
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent);
+        }
+
+        /* MODAL */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: calc(var(--spacing-unit) * 3);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 10px;
+            padding: calc(var(--spacing-unit) * 6);
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: calc(var(--spacing-unit) * 3);
+            right: calc(var(--spacing-unit) * 3);
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-soft);
+            transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-content h2 {
+            font-family: var(--serif);
+            font-size: 32px;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            font-weight: 600;
+        }
+
+        .modal-content h3 {
+            font-family: var(--serif);
+            font-size: 22px;
+            margin-top: calc(var(--spacing-unit) * 4);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            font-weight: 600;
+        }
+
+        .modal-content p {
+            color: var(--text-soft);
+            line-height: 1.8;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .modal-content ul {
+            margin-left: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .modal-content li {
+            color: var(--text-soft);
+            line-height: 1.8;
+            margin-bottom: calc(var(--spacing-unit) * 1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                min-height: 100dvh;
+            }
+
+            .hero-bg::after {
+                background: linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+            }
+
+            .services-grid,
+            .referenzen-grid,
+            .gebiete-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-split,
+            .kontakt-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: calc(var(--spacing-unit) * 5);
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: calc(var(--spacing-unit) * 2);
+                text-align: center;
+            }
+
+            section {
+                padding: calc(var(--spacing-unit) * 10) 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-content {
+                padding: calc(var(--spacing-unit) * 4);
+            }
+
+            .modal-close {
+                top: calc(var(--spacing-unit) * 2);
+                right: calc(var(--spacing-unit) * 2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="nav">
+        <div class="container">
+            <a href="#" class="nav-logo">Otto Immobilien Nord</a>
+            <ul class="nav-links">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#referenzen">Referenzen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#startseite">Startseite</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#kontakt">Kontakt</a>
+    </div>
+
+    <main>
+        <section class="hero" id="startseite">
+            <div class="hero-bg">
+                <img src="https://images.pexels.com/photos/5563473/pexels-photo-5563473.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Exterior of contemporary cottage with large windows and stylish terrace against cloudy blue sky">
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Ihr Immobilienmakler im Norden</h1>
+                    <p class="hero-sub">Persönlich. Regional. Kompetent.</p>
+                    <a href="#kontakt" class="hero-cta">Kostenlose Bewertung anfordern</a>
+                    <span class="hero-phone">Rufen Sie uns an für eine unverbindliche Beratung</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="leistungen">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Unsere Leistungen</h2>
+                    <p>Als Ihr regionaler Immobilienpartner im Norden begleiten wir Sie bei jedem Schritt Ihres Immobiliengeschäfts – von der ersten Bewertung bis zum erfolgreichen Abschluss.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                        <h3>Immobilienverkauf</h3>
+                        <p>Wir vermarkten Ihre Immobilie professionell und erreichen durch unser regionales Netzwerk die richtigen Käufer. Von der Wertermittlung bis zur Übergabe stehen wir Ihnen zur Seite.</p>
+                    </div>
+                    <div class="service-card">
+                        <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                        </svg>
+                        <h3>Vermietung</h3>
+                        <p>Ob Wohnung oder Gewerbeimmobilie – wir finden zuverlässige Mieter, prüfen Bonitäten und übernehmen die komplette Abwicklung für eine sorgenfreie Vermietung.</p>
+                    </div>
+                    <div class="service-card">
+                        <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+                        </svg>
+                        <h3>Immobilienbewertung</h3>
+                        <p>Erhalten Sie eine fundierte Markteinschätzung Ihrer Immobilie. Unsere Bewertungen basieren auf aktuellen Marktdaten und langjähriger Erfahrung in der Region.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="referenzen">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Erfolgreich vermittelte Objekte</h2>
+                    <p>Ein Auszug aus unserem Portfolio erfolgreich verkaufter und vermieteter Immobilien in Norddeutschland.</p>
+                </div>
+                <div class="referenzen-grid">
+                    <div class="referenz-card">
+                        <div class="referenz-image">
+                            <img src="https://images.pexels.com/photos/8482510/pexels-photo-8482510.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Modern house exterior with a 'Home for Sale' sign in front yard.">
+                            <span class="sold-badge">Verkauft</span>
+                        </div>
+                        <div class="referenz-content">
+                            <h3>Einfamilienhaus in Kiel</h3>
+                            <p>Modernes Einfamilienhaus mit Garten, verkauft innerhalb von 6 Wochen über Angebotspreis an eine junge Familie aus der Region.</p>
+                        </div>
+                    </div>
+                    <div class="referenz-card">
+                        <div class="referenz-image">
+                            <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Contemporary luxury home with glass balconies in Poole, UK, showcasing modern architectural design.">
+                            <span class="sold-badge">Verkauft</span>
+                        </div>
+                        <div class="referenz-content">
+                            <h3>Luxusvilla in Lübeck</h3>
+                            <p>Exklusive Architekten-Villa mit Ostseeblick, diskret vermarktet und an anspruchsvolle Käufer vermittelt.</p>
+                        </div>
+                    </div>
+                    <div class="referenz-card">
+                        <div class="referenz-image">
+                            <img src="https://images.pexels.com/photos/2079234/pexels-photo-2079234.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Low angle view of a modern apartment building exterior with glass windows under a clear blue sky.">
+                            <span class="sold-badge">Vermietet</span>
+                        </div>
+                        <div class="referenz-content">
+                            <h3>Mehrfamilienhaus in Flensburg</h3>
+                            <p>Vollständig vermietetes Mehrfamilienhaus als Kapitalanlage an institutionellen Investor veräußert.</p>
+                        </div>
+                    </div>
+                    <div class="referenz-card">
+                        <div class="referenz-image">
+                            <img src="https://images.pexels.com/photos/35903941/pexels-photo-35903941.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="White modern apartments against a natural background during winter.">
+                            <span class="sold-badge">Verkauft</span>
+                        </div>
+                        <div class="referenz-content">
+                            <h3>Neubau-Apartments in Hamburg</h3>
+                            <p>Alle 12 Eigentumswohnungen innerhalb von drei Monaten erfolgreich an Eigennutzer und Anleger verkauft.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ueber-uns">
+            <div class="container">
+                <div class="about-split">
+                    <div class="about-content">
+                        <h2>Ihr Partner für Immobilien im Norden</h2>
+                        <p>Otto Immobilien Nord steht für ehrliche Beratung, regionale Expertise und persönlichen Service. Als inhabergeführtes Maklerbüro kennen wir den norddeutschen Immobilienmarkt wie unsere Westentasche.</p>
+                        <p>Wir verstehen, dass Immobiliengeschäfte Vertrauenssache sind. Deshalb nehmen wir uns Zeit für Sie, hören zu und entwickeln individuelle Lösungen – ob Sie verkaufen, vermieten oder kaufen möchten.</p>
+                        <div class="about-values">
+                            <div class="value-item">
+                                <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Regionale Verwurzelung</strong>
+                                    <p style="color: var(--text-soft); margin: 0;">Wir leben und arbeiten hier – und kennen jeden Stadtteil persönlich.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Persönliche Betreuung</strong>
+                                    <p style="color: var(--text-soft); margin: 0;">Ein fester Ansprechpartner begleitet Sie durch den gesamten Prozess.</p>
+                                </div>
+                            </div>
+                            <div class="value-item">
+                                <svg class="value-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <div>
+                                    <strong>Transparente Arbeitsweise</strong>
+                                    <p style="color: var(--text-soft); margin: 0;">Keine versteckten Kosten, keine leeren Versprechen – nur ehrliche Beratung.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image">
+                        <img src="https://images.pexels.com/photos/7937225/pexels-photo-7937225.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bright suburban house exterior with a for sale sign in the foreground.">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="servicegebiete" id="servicegebiete">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Unsere Servicegebiete</h2>
+                    <p>Wir sind in ganz Norddeutschland für Sie aktiv – mit besonderem Fokus auf die Küstenregionen und Ballungsräume.</p>
+                </div>
+                <div class="gebiete-grid">
+                    <div class="gebiet-card">
+                        <h3>Schleswig-Holstein</h3>
+                        <p>Kiel, Lübeck, Flensburg</p>
+                    </div>
+                    <div class="gebiet-card">
+                        <h3>Hamburg</h3>
+                        <p>Stadt und Umland</p>
+                    </div>
+                    <div class="gebiet-card">
+                        <h3>Mecklenburg-Vorpommern</h3>
+                        <p>Ostseeküste und Seenplatte</p>
+                    </div>
+                    <div class="gebiet-card">
+                        <h3>Niedersachsen</h3>
+                        <p>Hannover und Nordseeküste</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kontakt">
+            <div class="container">
+                <div class="kontakt-wrapper">
+                    <div class="kontakt-info">
+                        <h2>Lassen Sie uns sprechen</h2>
+                        <p>Sie möchten Ihre Immobilie verkaufen, vermieten oder bewerten lassen? Kontaktieren Sie uns für ein unverbindliches Erstgespräch. Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                        <div class="kontakt-methods">
+                            <div class="kontakt-method">
+                                <strong>Telefon</strong>
+                                <a href="tel:+4943121234567">+49 431 212 345 67</a>
+                            </div>
+                            <div class="kontakt-method">
+                                <strong>E-Mail</strong>
+                                <a href="mailto:kontakt@otto-immobilien-nord.de">kontakt@otto-immobilien-nord.de</a>
+                            </div>
+                            <div class="kontakt-method">
+                                <strong>Adresse</strong>
+                                <a href="https://maps.google.com" target="_blank">Musterstraße 123<br>24103 Kiel</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="kontakt-form">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefon">Telefon *</label>
+                            <input type="tel" id="telefon" name="telefon" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nachricht">Nachricht *</label>
+                            <textarea id="nachricht" name="nachricht" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Otto Immobilien Nord</div>
+                    <p class="footer-about">Ihr regionaler Immobilienpartner für Norddeutschland. Persönlich, kompetent und mit langjähriger Markterfahrung begleiten wir Sie bei Verkauf, Vermietung und Bewertung Ihrer Immobilie.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#startseite">Startseite</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#referenzen">Referenzen</a></li>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+4943121234567">+49 431 212 345 67</a></li>
+                        <li><a href="mailto:kontakt@otto-immobilien-nord.de">kontakt@otto-immobilien-nord.de</a></li>
+                        <li>Musterstraße 123<br>24103 Kiel</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Otto Immobilien Nord – Demo-Redesign – nicht verbunden mit Otto Immobilien Nord</p>
+                <div class="footer-legal">
+                    <a href="#" data-modal="impressum">Impressum</a>
+                    <a href="#" data-modal="datenschutz">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="impressum-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+            <p style="margin-top: calc(var(--spacing-unit) * 4); color: var(--text-soft); font-size: 14px;">Hinweis: Dies ist eine Design-Demo. Bitte fügen Sie hier die vollständigen Impressumsinformationen gemäß §5 TMG ein.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="datenschutz-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Schließen">
+                <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+            <p style="margin-top: calc(var(--spacing-unit) * 4); color: var(--text-soft); font-size: 14px;">Hinweis: Dies ist eine Design-Demo. Bitte fügen Sie hier die vollständige Datenschutzerklärung gemäß DSGVO ein.</p>
+        </div>
+    </div>
+
+    <script>
+        const nav = document.getElementById('nav');
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const sections = document.querySelectorAll('section');
+        const modalLinks = document.querySelectorAll('[data-modal]');
+        const modals = document.querySelectorAll('.modal-overlay');
+
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        const form = document.querySelector('.kontakt-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns innerhalb von 24 Stunden bei Ihnen.');
+            form.reset();
+        });
+
+        modalLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = link.getAttribute('data-modal') + '-modal';
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        modals.forEach(modal => {
+            const closeBtn = modal.querySelector('.modal-close');
+            
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                modals.forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        setTimeout(() => {
+            sections.forEach(section => {
+                if (section.getBoundingClientRect().top < window.innerHeight) {
+                    section.classList.add('visible');
+                }
+            });
+        }, 100);
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Otto Immobilien Nord</p></body>
+</html>
