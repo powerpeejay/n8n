@@ -17,6 +17,8 @@
 
         :root {
             --accent: #2B5F44;
+            --accent-hover: #234d37;
+            --accent-light: #E8F4EF;
             --bg: #F7F6F3;
             --text: #111111;
             --white: #FFFFFF;
@@ -149,41 +151,43 @@
 
         /* Hero Section */
         .hero {
-            min-height: 85vh;
+            min-height: 70vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            padding: 80px 24px;
+            padding: 60px 24px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .hero-content {
             max-width: 600px;
+            padding: 40px 0;
         }
 
         .hero h1 {
             font-family: var(--serif);
-            font-size: clamp(42px, 5vw, 64px);
+            font-size: clamp(46px, 5.5vw, 72px);
             line-height: 1.1;
-            margin-bottom: 24px;
-            font-weight: 400;
+            margin-bottom: 28px;
+            font-weight: 600;
+            color: var(--text);
         }
 
         .hero-subtext {
-            font-size: 18px;
+            font-size: 20px;
             line-height: 1.7;
-            color: #333333;
-            margin-bottom: 32px;
-            font-weight: 300;
+            color: #444444;
+            margin-bottom: 36px;
+            font-weight: 400;
         }
 
         .hero-phone {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 32px;
+            margin-bottom: 36px;
             display: block;
         }
 
@@ -196,56 +200,59 @@
         .btn-primary {
             background: var(--accent);
             color: var(--white);
-            padding: 14px 32px;
+            padding: 16px 36px;
             border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            min-height: 44px;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 54px;
             font-family: var(--sans);
+            box-shadow: 0 2px 8px rgba(43, 95, 68, 0.2);
         }
 
         .btn-primary:hover {
-            transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(43, 95, 68, 0.3);
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(43, 95, 68, 0.35);
         }
 
         .btn-primary:active {
-            transform: scale(0.96);
+            transform: translateY(0);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text);
-            padding: 14px 32px;
-            border: 1px solid var(--text);
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
+            padding: 16px 36px;
+            border: 2px solid var(--text);
+            border-radius: 6px;
+            font-size: 17px;
+            font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            min-height: 44px;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 54px;
             font-family: var(--sans);
         }
 
         .btn-secondary:hover {
             background: var(--text);
             color: var(--white);
+            transform: translateY(-2px);
         }
 
         .hero-image {
             width: 100%;
             height: 100%;
-            min-height: 500px;
-            border-radius: 8px;
+            min-height: 550px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
         .hero-image img {
@@ -257,7 +264,7 @@
         /* Trust Indicators */
         .trust-section {
             background: var(--white);
-            padding: 60px 24px;
+            padding: 80px 24px;
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
         }
@@ -276,16 +283,17 @@
 
         .trust-number {
             font-family: var(--serif);
-            font-size: 56px;
+            font-size: 64px;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             font-weight: 600;
+            line-height: 1;
         }
 
         .trust-label {
-            font-size: 16px;
-            color: #555555;
-            font-weight: 400;
+            font-size: 18px;
+            color: #333333;
+            font-weight: 500;
         }
 
         /* Services Section */
@@ -301,15 +309,17 @@
 
         .section-header h2 {
             font-family: var(--serif);
-            font-size: clamp(36px, 4vw, 48px);
-            margin-bottom: 20px;
-            font-weight: 400;
+            font-size: clamp(40px, 4.5vw, 56px);
+            margin-bottom: 24px;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
         .section-header p {
-            font-size: 18px;
-            color: #555555;
+            font-size: 19px;
+            color: #444444;
             line-height: 1.7;
+            font-weight: 400;
         }
 
         .services-grid {
@@ -322,43 +332,64 @@
 
         .service-card {
             background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 32px;
-            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 40px 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px 12px 0 0;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card:hover {
-            border-left: 3px solid var(--accent);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(43, 95, 68, 0.12);
+            transform: translateY(-4px);
         }
 
         .service-icon {
-            width: 48px;
-            height: 48px;
-            margin-bottom: 20px;
+            width: 64px;
+            height: 64px;
+            margin-bottom: 24px;
             color: var(--accent);
+            stroke-width: 1.5;
         }
 
         .service-card h3 {
             font-family: var(--serif);
-            font-size: 24px;
-            margin-bottom: 12px;
+            font-size: 26px;
+            margin-bottom: 16px;
             font-weight: 600;
+            line-height: 1.3;
         }
 
         .service-card p {
-            font-size: 16px;
+            font-size: 17px;
             color: #555555;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             line-height: 1.6;
         }
 
         .service-link {
             color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            font-size: 15px;
+            font-weight: 600;
+            font-size: 16px;
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -366,14 +397,13 @@
         }
 
         .service-link:hover {
-            gap: 10px;
+            gap: 12px;
         }
 
         /* USP Grid */
         .usp-section {
-            background: var(--white);
+            background: var(--accent-light);
             padding: 100px 24px;
-            border-top: 1px solid var(--border);
         }
 
         .usp-grid {
@@ -386,12 +416,22 @@
 
         .usp-item {
             text-align: left;
+            background: var(--white);
+            padding: 36px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .usp-item:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transform: translateY(-4px);
         }
 
         .usp-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--bg);
+            width: 64px;
+            height: 64px;
+            background: var(--accent-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -402,21 +442,22 @@
 
         .usp-item h3 {
             font-family: var(--serif);
-            font-size: 22px;
-            margin-bottom: 12px;
+            font-size: 24px;
+            margin-bottom: 16px;
             font-weight: 600;
+            line-height: 1.3;
         }
 
         .usp-item p {
-            font-size: 16px;
+            font-size: 17px;
             color: #555555;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         /* About Section */
         .about-section {
             padding: 100px 24px;
-            background: var(--bg);
+            background: var(--white);
         }
 
         .about-content {
@@ -430,24 +471,25 @@
 
         .about-text h2 {
             font-family: var(--serif);
-            font-size: clamp(36px, 4vw, 48px);
-            margin-bottom: 24px;
-            font-weight: 400;
+            font-size: clamp(40px, 4.5vw, 56px);
+            margin-bottom: 28px;
+            font-weight: 600;
+            line-height: 1.2;
         }
 
         .about-text p {
             font-size: 18px;
-            color: #555555;
+            color: #444444;
             line-height: 1.8;
             margin-bottom: 20px;
         }
 
         .about-image {
             width: 100%;
-            height: 500px;
-            border-radius: 8px;
+            height: 550px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
         }
 
         .about-image img {
@@ -459,7 +501,7 @@
         /* Contact Section */
         .contact-section {
             padding: 100px 24px;
-            background: var(--white);
+            background: var(--bg);
             border-top: 1px solid var(--border);
         }
 
@@ -478,66 +520,77 @@
         .contact-form {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .form-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
         }
 
         .form-group label {
-            font-weight: 500;
-            font-size: 15px;
+            font-weight: 600;
+            font-size: 16px;
             color: var(--text);
         }
 
         .form-group input,
         .form-group textarea {
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: 4px;
+            padding: 16px 18px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
             font-family: var(--sans);
-            font-size: 15px;
-            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            background: var(--bg);
+            font-size: 16px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--white);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(43, 95, 68, 0.1);
         }
 
         .form-group textarea {
-            min-height: 150px;
+            min-height: 160px;
             resize: vertical;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 36px;
         }
 
         .contact-info-item {
             display: flex;
-            gap: 16px;
+            gap: 18px;
             align-items: flex-start;
+            padding: 24px;
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .contact-info-item:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         }
 
         .contact-info-icon {
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
             color: var(--accent);
             flex-shrink: 0;
+            stroke-width: 2;
         }
 
         .contact-info-text h3 {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .contact-info-text p {
@@ -549,6 +602,7 @@
         .contact-info-text a {
             color: var(--accent);
             text-decoration: none;
+            font-weight: 500;
         }
 
         .contact-info-text a:hover {
@@ -773,6 +827,14 @@
                 padding: 60px 24px;
             }
 
+            .hero h1 {
+                font-size: clamp(38px, 8vw, 54px);
+            }
+
+            .hero-content {
+                padding: 20px 0;
+            }
+
             .hero-image {
                 min-height: 400px;
                 order: -1;
@@ -791,6 +853,10 @@
             .trust-grid {
                 grid-template-columns: 1fr;
                 gap: 32px;
+            }
+
+            .trust-number {
+                font-size: 56px;
             }
 
             .services-grid {
@@ -828,6 +894,10 @@
             .modal-content h2 {
                 font-size: 28px;
             }
+
+            .section-header h2 {
+                font-size: clamp(32px, 7vw, 48px);
+            }
         }
     </style>
 </head>
@@ -862,8 +932,8 @@
     <!-- Hero Section -->
     <section class="hero" id="hero">
         <div class="hero-content fade-in">
-            <h1>Willkommen bei Salomon GmbH Hausverwaltung</h1>
-            <p class="hero-subtext">Bauträude erledigen endständige Hausverwaltung mit kompetenten Dienstleistungen in der WEG-Verwaltung, Mieterverwaltung, SEV und gewerblicher Verwaltung</p>
+            <h1>Professionelle Hausverwaltung mit Herz</h1>
+            <p class="hero-subtext">Vertrauen Sie auf jahrelange Erfahrung und kompetente Dienstleistungen in der WEG-Verwaltung, Mieterverwaltung, SEV und gewerblichen Verwaltung. Wir sorgen für den Werterhalt Ihrer Immobilie.</p>
             <span class="hero-phone">☎ Jetzt Kontakt aufnehmen</span>
             <div class="hero-ctas">
                 <a href="#contact" class="btn-primary">Kostenlose Erstberatung</a>
@@ -871,7 +941,7 @@
             </div>
         </div>
         <div class="hero-image fade-in">
-            <img src="https://images.pexels.com/photos/35863372/pexels-photo-35863372.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Historic building in Hamburg, Germany, showcasing classic architecture with film photography charm.">
+            <img src="https://images.pexels.com/photos/35863372/pexels-photo-35863372.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Klassisches Wohngebäude in Deutschland – professionelle Hausverwaltung">
         </div>
     </section>
 
@@ -907,7 +977,7 @@
                         <polyline points="9 22 9 12 15 12 15 22"/>
                     </svg>
                     <h3>WEG-Verwaltung</h3>
-                    <p>Wohnungseigentümergemeinschaften professionell verwalten</p>
+                    <p>Wohnungseigentümergemeinschaften professionell und rechtssicher verwalten – von der Buchführung bis zur Eigentümerversammlung.</p>
                     <a href="#contact" class="service-link">Mehr erfahren →</a>
                 </div>
                 <div class="service-card fade-in">
@@ -917,7 +987,7 @@
                         <line x1="9" y1="15" x2="15" y2="15"/>
                     </svg>
                     <h3>Mieterverwaltung</h3>
-                    <p>Mietobjekte kompetent betreuen</p>
+                    <p>Mietobjekte kompetent betreuen – von der Mieterauswahl bis zur Nebenkostenabrechnung mit vollständiger Transparenz.</p>
                     <a href="#contact" class="service-link">Mehr erfahren →</a>
                 </div>
                 <div class="service-card fade-in">
@@ -927,7 +997,7 @@
                         <line x1="12" y1="22.08" x2="12" y2="12"/>
                     </svg>
                     <h3>SEV-Verwaltung</h3>
-                    <p>Sondereigentumsverwaltung fachmännisch durchführen</p>
+                    <p>Sondereigentumsverwaltung fachmännisch durchführen – individuelle Betreuung für Ihre speziellen Anforderungen.</p>
                     <a href="#contact" class="service-link">Mehr erfahren →</a>
                 </div>
                 <div class="service-card fade-in">
@@ -936,7 +1006,7 @@
                         <path d="M9 22V12h6v10"/>
                     </svg>
                     <h3>Gewerbeverwaltung</h3>
-                    <p>Gewerbliche Immobilien effizient verwalten</p>
+                    <p>Gewerbliche Immobilien effizient verwalten – professionelle Betreuung für Büros, Läden und Produktionsflächen.</p>
                     <a href="#contact" class="service-link">Mehr erfahren →</a>
                 </div>
             </div>
@@ -989,12 +1059,12 @@
         <div class="about-content">
             <div class="about-text fade-in">
                 <h2>Über uns</h2>
-                <p>Bauträude erledigen endständige Hausverwaltung mit kompetenten Dienstleistungen für WEG, SEV und gewerbliche Verwaltung</p>
+                <p>Salomon GmbH Hausverwaltung steht für professionelle und vertrauensvolle Immobilienverwaltung. Mit über 15 Jahren Erfahrung betreuen wir Wohnungseigentümergemeinschaften, Mietobjekte und Gewerbeimmobilien mit höchster Sorgfalt.</p>
                 <p>Als etabliertes Unternehmen im Bereich der Immobilienverwaltung setzen wir auf Qualität, Transparenz und langfristige Partnerschaften. Unsere Expertise erstreckt sich über alle Facetten der Hausverwaltung – von der rechtssicheren Abwicklung von Eigentümerversammlungen bis zur professionellen Betreuung von Mietern und Gewerbetreibenden.</p>
                 <p>Vertrauen Sie auf unsere Erfahrung und lassen Sie uns gemeinsam den Wert Ihrer Immobilie erhalten und steigern.</p>
             </div>
             <div class="about-image fade-in">
-                <img src="https://images.pexels.com/photos/35005679/pexels-photo-35005679.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Quaint urban street in autumn with German architecture and vibrant fall colors, captured on a sunny day.">
+                <img src="https://images.pexels.com/photos/35005679/pexels-photo-35005679.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Malerische Straße mit herbstlichen Farben – Immobilienverwaltung in Deutschland">
             </div>
         </div>
     </section>
@@ -1254,5 +1324,5 @@
             });
         });
     </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Salomon Hausverwaltung</p></body>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Salomon Hausverwaltung</p><p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Salomon Hausverwaltung</p></body>
 </html>
