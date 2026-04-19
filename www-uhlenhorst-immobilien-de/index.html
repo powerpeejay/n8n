@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uhlenhorst Immobilien – Zinshausverwaltung Hamburg</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #b87333;
+            --bg: #F7F6F3;
+            --text: #111111;
+            --border: #EAEAEA;
+            --white: #ffffff;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'Geist Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 16px 0;
+        }
+
+        nav .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent);
+        }
+
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .nav-dropdown-trigger {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav-dropdown-content {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            min-width: 200px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-dropdown:hover .nav-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown-content a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .nav-dropdown-content a:hover {
+            background: var(--bg);
+        }
+
+        .nav-phone {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 32px 32px;
+                gap: 24px;
+                transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                border-left: 1px solid var(--border);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-dropdown-content {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                border: none;
+                padding-left: 16px;
+                margin-top: 8px;
+            }
+
+            .nav-phone {
+                margin-top: auto;
+            }
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://picsum.photos/seed/hamburg-alster-panorama-daylight-residential/1920/1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            padding: 80px 0;
+        }
+
+        .hero-left h1 {
+            font-family: var(--serif);
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .hero-left .tagline {
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 32px;
+            font-weight: 500;
+        }
+
+        .hero-left h2 {
+            font-family: var(--serif);
+            font-size: 32px;
+            line-height: 1.3;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--text);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            border: 2px solid var(--text);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--text);
+            border-color: var(--accent);
+        }
+
+        .hero-right h2 {
+            font-family: var(--serif);
+            font-size: 32px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .mieter-links {
+            display: grid;
+            gap: 16px;
+        }
+
+        .mieter-link {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .mieter-link:hover {
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .mieter-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .mieter-link-text h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .mieter-link-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 60px 0;
+            }
+
+            .hero-left h1 {
+                font-size: 40px;
+            }
+
+            .hero-left h2 {
+                font-size: 26px;
+            }
+
+            .hero-right h2 {
+                font-size: 26px;
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-family: var(--serif);
+            font-size: 48px;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Zielgruppen */
+        .zielgruppen-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .zielgruppen-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 48px 40px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .zielgruppen-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .zielgruppen-card h3 {
+            font-family: var(--serif);
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .zielgruppen-card p {
+            margin-bottom: 24px;
+            color: #666;
+        }
+
+        .zielgruppen-card .btn-secondary {
+            display: inline-block;
+            padding: 12px 32px;
+            border: 2px solid var(--text);
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .zielgruppen-card .btn-secondary:hover {
+            background: var(--text);
+            color: var(--white);
+        }
+
+        @media (max-width: 768px) {
+            .zielgruppen-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--border);
+        }
+
+        .about-text h2 {
+            font-family: var(--serif);
+            font-size: 42px;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            margin-bottom: 24px;
+            color: #666;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        .team-member {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            margin-top: 32px;
+        }
+
+        .team-member h4 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: 8px;
+            font-weight: 400;
+        }
+
+        .team-member p {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .certifications {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            padding: 8px 16px;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h3 {
+            font-family: var(--serif);
+            font-size: 32px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            border-radius: 8px;
+            color: var(--accent);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .contact-item-text h4 {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-item-text p,
+        .contact-item-text a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--accent);
+        }
+
+        .opening-hours {
+            margin-top: 32px;
+            padding: 24px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .opening-hours h4 {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .opening-hours p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .contact-map {
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            height: 500px;
+        }
+
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-map {
+                height: 400px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 32px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .footer-brand p {
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-legal a {
+            color: #666;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .footer-legal a:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 40px 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 48px;
+            position: relative;
+            margin: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .modal-content h2 {
+            font-family: var(--serif);
+            font-size: 36px;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        .modal-content h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .modal-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .modal-content ul {
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .modal-content li {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 32px 24px;
+            }
+
+            .modal-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="#" class="nav-logo">Uhlenhorst Immobilien</a>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#startseite">Startseite</a></li>
+                <li><a href="#leistungen">Leistungen</a></li>
+                <li><a href="#ueber-uns">Über uns</a></li>
+                <li class="nav-dropdown">
+                    <div class="nav-dropdown-trigger">
+                        <a href="#mieter">Für Mieter</a>
+                        <span>▾</span>
+                    </div>
+                    <div class="nav-dropdown-content">
+                        <a href="#faq">Häufige Fragen</a>
+                        <a href="#downloads">Vorlagen & Downloads</a>
+                        <a href="#notfall">Notfall</a>
+                        <a href="#mietinteressenten">Miet-interessenten</a>
+                    </div>
+                </li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+
+            <a href="tel:040555542 47" class="nav-phone">040 55 55 42 47</a>
+
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menü öffnen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="startseite">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-left">
+                    <h1>Uhlenhorst Immobilien</h1>
+                    <div class="tagline">Zinshausverwaltung</div>
+                    <h2>Ihre Immobilie in besten Händen</h2>
+                    <a href="#kontakt" class="hero-cta">Erstgespräch vereinbaren</a>
+                </div>
+                <div class="hero-right">
+                    <h2>Service für Mieter</h2>
+                    <div class="mieter-links">
+                        <a href="#faq" class="mieter-link">
+                            <div class="mieter-icon">❓</div>
+                            <div class="mieter-link-text">
+                                <h3>Häufige Fragen</h3>
+                                <p>FAQ zur Mietverwaltung</p>
+                            </div>
+                        </a>
+                        <a href="#downloads" class="mieter-link">
+                            <div class="mieter-icon">📄</div>
+                            <div class="mieter-link-text">
+                                <h3>Vorlagen & Downloads</h3>
+                                <p>Formulare für Mieter</p>
+                            </div>
+                        </a>
+                        <a href="#notfall" class="mieter-link">
+                            <div class="mieter-icon">🚨</div>
+                            <div class="mieter-link-text">
+                                <h3>Notfall</h3>
+                                <p>Notfallkontakte und Vorgehen</p>
+                            </div>
+                        </a>
+                        <a href="#mietinteressenten" class="mieter-link">
+                            <div class="mieter-icon">🔑</div>
+                            <div class="mieter-link-text">
+                                <h3>Miet-interessenten</h3>
+                                <p>Wohnungssuche und Bewerbung</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zielgruppen -->
+    <section id="zielgruppen">
+        <div class="container">
+            <div class="section-header">
+                <h2>Wer sind Sie?</h2>
+                <p>Wählen Sie Ihren Bereich für maßgeschneiderte Informationen</p>
+            </div>
+            <div class="zielgruppen-grid">
+                <div class="zielgruppen-card">
+                    <h3>Ich bin Eigentümer</h3>
+                    <p>Professionelle Verwaltung Ihrer Zinshäuser in Hamburg mit über 20 Jahren Erfahrung und umfassendem Leistungsportfolio.</p>
+                    <a href="#leistungen" class="btn-secondary">Leistungen ansehen</a>
+                </div>
+                <div class="zielgruppen-card">
+                    <h3>Ich bin Mieter</h3>
+                    <p>Schneller Zugang zu FAQ, Downloads, Notfallkontakten und Informationen für Mietinteressenten. Wir sind für Sie da.</p>
+                    <a href="#mieter" class="btn-secondary">Zum Mieterbereich</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leistungen -->
+    <section id="leistungen">
+        <div class="container">
+            <div class="section-header">
+                <h2>Unsere Leistungen</h2>
+                <p>Professionelle Zinshausverwaltung mit umfassendem Service für Ihre Immobilien in Hamburg</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Mietverwaltung</h3>
+                    <p>Komplette Abwicklung aller mietvertraglichen Angelegenheiten, von der Vertragsgestaltung bis zur ordentlichen Kündigung. Wir sorgen für rechtssichere Prozesse und optimalen Mietfluss.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💰</div>
+                    <h3>Betriebskostenabrechnung</h3>
+                    <p>Präzise und termingerechte Erstellung von Betriebskostenabrechnungen nach aktueller Rechtslage. Transparenz und Nachvollziehbarkeit für Eigentümer und Mieter.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Instandhaltungsmanagement</h3>
+                    <p>Vorausschauende Planung und Koordination aller Instandhaltungsmaßnahmen. Wir überwachen Fristen, koordinieren Handwerker und sichern die Werterhaltung Ihrer Immobilie.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🤝</div>
+                    <h3>Eigentümerbetreuung</h3>
+                    <p>Persönlicher Ansprechpartner für alle Ihre Anliegen. Regelmäßige Berichte, transparente Kommunikation und strategische Beratung zur Optimierung Ihrer Rendite.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Objektbuchhaltung</h3>
+                    <p>Sorgfältige Verwaltung aller finanziellen Transaktionen Ihrer Immobilie. Von der Mieteingangskontrolle bis zur Erstellung aussagekräftiger Wirtschaftspläne.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚖️</div>
+                    <h3>Mietrechtsberatung</h3>
+                    <p>Fundierte Beratung bei allen mietrechtlichen Fragestellungen. Wir kennen die aktuellen Gesetze und setzen sie zu Ihrem Vorteil um – rechtssicher und pragmatisch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Über uns -->
+    <section id="ueber-uns">
+        <div class="container">
+            <div class="about-content">
+                <img src="https://picsum.photos/seed/professional-real-estate-manager-portrait/600/500" alt="Professioneller Immobilienverwalter" class="about-image">
+                <div class="about-text">
+                    <h2>Kompetenz und Erfahrung in Hamburg</h2>
+                    <p>Seit über zwei Jahrzehnten verwalten wir erfolgreich Zinshäuser in Hamburg mit dem Anspruch, für Eigentümer und Mieter gleichermaßen verlässlicher Partner zu sein. Unser Fokus liegt auf der professionellen, transparenten und wirtschaftlichen Verwaltung von Wohn- und Geschäftshäusern.</p>
+                    <p>Mit fundierter Ausbildung und kontinuierlicher Weiterbildung stellen wir sicher, dass Ihre Immobilie nach aktuellen rechtlichen und wirtschaftlichen Standards verwaltet wird. Unsere Mandanten schätzen die persönliche Betreuung und die langfristige Partnerschaft auf Augenhöhe.</p>
+                    <p>Aktuell betreuen wir ein Portfolio von über 120 Wohn- und Gewerbeeinheiten in den Hamburger Stadtteilen Uhlenhorst, Winterhude, Barmbek und Umgebung.</p>
+                    
+                    <div class="team-member">
+                        <h4>Niclas Zindler</h4>
+                        <p>Dipl.-Kfm. (FH) und gepr. Immobilienmakler (FMA)</p>
+                        <div class="certifications">
+                            <span class="cert-badge">Dipl.-Kfm. (FH)</span>
+                            <span class="cert-badge">gepr. Immobilienmakler (FMA)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kontakt</h2>
+                <p>Wir freuen uns auf Ihre Anfrage</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Nehmen Sie Kontakt auf</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-item-text">
+                            <h4>Telefon</h4>
+                            <a href="tel:040555542 47">040 55 55 42 47</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-item-text">
+                            <h4>Standort</h4>
+                            <p>Hamburg Uhlenhorst</p>
+                        </div>
+                    </div>
+
+                    <div class="opening-hours">
+                        <h4>Öffnungszeiten</h4>
+                        <p>Montag bis Donnerstag: 09:00-16:00 Uhr<br>
+                        Freitag: 09:00-14:00 Uhr<br>
+                        Samstag und Sonntag: Geschlossen</p>
+                    </div>
+                </div>
+
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18862.89326273729!2d10.012479!3d53.568772!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b18f1fa3e1eb43%3A0xc4a4f98e9b9d2f0c!2sUhlenhorst%2C%20Hamburg!5e0!3m2!1sde!2sde!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Uhlenhorst Immobilien</h3>
+                    <p>Professionelle Zinshausverwaltung in Hamburg seit über 20 Jahren. Ihr verlässlicher Partner für Immobilienverwaltung mit Kompetenz und Erfahrung.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="#startseite">Startseite</a></li>
+                        <li><a href="#leistungen">Leistungen</a></li>
+                        <li><a href="#ueber-uns">Über uns</a></li>
+                        <li><a href="#kontakt">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Für Mieter</h4>
+                    <ul class="footer-links">
+                        <li><a href="#faq">Häufige Fragen</a></li>
+                        <li><a href="#downloads">Vorlagen & Downloads</a></li>
+                        <li><a href="#notfall">Notfall</a></li>
+                        <li><a href="#mietinteressenten">Miet-interessenten</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Demo-Redesign — nicht verbunden mit Uhlenhorst Immobilien</p>
+                <div class="footer-legal">
+                    <a onclick="openModal('impressum')">Impressum</a>
+                    <a onclick="openModal('datenschutz')">Datenschutz</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal" id="impressumModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('impressum')" aria-label="Schließen">&times;</button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal" id="datenschutzModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('datenschutz')" aria-label="Schließen">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Modal Functions
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on backdrop click
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Uhlenhorst Immobilien - Inh. Dipl.-Kfm. (FH) und gepr. Immobilienmakler (FMA) Niclas Zindler</p></body>
+</html>
