@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salomon GmbH Hausverwaltung – Professionelle Immobilienverwaltung</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --accent: #2B5F44;
+            --bg: #F7F6F3;
+            --text: #111111;
+            --white: #FFFFFF;
+            --border: #EAEAEA;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'Geist Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 400;
+            position: relative;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-phone {
+            color: var(--accent);
+            font-weight: 500;
+            font-size: 15px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(42px, 5vw, 64px);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .hero-subtext {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #333333;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+
+        .hero-phone {
+            font-size: 20px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 32px;
+            display: block;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 14px 32px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 44px;
+            font-family: var(--sans);
+        }
+
+        .btn-primary:hover {
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px rgba(43, 95, 68, 0.3);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.96);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            padding: 14px 32px;
+            border: 1px solid var(--text);
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 44px;
+            font-family: var(--sans);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text);
+            color: var(--white);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Trust Indicators */
+        .trust-section {
+            background: var(--white);
+            padding: 60px 24px;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-number {
+            font-family: var(--serif);
+            font-size: 56px;
+            color: var(--accent);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .trust-label {
+            font-size: 16px;
+            color: #555555;
+            font-weight: 400;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 24px;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--serif);
+            font-size: clamp(36px, 4vw, 48px);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: #555555;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 32px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            border-left: 3px solid var(--accent);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            font-size: 16px;
+            color: #555555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-link:hover {
+            gap: 10px;
+        }
+
+        /* USP Grid */
+        .usp-section {
+            background: var(--white);
+            padding: 100px 24px;
+            border-top: 1px solid var(--border);
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .usp-item {
+            text-align: left;
+        }
+
+        .usp-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--accent);
+        }
+
+        .usp-item h3 {
+            font-family: var(--serif);
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .usp-item p {
+            font-size: 16px;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 24px;
+            background: var(--bg);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-text h2 {
+            font-family: var(--serif);
+            font-size: clamp(36px, 4vw, 48px);
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: #555555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 24px;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 15px;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-family: var(--sans);
+            font-size: 15px;
+            transition: border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .contact-info-icon {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .contact-info-text h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .contact-info-text p {
+            color: #555555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-info-text a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact-info-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: #FFFFFF;
+            padding: 60px 24px 32px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .footer-brand p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .footer-section h4 {
+            font-size: 16px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #CCCCCC;
+            text-decoration: none;
+            font-size: 15px;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 24px;
+            text-align: center;
+            color: #999999;
+            font-size: 14px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .footer-legal a {
+            color: #CCCCCC;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .footer-legal a:hover {
+            color: var(--white);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--white);
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            padding: 48px;
+            position: relative;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #999999;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-content h2 {
+            font-family: var(--serif);
+            font-size: 32px;
+            margin-bottom: 32px;
+            font-weight: 600;
+        }
+
+        .modal-content h3 {
+            font-family: var(--serif);
+            font-size: 24px;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .modal-content p {
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 16px;
+            color: #555555;
+        }
+
+        .modal-content ul {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 8px;
+            color: #555555;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 24px;
+                border-bottom: 1px solid var(--border);
+                transform: translateY(-100%);
+                opacity: 0;
+                pointer-events: none;
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-phone {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding: 60px 24px;
+            }
+
+            .hero-image {
+                min-height: 400px;
+                order: -1;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usp-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image {
+                height: 400px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .modal-content {
+                padding: 32px 24px;
+            }
+
+            .modal-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">Salomon GmbH</a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Startseite</a></li>
+                <li><a href="#services">WEG-Verwaltung</a></li>
+                <li><a href="#services">Mieterverwaltung</a></li>
+                <li><a href="#services">SEV-Verwaltung</a></li>
+                <li><a href="#services">Gewerbeverwaltung</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <a href="#contact" class="nav-phone">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                Kontakt aufnehmen
+            </a>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content fade-in">
+            <h1>Willkommen bei Salomon GmbH Hausverwaltung</h1>
+            <p class="hero-subtext">Bauträude erledigen endständige Hausverwaltung mit kompetenten Dienstleistungen in der WEG-Verwaltung, Mieterverwaltung, SEV und gewerblicher Verwaltung</p>
+            <span class="hero-phone">☎ Jetzt Kontakt aufnehmen</span>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Kostenlose Erstberatung</a>
+                <a href="#services" class="btn-secondary">Leistungen ansehen</a>
+            </div>
+        </div>
+        <div class="hero-image fade-in">
+            <img src="https://images.pexels.com/photos/35863372/pexels-photo-35863372.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Historic building in Hamburg, Germany, showcasing classic architecture with film photography charm.">
+        </div>
+    </section>
+
+    <!-- Trust Indicators -->
+    <section class="trust-section">
+        <div class="trust-grid">
+            <div class="trust-item fade-in">
+                <div class="trust-number">15+</div>
+                <div class="trust-label">Jahre Erfahrung</div>
+            </div>
+            <div class="trust-item fade-in">
+                <div class="trust-number">200+</div>
+                <div class="trust-label">Betreute Objekte</div>
+            </div>
+            <div class="trust-item fade-in">
+                <div class="trust-number">100%</div>
+                <div class="trust-label">Kundenzufriedenheit</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Unsere Leistungen</h2>
+                <p>Professionelle Hausverwaltung in allen Bereichen – maßgeschneidert für Ihre Bedürfnisse</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    <h3>WEG-Verwaltung</h3>
+                    <p>Wohnungseigentümergemeinschaften professionell verwalten</p>
+                    <a href="#contact" class="service-link">Mehr erfahren →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="9" y1="9" x2="15" y2="9"/>
+                        <line x1="9" y1="15" x2="15" y2="15"/>
+                    </svg>
+                    <h3>Mieterverwaltung</h3>
+                    <p>Mietobjekte kompetent betreuen</p>
+                    <a href="#contact" class="service-link">Mehr erfahren →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                    <h3>SEV-Verwaltung</h3>
+                    <p>Sondereigentumsverwaltung fachmännisch durchführen</p>
+                    <a href="#contact" class="service-link">Mehr erfahren →</a>
+                </div>
+                <div class="service-card fade-in">
+                    <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <path d="M9 22V12h6v10"/>
+                    </svg>
+                    <h3>Gewerbeverwaltung</h3>
+                    <p>Gewerbliche Immobilien effizient verwalten</p>
+                    <a href="#contact" class="service-link">Mehr erfahren →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Warum Salomon GmbH?</h2>
+                <p>Ihre Vorteile bei der Zusammenarbeit mit uns</p>
+            </div>
+            <div class="usp-grid">
+                <div class="usp-item fade-in">
+                    <div class="usp-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                    </div>
+                    <h3>Erfahrene Experten für Immobilienverwaltung</h3>
+                    <p>Unser Team verfügt über tiefgreifende Fachkenntnisse und langjährige Praxis in allen Bereichen der Hausverwaltung.</p>
+                </div>
+                <div class="usp-item fade-in">
+                    <div class="usp-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                    <h3>Mehrjährige Erfahrung in allen Verwaltungsbereichen</h3>
+                    <p>Von WEG über Mieterverwaltung bis hin zu Gewerbeimmobilien – wir kennen die Anforderungen jedes Segments.</p>
+                </div>
+                <div class="usp-item fade-in">
+                    <div class="usp-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Persönliche und zuverlässige Betreuung</h3>
+                    <p>Wir legen Wert auf direkten Kontakt, transparente Kommunikation und verlässliche Abwicklung aller Verwaltungsaufgaben.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <div class="about-text fade-in">
+                <h2>Über uns</h2>
+                <p>Bauträude erledigen endständige Hausverwaltung mit kompetenten Dienstleistungen für WEG, SEV und gewerbliche Verwaltung</p>
+                <p>Als etabliertes Unternehmen im Bereich der Immobilienverwaltung setzen wir auf Qualität, Transparenz und langfristige Partnerschaften. Unsere Expertise erstreckt sich über alle Facetten der Hausverwaltung – von der rechtssicheren Abwicklung von Eigentümerversammlungen bis zur professionellen Betreuung von Mietern und Gewerbetreibenden.</p>
+                <p>Vertrauen Sie auf unsere Erfahrung und lassen Sie uns gemeinsam den Wert Ihrer Immobilie erhalten und steigern.</p>
+            </div>
+            <div class="about-image fade-in">
+                <img src="https://images.pexels.com/photos/35005679/pexels-photo-35005679.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Quaint urban street in autumn with German architecture and vibrant fall colors, captured on a sunny day.">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header fade-in">
+                <h2>Kontakt aufnehmen</h2>
+                <p>Wir freuen uns auf Ihre Nachricht und beraten Sie gerne zu Ihren Verwaltungsanliegen.</p>
+            </div>
+            <div class="contact-grid">
+                <form class="contact-form fade-in">
+                    <div class="form-group">
+                        <label for="name">Ihr Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail-Adresse</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefonnummer</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Ihre Nachricht</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Nachricht senden</button>
+                </form>
+                <div class="contact-info fade-in">
+                    <div class="contact-info-item">
+                        <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <div class="contact-info-text">
+                            <h3>Anschrift</h3>
+                            <p>Salomon GmbH Hausverwaltung<br>Deutschland</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                        <div class="contact-info-text">
+                            <h3>Telefon</h3>
+                            <p><a href="tel:+49">Rufen Sie uns an</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <div class="contact-info-text">
+                            <h3>E-Mail</h3>
+                            <p><a href="mailto:info@salomon-hausverwaltung.de">info@salomon-hausverwaltung.de</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <svg class="contact-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <div class="contact-info-text">
+                            <h3>Öffnungszeiten</h3>
+                            <p>Montag – Freitag<br>9:00 – 17:00 Uhr</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Salomon GmbH</h3>
+                <p>Professionelle Hausverwaltung mit mehrjähriger Erfahrung in allen Bereichen der Immobilienverwaltung.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Leistungen</h4>
+                <ul>
+                    <li><a href="#services">WEG-Verwaltung</a></li>
+                    <li><a href="#services">Mieterverwaltung</a></li>
+                    <li><a href="#services">SEV-Verwaltung</a></li>
+                    <li><a href="#services">Gewerbeverwaltung</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Unternehmen</h4>
+                <ul>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel:+49">Telefon</a></li>
+                    <li><a href="mailto:info@salomon-hausverwaltung.de">E-Mail</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-legal">
+                <a href="#" id="impressumLink">Impressum</a>
+                <a href="#" id="datenschutzLink">Datenschutz</a>
+            </div>
+            <p>Demo-Redesign – nicht verbunden mit Salomon GmbH Hausverwaltung</p>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div class="modal" id="impressumModal">
+        <div class="modal-content">
+            <button class="modal-close" id="impressumClose">&times;</button>
+            <h2>Impressum</h2>
+            <p>[Impressum hier einfügen]</p>
+        </div>
+    </div>
+
+    <!-- Datenschutz Modal -->
+    <div class="modal" id="datenschutzModal">
+        <div class="modal-content">
+            <button class="modal-close" id="datenschutzClose">&times;</button>
+            <h2>Datenschutzerklärung</h2>
+            <p>[Datenschutzerklärung hier einfügen]</p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Modal functionality
+        const impressumLink = document.getElementById('impressumLink');
+        const datenschutzLink = document.getElementById('datenschutzLink');
+        const impressumModal = document.getElementById('impressumModal');
+        const datenschutzModal = document.getElementById('datenschutzModal');
+        const impressumClose = document.getElementById('impressumClose');
+        const datenschutzClose = document.getElementById('datenschutzClose');
+
+        function openModal(modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        impressumLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(impressumModal);
+        });
+
+        datenschutzLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(datenschutzModal);
+        });
+
+        impressumClose.addEventListener('click', () => closeModal(impressumModal));
+        datenschutzClose.addEventListener('click', () => closeModal(datenschutzModal));
+
+        // Close modal on backdrop click
+        impressumModal.addEventListener('click', (e) => {
+            if (e.target === impressumModal) closeModal(impressumModal);
+        });
+
+        datenschutzModal.addEventListener('click', (e) => {
+            if (e.target === datenschutzModal) closeModal(datenschutzModal);
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal(impressumModal);
+                closeModal(datenschutzModal);
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.');
+            e.target.reset();
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(targetId);
+                if (target) {
+                    const offsetTop = target.offsetTop - 70;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Salomon Hausverwaltung</p></body>
+</html>
