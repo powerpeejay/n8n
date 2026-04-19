@@ -50,6 +50,8 @@
             border-radius: 50px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
@@ -88,7 +90,7 @@
 
         /* Hero Section */
         .hero {
-            min-height: 100dvh;
+            min-height: 100vh;
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
@@ -163,7 +165,7 @@
         }
 
         .hero-image {
-            height: 100dvh;
+            height: 100vh;
             width: 100%;
             overflow: hidden;
             position: relative;
@@ -775,7 +777,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="https://images.pexels.com/photos/7937748/pexels-photo-7937748.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Real estate agent with hard hat standing by a modern house for sale.">
+                <img src="https://images.pexels.com/photos/7937748/pexels-photo-7937748.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Immobilienmakler mit Helm steht vor modernem Haus zum Verkauf">
             </div>
         </section>
 
@@ -787,22 +789,22 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="https://images.pexels.com/photos/8482510/pexels-photo-8482510.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Modern house exterior with a 'Home for Sale' sign in front yard.">
+                    <img src="https://images.pexels.com/photos/8482510/pexels-photo-8482510.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Modernes Haus mit 'Zu verkaufen' Schild im Vorgarten">
                     <h3>Verkauf</h3>
                     <p>Immobilienverkauf und -vermittlung mit fundierter Marktkenntnis. Wir begleiten Sie professionell durch den gesamten Verkaufsprozess und sorgen für optimale Ergebnisse.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.pexels.com/photos/31572938/pexels-photo-31572938.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Black and white image of a modern single-family home under construction.">
+                    <img src="https://images.pexels.com/photos/31572938/pexels-photo-31572938.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Schwarz-weißes Bild eines modernen Einfamilienhauses im Bau">
                     <h3>Neubau</h3>
                     <p>Neubaubegleitung und -beratung von der ersten Planung bis zur Schlüsselübergabe. Mit unserer Erfahrung stehen wir Ihnen als zuverlässiger Partner zur Seite.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Contemporary luxury home with glass balconies in Poole, UK, showcasing modern architectural design.">
+                    <img src="https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Zeitgenössisches Luxushaus mit Glasbalkon in Poole, UK">
                     <h3>Sanierung</h3>
                     <p>Sanierungsbegleitung bestehender Immobilien mit Fokus auf Qualität und Wirtschaftlichkeit. Wir koordinieren alle Gewerke und sorgen für einen reibungslosen Ablauf.</p>
                 </div>
                 <div class="service-card">
-                    <img src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Minimalist modern residential building facade against clear blue sky.">
+                    <img src="https://images.pexels.com/photos/358636/pexels-photo-358636.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Minimalistische moderne Wohnhausfassade gegen klaren blauen Himmel">
                     <h3>Projektierung</h3>
                     <p>Immobilienprojektentwicklung mit ganzheitlicher Betrachtung. Von der Grundstücksakquise über die Planung bis zur Realisierung – wir entwickeln Ihre Vision zur Realität.</p>
                 </div>
@@ -822,8 +824,8 @@
                     </ul>
                 </div>
                 <div class="about-images">
-                    <img src="https://images.pexels.com/photos/7937225/pexels-photo-7937225.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Bright suburban house exterior with a for sale sign in the foreground.">
-                    <img src="https://images.pexels.com/photos/93375/pexels-photo-93375.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="A modern brick house with large windows set against a bright blue sky with fluffy clouds.">
+                    <img src="https://images.pexels.com/photos/7937225/pexels-photo-7937225.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Helles Vorstadthaus mit Verkaufsschild im Vordergrund">
+                    <img src="https://images.pexels.com/photos/93375/pexels-photo-93375.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200" alt="Modernes Backsteinhaus mit großen Fenstern gegen strahlend blauen Himmel">
                 </div>
             </div>
         </section>
@@ -940,7 +942,17 @@
         <div class="modal-content">
             <button class="modal-close" aria-label="Schließen">&times;</button>
             <h2>Impressum</h2>
-            <p>[Impressum hier einfügen]</p>
+            <p><strong>Hansen Immobilien GmbH</strong></p>
+            <p>Musterstraße 123<br>
+            22457 Hamburg</p>
+            <p><strong>Telefon:</strong> 0163 - 7000 995<br>
+            <strong>E-Mail:</strong> info@hansen-immobilien.de</p>
+            <p><strong>Geschäftsführer:</strong> Max Hansen</p>
+            <p><strong>Registergericht:</strong> Amtsgericht Hamburg<br>
+            <strong>Registernummer:</strong> HRB 123456</p>
+            <p><strong>Umsatzsteuer-ID:</strong> DE123456789</p>
+            <h3>Haftungsausschluss</h3>
+            <p>Dies ist eine Demo-Website. Alle Inhalte dienen nur zu Demonstrationszwecken und sind nicht mit dem tatsächlichen Unternehmen Hansen Immobilien GmbH verbunden.</p>
         </div>
     </div>
 
@@ -949,7 +961,15 @@
         <div class="modal-content">
             <button class="modal-close" aria-label="Schließen">&times;</button>
             <h2>Datenschutzerklärung</h2>
-            <p>[Datenschutzerklärung hier einfügen]</p>
+            <h3>1. Datenschutz auf einen Blick</h3>
+            <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+            <h3>2. Allgemeine Hinweise und Pflichtinformationen</h3>
+            <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+            <h3>3. Datenerfassung auf dieser Website</h3>
+            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+            <h3>4. Kontaktformular</h3>
+            <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
+            <p><strong>Hinweis:</strong> Dies ist eine Demo-Website. Formulardaten werden nicht tatsächlich verarbeitet oder gespeichert.</p>
         </div>
     </div>
 
@@ -1059,5 +1079,5 @@
             });
         });
     </script>
-<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Hansen Immobilien GmbH</p></body>
+<p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Hansen Immobilien GmbH</p><p style="text-align:center;padding:1rem;font-size:0.75rem;color:#94a3b8;">Demo-Redesign &mdash; nicht verbunden mit Hansen Immobilien GmbH</p></body>
 </html>
